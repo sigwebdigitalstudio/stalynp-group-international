@@ -1,0 +1,858 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Stalynp - Grupo Internacional</title>
+
+    <!--GOOGLE FONTS-->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+    <link rel="icon" type="image/png" href="/assets/iconos/logo2.png" />
+    <link rel="stylesheet" href="style_header_foot.css" />
+
+    <link rel="stylesheet" href="header.css" />
+    <link rel="stylesheet" href="footer.css" />
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: "Montserrat", sans-serif;
+        background: #111;
+        color: #fff;
+        overflow-x: hidden;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      button {
+        font-family: inherit;
+      }
+
+      /* ==========================================================
+         ESTILOS ÚNICOS PARA LA SECCIÓN DE SERVICIOS GENERALES
+      ========================================================== */
+      .services-section {
+        position: relative;
+        padding: 100px 5%;
+        background: linear-gradient(
+          180deg,
+          #0f0f0f 0%,
+          #151515 50%,
+          #0a0a0a 100%
+        );
+        overflow: hidden;
+      }
+
+      .services-section::before {
+        content: "";
+        position: absolute;
+        top: -100px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 600px;
+        height: 600px;
+        background: radial-gradient(
+          circle,
+          rgba(197, 160, 89, 0.05) 0%,
+          transparent 70%
+        );
+        pointer-events: none;
+      }
+
+      .services-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        position: relative;
+        z-index: 2;
+      }
+
+      .services-header {
+        text-align: center;
+        margin-bottom: 70px;
+      }
+
+      .services-badge {
+        display: inline-block;
+        padding: 6px 16px;
+        background: rgba(197, 160, 89, 0.1);
+        color: #c5a059;
+        font-size: 0.85rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        border-radius: 30px;
+        border: 1px solid rgba(197, 160, 89, 0.3);
+        margin-bottom: 15px;
+      }
+
+      .services-title {
+        font-size: clamp(2rem, 3.5vw, 2.8rem);
+        font-weight: 800;
+        color: #fff;
+        margin-bottom: 15px;
+        letter-spacing: -0.5px;
+      }
+
+      .services-title span {
+        color: #c5a059;
+      }
+
+      .services-description {
+        color: #aaa;
+        font-size: 1.05rem;
+        max-width: 700px;
+        margin: 0 auto;
+        line-height: 1.6;
+      }
+
+      /* Grid de Servicios */
+      .services-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: 30px;
+        margin-bottom: 80px;
+      }
+
+      .service-card {
+        background: #181818;
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        border-radius: 16px;
+        padding: 35px 30px;
+        position: relative;
+        overflow: hidden;
+        transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        display: flex;
+        flex-direction: column;
+      }
+
+      .service-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 3px;
+        background: linear-gradient(90deg, #c5a059, transparent);
+        opacity: 0;
+        transition: opacity 0.4s ease;
+      }
+
+      .service-card:hover {
+        transform: translateY(-8px);
+        background: #1e1e1e;
+        border-color: rgba(197, 160, 89, 0.3);
+        box-shadow:
+          0 20px 40px rgba(0, 0, 0, 0.5),
+          0 0 20px rgba(197, 160, 89, 0.08);
+      }
+
+      .service-card:hover::before {
+        opacity: 1;
+      }
+
+      .service-icon-box {
+        width: 65px;
+        height: 65px;
+        background: rgba(197, 160, 89, 0.1);
+        border: 1px solid rgba(197, 160, 89, 0.3);
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #c5a059;
+        font-size: 1.6rem;
+        margin-bottom: 25px;
+        transition: all 0.4s ease;
+      }
+
+      .service-card:hover .service-icon-box {
+        background: #c5a059;
+        color: #111;
+        box-shadow: 0 0 15px rgba(197, 160, 89, 0.4);
+      }
+
+      .service-card-title {
+        font-size: 1.35rem;
+        font-weight: 700;
+        color: #fff;
+        margin-bottom: 12px;
+        line-height: 1.3;
+      }
+
+      .service-card-text {
+        color: #999;
+        font-size: 0.95rem;
+        line-height: 1.6;
+        margin-bottom: 25px;
+        flex-grow: 1;
+      }
+
+      .service-list {
+        list-style: none;
+        margin-bottom: 25px;
+        padding-top: 15px;
+        border-top: 1px solid rgba(255, 255, 255, 0.05);
+      }
+
+      .service-list li {
+        color: #ccc;
+        font-size: 0.88rem;
+        margin-bottom: 8px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .service-list li i {
+        color: #c5a059;
+        font-size: 0.75rem;
+      }
+
+      .service-card-footer {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding-top: 15px;
+      }
+
+      .service-link {
+        color: #c5a059;
+        font-size: 0.88rem;
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        transition: gap 0.3s ease;
+      }
+
+      .service-card:hover .service-link {
+        gap: 12px;
+        color: #fff;
+      }
+
+      /* Banner de Cotización Rápida */
+      .services-cta-banner {
+        background: linear-gradient(135deg, #1f1b13 0%, #111111 100%);
+        border: 1px solid rgba(197, 160, 89, 0.3);
+        border-radius: 20px;
+        padding: 45px 40px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 25px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .services-cta-text h3 {
+        font-size: 1.6rem;
+        font-weight: 800;
+        color: #fff;
+        margin-bottom: 8px;
+      }
+
+      .services-cta-text p {
+        color: #aaa;
+        font-size: 0.95rem;
+      }
+
+      .services-cta-button {
+        padding: 14px 32px;
+        background: #c5a059;
+        color: #111;
+        font-weight: 700;
+        border-radius: 8px;
+        font-size: 0.9rem;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        transition: all 0.3s ease;
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .services-cta-button:hover {
+        background: #d4af66;
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba(197, 160, 89, 0.3);
+      }
+
+      @media (max-width: 768px) {
+        .services-section {
+          padding: 60px 20px;
+        }
+        .services-grid {
+          grid-template-columns: 1fr;
+        }
+        .services-cta-banner {
+          padding: 30px 20px;
+          text-align: center;
+          justify-content: center;
+        }
+      }
+    </style>
+  </head>
+
+  <script src="HeadFoot.js" defer></script>
+  <script src="scriptindex.js" defer></script>
+  <script src="scriptbtns.js"></script>
+
+  <body>
+    <div id="contenedor-botones"></div>
+
+    <header class="header" id="header">
+      <div class="header-container">
+        <a href="index.html" class="brand">
+          <div class="brand-logo">
+            <img src="./assets/iconos/logo2.png" alt="Logo Stalynp" />
+          </div>
+          <div class="brand-text">
+            <span class="brand-name">STALYNP</span>
+            <span class="brand-subtitle">GRUPO INTERNACIONAL</span>
+          </div>
+        </a>
+
+        <!-- NAVEGACIÓN DESKTOP -->
+        <nav class="desktop-nav">
+          <a href="index.html" class="nav-link">INICIO</a>
+
+          <div class="nav-item dropdown">
+            <a href="javascript:void(0);" class="nav-link">
+              NUESTRA EMPRESA
+              <svg
+                width="10"
+                height="6"
+                viewBox="0 0 10 6"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M1 1L5 5L9 1"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </a>
+            <div class="dropdown-menu">
+              <a href="nosotros.html" class="dropdown-item">NOSOTROS</a>
+              <a href="empleo.html" class="dropdown-item"
+                >TRABAJA CON NOSOTROS</a
+              >
+              <a href="certificaciones.html" class="dropdown-item"
+                >CERTIFICACIONES</a
+              >
+            </div>
+          </div>
+
+          <div class="nav-item dropdown">
+            <a href="javascript:void(0);" class="nav-link active">
+              SERVICIOS
+              <svg
+                width="10"
+                height="6"
+                viewBox="0 0 10 6"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M1 1L5 5L9 1"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </a>
+            <div class="dropdown-menu">
+              <a href="servicios.html" class="dropdown-item"
+                >SERVICIOS GENERALES</a
+              >
+              <a href="ingenieria.html" class="dropdown-item">INGENIERÍA</a>
+              <a href="arquitectura.html" class="dropdown-item">ARQUITECTURA</a>
+              <a href="gerencia-proyectos.html" class="dropdown-item"
+                >GERENCIA Y SUPERVISION DE PROYECTOS</a
+              >
+            </div>
+          </div>
+
+          <a href="proyectos.html" class="nav-link">PROYECTOS</a>
+          <a href="contacto.html" class="nav-link">CONTACTO</a>
+        </nav>
+
+        <!-- BOTONES DE ACCIÓN DESKTOP -->
+        <div class="header-actions">
+          <a href="cotizar.html" class="header-button">COTIZAR</a>
+          <a
+            href="tienda.html"
+            class="header-button"
+            style="background: rgb(82, 64, 27); border-color: rgb(82, 64, 27)"
+          >
+            TIENDA
+          </a>
+        </div>
+
+        <!-- BOTÓN HAMBURGUESA MOBILE -->
+        <button
+          class="menu-toggle"
+          id="menuToggle"
+          aria-label="Abrir menú"
+          aria-expanded="false"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+
+      <!-- MENÚ MOBILE -->
+      <div class="mobile-menu" id="mobileMenu">
+        <a href="index.html" class="mobile-link">INICIO</a>
+
+        <div class="mobile-dropdown-container">
+          <div
+            class="mobile-link mobile-dropdown-toggle"
+            style="
+              cursor: pointer;
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+            "
+          >
+            <span>NUESTRA EMPRESA</span>
+            <svg
+              width="10"
+              height="6"
+              viewBox="0 0 10 6"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M1 1L5 5L9 1"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </div>
+          <div class="mobile-dropdown">
+            <a href="nosotros.html" class="mobile-sublink">NOSOTROS</a>
+            <a href="empleo.html" class="mobile-sublink"
+              >TRABAJA CON NOSOTROS</a
+            >
+            <a href="certificaciones.html" class="mobile-sublink"
+              >CERTIFICACIONES</a
+            >
+          </div>
+        </div>
+
+        <div class="mobile-dropdown-container">
+          <div
+            class="mobile-link mobile-dropdown-toggle"
+            style="
+              cursor: pointer;
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+            "
+          >
+            <span>SERVICIOS</span>
+            <svg
+              width="10"
+              height="6"
+              viewBox="0 0 10 6"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M1 1L5 5L9 1"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </div>
+          <div class="mobile-dropdown">
+            <a href="servicios.html" class="mobile-sublink"
+              >SERVICIOS GENERALES</a
+            >
+            <a href="ingenieria.html" class="mobile-sublink">INGENIERÍA</a>
+            <a href="arquitectura.html" class="mobile-sublink">ARQUITECTURA</a>
+            <a href="remodelacion.html" class="mobile-sublink"
+              >MANTENIMIENTO Y REMODELACION</a
+            >
+            <a href="gerencia-proyectos.html" class="mobile-sublink"
+              >GERENCIA Y SUPERVISION DE PROYECTOS</a
+            >
+          </div>
+        </div>
+
+        <a href="proyectos.html" class="mobile-link">PROYECTOS</a>
+        <a href="contacto.html" class="mobile-link">CONTACTO</a>
+
+        <a href="cotizar.html" class="mobile-button">COTIZAR</a>
+        <a
+          href="tienda.html"
+          class="mobile-button"
+          style="background: rgb(82, 64, 27); border-color: rgb(82, 64, 27)"
+        >
+          TIENDA
+        </a>
+      </div>
+    </header>
+
+    <!-- ==========================================================
+         SECCIÓN DE SERVICIOS GENERALES
+    ========================================================== -->
+
+    <section class="services-section" id="servicios-generales">
+      <div class="services-container">
+        <div class="services-header">
+          <span class="services-badge">Soluciones Integrales</span>
+          <h2 class="services-title">Servicios <span>Generales</span></h2>
+          <p class="services-description">
+            Ofrecemos un amplio portafolio de ingeniería, construcción civil,
+            logística y mantenimiento integral respaldado por personal
+            calificado y tecnología de vanguardia.
+          </p>
+        </div>
+
+        <div class="services-grid">
+          <!-- Servicio 1: Construcción Civil -->
+          <div class="service-card">
+            <div class="service-icon-box">
+              <i class="fa-solid fa-building"></i>
+            </div>
+            <h3 class="service-card-title">
+              Construcción Civil & Infraestructura
+            </h3>
+            <p class="service-card-text">
+              Ejecución de obras edificatorias, pavimentaciones, estructuras de
+              concreto armado y movimientos de tierra con máxima solidez.
+            </p>
+            <ul class="service-list">
+              <li>
+                <i class="fa-solid fa-check"></i> Edificaciones Residenciales e
+                Industriales
+              </li>
+              <li>
+                <i class="fa-solid fa-check"></i> Obras Viales y Cimentaciones
+              </li>
+              <li>
+                <i class="fa-solid fa-check"></i> Movimiento de Tierras y
+                Encofrados
+              </li>
+            </ul>
+            <div class="service-card-footer">
+              <a href="contacto.html" class="service-link">
+                Consultar Servicio <i class="fa-solid fa-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Servicio 2: Instalaciones Eléctricas -->
+          <div class="service-card">
+            <div class="service-icon-box">
+              <i class="fa-solid fa-bolt"></i>
+            </div>
+            <h3 class="service-card-title">
+              Instalaciones Eléctricas & Baja/Media Tensión
+            </h3>
+            <p class="service-card-text">
+              Diseño, montaje y mantenimiento de tableros eléctricos, cableado
+              industrial, pozos a tierra y sistemas de iluminación técnica.
+            </p>
+            <ul class="service-list">
+              <li>
+                <i class="fa-solid fa-check"></i> Redes de Media y Baja Tensión
+              </li>
+              <li>
+                <i class="fa-solid fa-check"></i> Pozos de Puesta a Tierra
+              </li>
+              <li>
+                <i class="fa-solid fa-check"></i> Tableros de Control y
+                Distribución
+              </li>
+            </ul>
+            <div class="service-card-footer">
+              <a href="contacto.html" class="service-link">
+                Consultar Servicio <i class="fa-solid fa-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Servicio 3: Gasfitería e Hidráulica -->
+          <div class="service-card">
+            <div class="service-icon-box">
+              <i class="fa-solid fa-faucet-drip"></i>
+            </div>
+            <h3 class="service-card-title">
+              Sistemas Sanitarios e Hidráulicos
+            </h3>
+            <p class="service-card-text">
+              Instalación y mantenimiento de redes de agua potable,
+              alcantarillado, bombas hidroneumáticas y redes contra incendios.
+            </p>
+            <ul class="service-list">
+              <li>
+                <i class="fa-solid fa-check"></i> Redes de Agua Potable y
+                Desagüe
+              </li>
+              <li>
+                <i class="fa-solid fa-check"></i> Sistemas Contra Incendio (ACI)
+              </li>
+              <li>
+                <i class="fa-solid fa-check"></i> Equipos de Bombeo y Tanques
+                Elevados
+              </li>
+            </ul>
+            <div class="service-card-footer">
+              <a href="contacto.html" class="service-link">
+                Consultar Servicio <i class="fa-solid fa-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Servicio 4: Estructuras Metálicas -->
+          <div class="service-card">
+            <div class="service-icon-box">
+              <i class="fa-solid fa-industry"></i>
+            </div>
+            <h3 class="service-card-title">
+              Estructuras Metálicas & Obras Civiles
+            </h3>
+            <p class="service-card-text">
+              Diseño, fabricación y montaje de obras civiles en acero, herrería
+              de precisión y soluciones industriales de alta resistencia.
+            </p>
+            <ul class="service-list">
+              <li>
+                <i class="fa-solid fa-check"></i> Obras Civiles en Acero y Naves
+                Industriales
+              </li>
+              <li>
+                <i class="fa-solid fa-check"></i> Fabricación de Puertas,
+                Ventanas y Coberturas
+              </li>
+              <li>
+                <i class="fa-solid fa-check"></i> Herrería General y Soldadura
+                Especializada
+              </li>
+            </ul>
+            <div class="service-card-footer">
+              <a href="contacto.html" class="service-link">
+                Consultar Servicio <i class="fa-solid fa-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Servicio 5: Pintura y Acabados (Drywall incluido) -->
+          <div class="service-card">
+            <div class="service-icon-box">
+              <i class="fa-solid fa-paint-roller"></i>
+            </div>
+            <h3 class="service-card-title">
+              Pintura Comercial, Industrial & Drywall
+            </h3>
+            <p class="service-card-text">
+              Servicios de acabados de primera clase, impermeabilización de
+              fachadas, pintura epóxica para pisos y sistemas en drywall.
+            </p>
+            <ul class="service-list">
+              <li>
+                <i class="fa-solid fa-check"></i> Pintura Epóxica e Industrial
+              </li>
+              <li>
+                <i class="fa-solid fa-check"></i> Sistema Drywall, Tabiquería y
+                Cielo Raso
+              </li>
+              <li>
+                <i class="fa-solid fa-check"></i> Impermeabilización de Techos y
+                Fachadas
+              </li>
+            </ul>
+            <div class="service-card-footer">
+              <a href="contacto.html" class="service-link">
+                Consultar Servicio <i class="fa-solid fa-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Servicio 6: Alquiler de Maquinaria -->
+          <div class="service-card">
+            <div class="service-icon-box">
+              <i class="fa-solid fa-truck-pickup"></i>
+            </div>
+            <h3 class="service-card-title">
+              Alquiler de Maquinaria & Logística
+            </h3>
+            <p class="service-card-text">
+              Provisión de maquinaria pesada, equipos menores para la
+              construcción y transporte de materiales con operadores
+              certificados.
+            </p>
+            <ul class="service-list">
+              <li>
+                <i class="fa-solid fa-check"></i> Maquinaria Pesada y Volquetes
+              </li>
+              <li>
+                <i class="fa-solid fa-check"></i> Equipos de Compresión y
+                Mezclado
+              </li>
+              <li>
+                <i class="fa-solid fa-check"></i> Logística y Transporte
+                Operativo
+              </li>
+            </ul>
+            <div class="service-card-footer">
+              <a href="contacto.html" class="service-link">
+                Consultar Servicio <i class="fa-solid fa-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Servicio 7: Mantenimiento y Remodelación -->
+          <div class="service-card">
+            <div class="service-icon-box">
+              <i class="fa-solid fa-wrench"></i>
+            </div>
+            <h3 class="service-card-title">
+              Mantenimiento & Remodelación Integral
+            </h3>
+            <p class="service-card-text">
+              Servicios integrales de reacondicionamiento y mantenimiento
+              correctivo/preventivo para inmuebles comerciales, residenciales e
+              industriales.
+            </p>
+            <ul class="service-list">
+              <li>
+                <i class="fa-solid fa-check"></i> Mantenimiento de Aires
+                Acondicionados (HVAC)
+              </li>
+              <li>
+                <i class="fa-solid fa-check"></i> Redes Eléctricas y Renovación
+                Comercial
+              </li>
+              <li>
+                <i class="fa-solid fa-check"></i> Remodelaciones Interiores y
+                Exteriores
+              </li>
+            </ul>
+            <div class="service-card-footer">
+              <a href="contacto.html" class="service-link">
+                Consultar Servicio <i class="fa-solid fa-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Servicio 8: Porcelanato Líquido -->
+          <div class="service-card">
+            <div class="service-icon-box">
+              <i class="fa-solid fa-layer-group"></i>
+            </div>
+            <h3 class="service-card-title">
+              Porcelanato Líquido & Pisos Epóxicos
+            </h3>
+            <p class="service-card-text">
+              Aplicación de recubrimientos de resina epóxica de alta
+              durabilidad, acabado espejado e higiénico para espacios
+              residenciales y comerciales.
+            </p>
+            <ul class="service-list">
+              <li>
+                <i class="fa-solid fa-check"></i> Porcelanato Líquido Monocolor
+                y 3D
+              </li>
+              <li>
+                <i class="fa-solid fa-check"></i> Autonivelantes Epóxicos
+                Industriales
+              </li>
+              <li>
+                <i class="fa-solid fa-check"></i> Reparación y Sellado de
+                Superficies
+              </li>
+            </ul>
+            <div class="service-card-footer">
+              <a href="contacto.html" class="service-link">
+                Consultar Servicio <i class="fa-solid fa-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Servicio 9: Reposteros y Mueblería -->
+          <div class="service-card">
+            <div class="service-icon-box">
+              <i class="fa-solid fa-kitchen-set"></i>
+            </div>
+            <h3 class="service-card-title">Reposteros & Mueblería a Medida</h3>
+            <p class="service-card-text">
+              Diseño, fabricación e instalación de reposteros de cocina, closets
+              y mobiliario en melamina de alta calidad y finos acabados.
+            </p>
+            <ul class="service-list">
+              <li>
+                <i class="fa-solid fa-check"></i> Reposteros de Cocina Altos y
+                Bajos
+              </li>
+              <li>
+                <i class="fa-solid fa-check"></i> Closets, Muebles de Baño y
+                Centros de TV
+              </li>
+              <li>
+                <i class="fa-solid fa-check"></i> Diseño Personalizado e
+                Instalación
+              </li>
+            </ul>
+            <div class="service-card-footer">
+              <a href="contacto.html" class="service-link">
+                Consultar Servicio <i class="fa-solid fa-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Banner Call to Action -->
+        <div class="services-cta-banner">
+          <div class="services-cta-text">
+            <h3>¿Necesitas un servicio a la medida de tu proyecto?</h3>
+            <p>
+              Contáctanos hoy mismo para coordinar una evaluación técnica y
+              recibir tu presupuesto formal.
+            </p>
+          </div>
+          <a href="contacto.html" class="services-cta-button">
+            Solicitar Cotización <i class="fa-solid fa-paper-plane"></i>
+          </a>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>

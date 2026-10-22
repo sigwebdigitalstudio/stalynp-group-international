@@ -1,0 +1,649 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Stalynp - Grupo Internacional</title>
+
+    <!--GOOGLE FONTS-->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+    <link rel="icon" type="image/png" href="/assets/iconos/logo2.png" />
+    <link rel="stylesheet" href="style_header_foot.css" />
+
+    <link rel="stylesheet" href="header.css" />
+    <link rel="stylesheet" href="footer.css" />
+
+    <style>
+      .arch-services-section {
+        position: relative;
+        background-color: #0b0f19; /* Fondo base en caso de carga lenta */
+        color: #f8fafc;
+        padding: 100px 20px;
+        font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        box-sizing: border-box;
+        overflow: hidden;
+      }
+
+      /* Efecto de Fondo con Imagen, Opacidad y Degradado de Arriba hacia Abajo */
+      .arch-bg-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image:
+          linear-gradient(
+            to bottom,
+            rgba(11, 15, 25, 0.95) 0%,
+            rgba(15, 23, 42, 0.85) 50%,
+            rgba(11, 15, 25, 0.98) 100%
+          ),
+          url("https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1920&q=80");
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        z-index: 1;
+      }
+
+      .arch-services-section * {
+        box-sizing: inherit;
+        margin: 0;
+        padding: 0;
+      }
+
+      .arch-container {
+        position: relative;
+        z-index: 2; /* Para ubicarse por encima del fondo */
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      /* Header de la sección */
+      .arch-header {
+        text-align: center;
+        margin-bottom: 60px;
+      }
+
+      .arch-badge {
+        display: inline-block;
+        background-color: rgba(
+          217,
+          119,
+          6,
+          0.15
+        ); /* Tono cobre / ámbar elegante */
+        color: #fbbf24;
+        padding: 6px 16px;
+        border-radius: 20px;
+        font-size: 0.85rem;
+        font-weight: 600;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        margin-bottom: 12px;
+        border: 1px solid rgba(251, 191, 36, 0.3);
+      }
+
+      .arch-title {
+        font-size: 2.6rem;
+        font-weight: 700;
+        color: #ffffff;
+        margin-bottom: 16px;
+        line-height: 1.2;
+        letter-spacing: -0.5px;
+      }
+
+      .arch-description {
+        font-size: 1.1rem;
+        color: #cbd5e1;
+        max-width: 650px;
+        margin: 0 auto;
+        line-height: 1.6;
+      }
+
+      /* Grid de Tarjetas */
+      .arch-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 30px;
+      }
+
+      /* Tarjeta individual */
+      .arch-card {
+        background-color: rgba(30, 41, 59, 0.75);
+        backdrop-filter: blur(10px); /* Efecto vidrio ahumado */
+        -webkit-backdrop-filter: blur(10px);
+        border-radius: 12px;
+        overflow: hidden;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        transition:
+          transform 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+          box-shadow 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+          border-color 0.35s ease;
+        display: flex;
+        flex-direction: column;
+        opacity: 0;
+        transform: translateY(30px);
+      }
+
+      .arch-card.arch-visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .arch-card:hover {
+        transform: translateY(-8px);
+        border-color: #fbbf24;
+        box-shadow: 0 16px 35px rgba(0, 0, 0, 0.6);
+      }
+
+      /* Imagen y Categoría */
+      .arch-card-image-wrapper {
+        position: relative;
+        height: 210px;
+        overflow: hidden;
+      }
+
+      .arch-card-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.6s ease;
+      }
+
+      .arch-card:hover .arch-card-img {
+        transform: scale(1.08);
+      }
+
+      .arch-card-category {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        background-color: rgba(11, 15, 25, 0.85);
+        backdrop-filter: blur(4px);
+        color: #fbbf24;
+        font-size: 0.75rem;
+        font-weight: 700;
+        padding: 4px 12px;
+        border-radius: 6px;
+        border: 1px solid rgba(251, 191, 36, 0.3);
+      }
+
+      /* Contenido de la Tarjeta */
+      .arch-card-content {
+        padding: 24px;
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+      }
+
+      .arch-card-title {
+        font-size: 1.35rem;
+        font-weight: 600;
+        color: #f8fafc;
+        margin-bottom: 12px;
+      }
+
+      .arch-card-text {
+        font-size: 0.95rem;
+        color: #94a3b8;
+        line-height: 1.55;
+        margin-bottom: 20px;
+        flex-grow: 1;
+      }
+
+      /* Botón Acción */
+      .arch-btn {
+        display: inline-block;
+        text-align: center;
+        background: linear-gradient(135deg, #d97706, #b45309);
+        color: #ffffff;
+        padding: 11px 20px;
+        border-radius: 6px;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 0.9rem;
+        transition:
+          background 0.3s ease,
+          transform 0.2s ease,
+          box-shadow 0.3s ease;
+      }
+
+      .arch-btn:hover {
+        background: linear-gradient(135deg, #b45309, #92400e);
+        transform: scale(1.02);
+        box-shadow: 0 4px 12px rgba(217, 119, 6, 0.3);
+      }
+
+      /* Adaptación Mobile */
+      @media (max-width: 768px) {
+        .arch-services-section {
+          padding: 60px 15px;
+        }
+
+        .arch-title {
+          font-size: 2rem;
+        }
+
+        .arch-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+
+  <script src="HeadFoot.js" defer></script>
+  <script src="scriptindex.js" defer></script>
+  <script src="scriptbtns.js"></script>
+
+  <body>
+    <div id="contenedor-botones"></div>
+
+    <header class="header" id="header">
+      <div class="header-container">
+        <a href="index.html" class="brand">
+          <div class="brand-logo">
+            <img
+              src="./assets/iconos/logo2.png"
+              alt="Logo Stalynp"
+              loading="lazy"
+            />
+          </div>
+          <div class="brand-text">
+            <span class="brand-name">STALYNP</span>
+            <span class="brand-subtitle">GRUPO INTERNACIONAL</span>
+          </div>
+        </a>
+
+        <!-- NAVEGACIÓN DESKTOP -->
+        <nav class="desktop-nav">
+          <a href="index.html" class="nav-link">INICIO</a>
+
+          <div class="nav-item dropdown">
+            <a href="javascript:void(0);" class="nav-link">
+              NUESTRA EMPRESA
+              <svg
+                width="10"
+                height="6"
+                viewBox="0 0 10 6"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M1 1L5 5L9 1"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </a>
+            <div class="dropdown-menu">
+              <a href="nosotros.html" class="dropdown-item">NOSOTROS</a>
+              <a href="empleo.html" class="dropdown-item"
+                >TRABAJA CON NOSOTROS</a
+              >
+              <a href="certificaciones.html" class="dropdown-item"
+                >CERTIFICACIONES</a
+              >
+            </div>
+          </div>
+
+          <div class="nav-item dropdown">
+            <a href="javascript:void(0);" class="nav-link active">
+              SERVICIOS
+              <svg
+                width="10"
+                height="6"
+                viewBox="0 0 10 6"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M1 1L5 5L9 1"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </a>
+            <div class="dropdown-menu">
+              <a href="servicios.html" class="dropdown-item"
+                >SERVICIOS GENERALES</a
+              >
+              <a href="ingenieria.html" class="dropdown-item">INGENIERÍA</a>
+              <a href="arquitectura.html" class="dropdown-item">ARQUITECTURA</a>
+              <a href="gerencia-proyectos.html" class="dropdown-item"
+                >GERENCIA Y SUPERVISION DE PROYECTOS</a
+              >
+            </div>
+          </div>
+
+          <a href="proyectos.html" class="nav-link">PROYECTOS</a>
+          <a href="contacto.html" class="nav-link">CONTACTO</a>
+        </nav>
+
+        <!-- BOTONES DE ACCIÓN DESKTOP -->
+        <div class="header-actions">
+          <a href="cotizar.html" class="header-button">COTIZAR</a>
+          <a
+            href="tienda.html"
+            class="header-button"
+            style="background: rgb(82, 64, 27); border-color: rgb(82, 64, 27)"
+          >
+            TIENDA
+          </a>
+        </div>
+
+        <!-- BOTÓN HAMBURGUESA MOBILE -->
+        <button
+          class="menu-toggle"
+          id="menuToggle"
+          aria-label="Abrir menú"
+          aria-expanded="false"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+
+      <!-- MENÚ MOBILE -->
+      <div class="mobile-menu" id="mobileMenu">
+        <a href="index.html" class="mobile-link">INICIO</a>
+
+        <div class="mobile-dropdown-container">
+          <div
+            class="mobile-link mobile-dropdown-toggle"
+            style="
+              cursor: pointer;
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+            "
+          >
+            <span>NUESTRA EMPRESA</span>
+            <svg
+              width="10"
+              height="6"
+              viewBox="0 0 10 6"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M1 1L5 5L9 1"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </div>
+          <div class="mobile-dropdown">
+            <a href="nosotros.html" class="mobile-sublink">NOSOTROS</a>
+            <a href="empleo.html" class="mobile-sublink"
+              >TRABAJA CON NOSOTROS</a
+            >
+            <a href="certificaciones.html" class="mobile-sublink"
+              >CERTIFICACIONES</a
+            >
+          </div>
+        </div>
+
+        <div class="mobile-dropdown-container">
+          <div
+            class="mobile-link mobile-dropdown-toggle"
+            style="
+              cursor: pointer;
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+            "
+          >
+            <span>SERVICIOS</span>
+            <svg
+              width="10"
+              height="6"
+              viewBox="0 0 10 6"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M1 1L5 5L9 1"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </div>
+          <div class="mobile-dropdown">
+            <a href="servicios.html" class="mobile-sublink"
+              >SERVICIOS GENERALES</a
+            >
+            <a href="ingenieria.html" class="mobile-sublink">INGENIERÍA</a>
+            <a href="arquitectura.html" class="mobile-sublink">ARQUITECTURA</a>
+
+            <a href="gerencia-proyectos.html" class="mobile-sublink"
+              >GERENCIA Y SUPERVISION DE PROYECTOS</a
+            >
+          </div>
+        </div>
+
+        <a href="proyectos.html" class="mobile-link">PROYECTOS</a>
+        <a href="contacto.html" class="mobile-link">CONTACTO</a>
+
+        <a href="cotizar.html" class="mobile-button">COTIZAR</a>
+        <a
+          href="tienda.html"
+          class="mobile-button"
+          style="background: rgb(82, 64, 27); border-color: rgb(82, 64, 27)"
+        >
+          TIENDA
+        </a>
+      </div>
+    </header>
+
+    <!-- ======= SECCIÓN DE SERVICIOS GENERALES ==== -->
+    <!-- SECCIÓN DE SERVICIOS DE ARQUITECTURA -->
+    <section class="arch-services-section" id="arquitectura-servicios">
+      <!-- Capa de imagen de fondo con opacidad y degradado -->
+      <div class="arch-bg-overlay"></div>
+
+      <div class="arch-container">
+        <!-- Encabezado de la Sección -->
+        <header class="arch-header">
+          <span class="arch-badge">Diseño e Innovación</span>
+          <h2 class="arch-title">Servicios de Arquitectura & Diseño</h2>
+          <p class="arch-description">
+            Transformamos espacios mediante proyectos conceptuales, funcionales
+            y de alto impacto visual, integrando estética y normatividad.
+          </p>
+        </header>
+
+        <!-- Grid de Servicios -->
+        <div class="arch-grid">
+          <!-- Servicio 1: Planos de Arquitectura -->
+          <article class="arch-card">
+            <div class="arch-card-image-wrapper">
+              <img
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTwVsiDjrI_EtzWZoIKLOJ17aIGsIWEwd2HI1EHR3JggA&s=10"
+                alt="Planos de Arquitectura"
+                class="arch-card-img"
+              />
+              <span class="arch-card-category">Proyectos</span>
+            </div>
+            <div class="arch-card-content">
+              <h3 class="arch-card-title">Planos de Arquitectura</h3>
+              <p class="arch-card-text">
+                Elaboración de planos de distribución, cortes, elevaciones y
+                detalles constructivos para licencias de edificación y
+                ejecución.
+              </p>
+              <a href="#contacto" class="arch-btn">Solicitar Cotización</a>
+            </div>
+          </article>
+
+          <!-- Servicio 2: Diseños 3D e Interiores/Exteriores -->
+          <article class="arch-card">
+            <div class="arch-card-image-wrapper">
+              <img
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSeU7AT7bCm-yEHQjy-QxwPY-yHaJZMlDI4ZfCgiL7SFVTLr2r0Um9s6z0&s=10"
+                alt="Renders y Renders 3D"
+                class="arch-card-img"
+              />
+              <span class="arch-card-category">Visualización</span>
+            </div>
+            <div class="arch-card-content">
+              <h3 class="arch-card-title">Diseño 3D (Interior / Exterior)</h3>
+              <p class="arch-card-text">
+                Modelado tridimensional y renderizado fotorrealista de fachadas,
+                ambientes interiores y recorridos virtuales inmersivos.
+              </p>
+              <a href="#contacto" class="arch-btn">Solicitar Cotización</a>
+            </div>
+          </article>
+
+          <!-- Servicio 3: Arquitectura Paisajista (Agregado) -->
+          <article class="arch-card">
+            <div class="arch-card-image-wrapper">
+              <img
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQvjU3rb0N-UNzHJKTr1dGneIJWAqzq_hUr_5qBUUVoSC9xSqIlauvNwPo&s=10"
+                alt="Arquitectura Paisajista"
+                loading="lazy"
+                class="arch-card-img"
+              />
+              <span class="arch-card-category">Entorno</span>
+            </div>
+            <div class="arch-card-content">
+              <h3 class="arch-card-title">Arquitectura Paisajista</h3>
+              <p class="arch-card-text">
+                Diseño de áreas verdes, terrazas, jardines urbanos e integración
+                de elementos naturales sostenibles al espacio construido.
+              </p>
+              <a href="#contacto" class="arch-btn">Solicitar Cotización</a>
+            </div>
+          </article>
+
+          <!-- Servicio 4: Remodelación y Restauración (Agregado) -->
+          <article class="arch-card">
+            <div class="arch-card-image-wrapper">
+              <img
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRCb8_ljVKhScLatME-0F5hanroLpL6rI8nPfTGJXchrNOWgmywbBB9v58&s=10"
+                alt="Remodelación"
+                class="arch-card-img"
+              />
+              <span class="arch-card-category">Rehabilitación</span>
+            </div>
+            <div class="arch-card-content">
+              <h3 class="arch-card-title">Remodelación y Rediseño</h3>
+              <p class="arch-card-text">
+                Optimización y modernización de ambientes existentes para
+                vivienda, oficinas o locales comerciales optimizando el
+                presupuesto.
+              </p>
+              <a href="#contacto" class="arch-btn">Solicitar Cotización</a>
+            </div>
+          </article>
+
+          <!-- Servicio 5: Tramitación y Licencias (Agregado) -->
+          <article class="arch-card">
+            <div class="arch-card-image-wrapper">
+              <img
+                src="https://arqbimstudio.com/img/projects/prv%20blog/licencias-permisos.jpg"
+                alt="Gestión Municipal"
+                class="arch-card-img"
+              />
+              <span class="arch-card-category">Normativa</span>
+            </div>
+            <div class="arch-card-content">
+              <h3 class="arch-card-title">Gestión de Licencias</h3>
+              <p class="arch-card-text">
+                Elaboración del expediente técnico y seguimiento de trámites
+                para licencias de edificación, conformidad de obra y
+                regularizaciones.
+              </p>
+              <a href="#contacto" class="arch-btn">Solicitar Cotización</a>
+            </div>
+          </article>
+
+          <!-- Servicio 6: Diseño de Mobiliario a Medida (Agregado) -->
+          <article class="arch-card">
+            <div class="arch-card-image-wrapper">
+              <img
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQOm7Hwq98pXlLC0zUh4WtaMkBBh053u8uZBA46BkY4kfpXKIO8Z6mr_54&s=10"
+                alt="Mobiliario a Medida"
+                class="arch-card-img"
+              />
+              <span class="arch-card-category">Detalle</span>
+            </div>
+            <div class="arch-card-content">
+              <h3 class="arch-card-title">Mobiliario Personalizado</h3>
+              <p class="arch-card-text">
+                Diseño de muebles fijos y equipamiento exclusivo adaptado
+                exactamente a las dimensiones y estética del proyecto.
+              </p>
+              <a href="#contacto" class="arch-btn">Solicitar Cotización</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <script>
+      /* ==========================================================================
+   SECCIÓN DE ARQUITECTURA - SCRIPT AISLADO (SCOPE PRIVADO)
+   ========================================================================== */
+      (function () {
+        "use strict";
+
+        document.addEventListener("DOMContentLoaded", function () {
+          const cards = document.querySelectorAll(".arch-card");
+
+          // Animación con Intersection Observer al scroll
+          if ("IntersectionObserver" in window) {
+            const observerOptions = {
+              root: null,
+              rootMargin: "0px",
+              threshold: 0.15,
+            };
+
+            const cardObserver = new IntersectionObserver(function (
+              entries,
+              observer,
+            ) {
+              entries.forEach(function (entry, index) {
+                if (entry.isIntersecting) {
+                  // Animación de aparición con retraso según índice
+                  setTimeout(function () {
+                    entry.target.classList.add("arch-visible");
+                  }, index * 100);
+                  observer.unobserve(entry.target);
+                }
+              });
+            }, observerOptions);
+
+            cards.forEach(function (card) {
+              cardObserver.observe(card);
+            });
+          } else {
+            // Compatibilidad con navegadores antiguos
+            cards.forEach(function (card) {
+              card.classList.add("arch-visible");
+            });
+          }
+        });
+      })();
+    </script>
+  </body>
+</html>

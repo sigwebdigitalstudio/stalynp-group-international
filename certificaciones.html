@@ -1,0 +1,726 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Stalynp - Grupo Internacional</title>
+
+    <!-- GOOGLE FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" type="image/png" href="/assets/iconos/logo2.png" />
+    <!-- FONT AWESOME -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+
+    <link rel="stylesheet" href="style_header_foot.css" />
+
+    <style>
+      /* =================================================
+   ESTILOS ÚNICOS: SECCIÓN CERTIFICACIONES
+================================================== */
+
+      .stly-cert-section {
+        padding: 100px 20px;
+        background-color: #111;
+        font-family: "Montserrat", sans-serif;
+        position: relative;
+        z-index: 1;
+      }
+
+      /* Decoración de fondo sutil */
+      .stly-cert-section::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: radial-gradient(
+          circle at 50% 0%,
+          rgba(212, 175, 55, 0.12) 0%,
+          transparent 70%
+        );
+        z-index: -1;
+        pointer-events: none;
+      }
+
+      .stly-cert-container {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      /* ENCABEZADO DE SECCIÓN */
+      .stly-cert-header {
+        text-align: center;
+        margin-bottom: 60px;
+      }
+
+      .stly-cert-title {
+        font-size: 2.5rem;
+        font-weight: 800;
+        color: #fff;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        margin-bottom: 15px;
+      }
+
+      .stly-cert-title span {
+        color: #d4af37; /* Tono dorado elegante */
+      }
+
+      .stly-cert-divider {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 15px;
+        margin-bottom: 25px;
+      }
+
+      .stly-cert-divider span {
+        height: 2px;
+        width: 60px;
+        background: linear-gradient(90deg, transparent, #d4af37, transparent);
+      }
+
+      .stly-cert-divider i {
+        color: #d4af37;
+        font-size: 1.2rem;
+      }
+
+      .stly-cert-subtitle {
+        color: #a0a0a0;
+        font-size: 1.05rem;
+        line-height: 1.6;
+        max-width: 750px;
+        margin: 0 auto;
+        font-weight: 400;
+      }
+
+      /* GRID DE TARJETAS */
+      .stly-cert-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 30px;
+      }
+
+      /* TARJETAS INDIVIDUALES */
+      .stly-cert-card {
+        background: #1a1a1a;
+        border-radius: 12px;
+        border: 1px solid #2a2a2a;
+        overflow: hidden;
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        position: relative;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .stly-cert-card:hover {
+        transform: translateY(-10px);
+        border-color: #d4af37;
+        box-shadow:
+          0 15px 30px rgba(0, 0, 0, 0.6),
+          0 0 20px rgba(212, 175, 55, 0.2);
+      }
+
+      /* CONTENEDOR DE IMAGEN */
+      .stly-cert-img-wrapper {
+        height: 220px;
+        background: #222;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+        padding: 20px;
+      }
+
+      .stly-cert-img-wrapper::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: radial-gradient(#333 1px, transparent 1px);
+        background-size: 20px 20px;
+        opacity: 0.3;
+      }
+
+      .stly-cert-img {
+        max-width: 100%;
+        max-height: 100%;
+        object-fit: contain;
+        transition: transform 0.5s ease;
+        z-index: 1;
+        filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.5));
+      }
+
+      .stly-cert-card:hover .stly-cert-img {
+        transform: scale(1.08);
+      }
+
+      /* CONTENIDO DE TEXTO */
+      .stly-cert-content {
+        padding: 35px 25px 25px;
+        text-align: center;
+        position: relative;
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+      }
+
+      /* ICONO FLOTANTE */
+      .stly-cert-icon {
+        position: absolute;
+        top: -25px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 50px;
+        height: 50px;
+        background: #111;
+        border: 2px solid #d4af37;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #d4af37;
+        font-size: 1.2rem;
+        z-index: 3;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+        transition: all 0.3s ease;
+      }
+
+      .stly-cert-card:hover .stly-cert-icon {
+        background: #d4af37;
+        color: #111;
+      }
+
+      .stly-cert-name {
+        font-size: 1.35rem;
+        color: #fff;
+        font-weight: 700;
+        margin-bottom: 5px;
+      }
+
+      .stly-cert-category {
+        font-size: 0.85rem;
+        color: #d4af37;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 15px;
+      }
+
+      .stly-cert-desc {
+        font-size: 0.92rem;
+        color: #999;
+        line-height: 1.5;
+        margin-top: auto;
+      }
+
+      /* RESPONSIVE DESIGN */
+      @media screen and (max-width: 992px) {
+        .stly-cert-title {
+          font-size: 2.2rem;
+        }
+      }
+
+      @media screen and (max-width: 768px) {
+        .stly-cert-section {
+          padding: 70px 15px;
+        }
+
+        .stly-cert-title {
+          font-size: 1.8rem;
+        }
+
+        .stly-cert-subtitle {
+          font-size: 0.95rem;
+        }
+
+        .stly-cert-grid {
+          grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+          gap: 20px;
+        }
+
+        .stly-cert-img-wrapper {
+          height: 190px;
+        }
+      }
+    </style>
+  </head>
+
+  <script src="script_principal.js" defer></script>
+  <script src="scriptbtns.js"></script>
+  <script src="header.js"></script>
+
+  <body>
+    <div id="contenedor-botones"></div>
+    <header class="header" id="header">
+      <div class="header-container">
+        <a href="index.html" class="brand">
+          <div class="brand-logo">
+            <img src="./assets/iconos/logo2.png" alt="Logo Stalynp" />
+          </div>
+          <div class="brand-text">
+            <span class="brand-name">STALYNP</span>
+            <span class="brand-subtitle">GRUPO INTERNACIONAL</span>
+          </div>
+        </a>
+
+        <!-- NAVEGACIÓN DESKTOP -->
+        <nav class="desktop-nav">
+          <a href="index.html" class="nav-link">INICIO</a>
+
+          <div class="nav-item dropdown">
+            <a href="javascript:void(0);" class="nav-link active">
+              NUESTRA EMPRESA
+              <svg
+                width="10"
+                height="6"
+                viewBox="0 0 10 6"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M1 1L5 5L9 1"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </a>
+            <div class="dropdown-menu">
+              <a href="nosotros.html" class="dropdown-item">NOSOTROS</a>
+              <a href="empleo.html" class="dropdown-item"
+                >TRABAJA CON NOSOTROS</a
+              >
+              <a href="certificaciones.html" class="dropdown-item"
+                >CERTIFICACIONES</a
+              >
+            </div>
+          </div>
+
+          <div class="nav-item dropdown">
+            <a href="javascript:void(0);" class="nav-link">
+              SERVICIOS
+              <svg
+                width="10"
+                height="6"
+                viewBox="0 0 10 6"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M1 1L5 5L9 1"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </a>
+            <div class="dropdown-menu">
+              <a href="servicios.html" class="dropdown-item"
+                >SERVICIOS GENERALES</a
+              >
+              <a href="ingenieria.html" class="dropdown-item">INGENIERÍA</a>
+              <a href="arquitectura.html" class="dropdown-item">ARQUITECTURA</a>
+              <a href="gerencia-proyectos.html" class="dropdown-item"
+                >GERENCIA Y SUPERVISION DE PROYECTOS</a
+              >
+            </div>
+          </div>
+
+          <a href="proyectos.html" class="nav-link">PROYECTOS</a>
+          <a href="cotizar.html" class="nav-link">CONTACTO</a>
+        </nav>
+
+        <!-- BOTONES DE ACCIÓN DESKTOP -->
+        <div class="header-actions">
+          <a href="contacto.html" class="header-button">COTIZAR</a>
+          <a
+            href="tienda.html"
+            class="header-button"
+            style="background: rgb(82, 64, 27); border-color: rgb(82, 64, 27)"
+          >
+            TIENDA
+          </a>
+        </div>
+
+        <!-- BOTÓN HAMBURGUESA MOBILE -->
+        <button
+          class="menu-toggle"
+          id="menuToggle"
+          aria-label="Abrir menú"
+          aria-expanded="false"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+
+      <!-- MENÚ MOBILE -->
+      <div class="mobile-menu" id="mobileMenu">
+        <a href="index.html" class="mobile-link">INICIO</a>
+
+        <div class="mobile-dropdown-container">
+          <div
+            class="mobile-link mobile-dropdown-toggle"
+            style="
+              cursor: pointer;
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+            "
+          >
+            <span>NUESTRA EMPRESA</span>
+            <svg
+              width="10"
+              height="6"
+              viewBox="0 0 10 6"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M1 1L5 5L9 1"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </div>
+          <div class="mobile-dropdown">
+            <a href="nosotros.html" class="mobile-sublink">NOSOTROS</a>
+            <a href="empleo.html" class="mobile-sublink"
+              >TRABAJA CON NOSOTROS</a
+            >
+            <a href="certificaciones.html" class="mobile-sublink"
+              >CERTIFICACIONES</a
+            >
+          </div>
+        </div>
+
+        <div class="mobile-dropdown-container">
+          <div
+            class="mobile-link mobile-dropdown-toggle"
+            style="
+              cursor: pointer;
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+            "
+          >
+            <span>SERVICIOS</span>
+            <svg
+              width="10"
+              height="6"
+              viewBox="0 0 10 6"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M1 1L5 5L9 1"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </div>
+          <div class="mobile-dropdown">
+            <a href="servicios.html" class="mobile-sublink"
+              >SERVICIOS GENERALES</a
+            >
+            <a href="ingenieria.html" class="mobile-sublink">INGENIERÍA</a>
+            <a href="arquitectura.html" class="mobile-sublink">ARQUITECTURA</a>
+            <a href="remodelacion.html" class="mobile-sublink"
+              >MANTENIMIENTO Y REMODELACION</a
+            >
+            <a href="gerencia-proyectos.html" class="mobile-sublink"
+              >GERENCIA Y SUPERVISION DE PROYECTOS</a
+            >
+          </div>
+        </div>
+
+        <a href="proyectos.html" class="mobile-link">PROYECTOS</a>
+        <a href="contacto.html" class="mobile-link">CONTACTO</a>
+
+        <a href="cotizar.html" class="mobile-button">COTIZAR</a>
+        <a
+          href="tienda.html"
+          class="mobile-button"
+          style="background: rgb(82, 64, 27); border-color: rgb(82, 64, 27)"
+        >
+          TIENDA
+        </a>
+      </div>
+    </header>
+    <!-- ===== SECCIÓN DE CERTIFICACIONES =========== -->
+
+    <section class="stly-cert-section" id="certificaciones">
+      <div class="stly-cert-container">
+        <div class="stly-cert-header">
+          <h2 class="stly-cert-title">Nuestras <span>Certificaciones</span></h2>
+          <div class="stly-cert-divider">
+            <span></span><i class="fa-solid fa-award"></i><span></span>
+          </div>
+          <p class="stly-cert-subtitle">
+            Avalamos nuestra excelencia, automatización inteligente, seguridad y
+            compromiso ambiental en cada proyecto de construcción civil e
+            ingeniería avanzada mediante estándares internacionales.
+          </p>
+        </div>
+
+        <div class="stly-cert-grid">
+          <article class="stly-cert-card">
+            <div class="stly-cert-img-wrapper">
+              <img
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRpOKjUKzIy6F0wI0h8q4Ft7nn45dI-s7TIxkGvpZvApBpJLoK-6JWmNOsA&s=10"
+                alt="Certificado ISO 9001"
+                class="stly-cert-img"
+              />
+            </div>
+            <div class="stly-cert-content">
+              <div class="stly-cert-icon">
+                <i class="fa-solid fa-medal"></i>
+              </div>
+              <h3 class="stly-cert-name">ISO 9001</h3>
+              <h4 class="stly-cert-category">Gestión de Calidad</h4>
+              <p class="stly-cert-desc">
+                Garantizamos la mejora continua y la más alta calidad en todos
+                nuestros procesos constructivos.
+              </p>
+            </div>
+          </article>
+
+          <article class="stly-cert-card">
+            <div class="stly-cert-img-wrapper">
+              <img
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTNyYBb3aWbYnltfCTjtgFvT3KEtfJHYokcqx91m8xesUgQBTQkRhgBJQYL&s=10"
+                alt="Certificado ISO 45001"
+                class="stly-cert-img"
+              />
+            </div>
+            <div class="stly-cert-content">
+              <div class="stly-cert-icon">
+                <i class="fa-solid fa-helmet-safety"></i>
+              </div>
+              <h3 class="stly-cert-name">ISO 45001</h3>
+              <h4 class="stly-cert-category">Seguridad y Salud</h4>
+              <p class="stly-cert-desc">
+                Protegemos a nuestro equipo humano mitigando riesgos y
+                asegurando entornos de trabajo seguros.
+              </p>
+            </div>
+          </article>
+
+          <article class="stly-cert-card">
+            <div class="stly-cert-img-wrapper">
+              <img
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS5sanMxMhDw2IrSZ_hZdUbD1Zv5aQ0Mn5OuErB_Z1dTQ4kxjN9CGFAWmc&s=10"
+                alt="Certificado ISO 14001"
+                class="stly-cert-img"
+              />
+            </div>
+            <div class="stly-cert-content">
+              <div class="stly-cert-icon"><i class="fa-solid fa-leaf"></i></div>
+              <h3 class="stly-cert-name">ISO 14001</h3>
+              <h4 class="stly-cert-category">Gestión Ambiental</h4>
+              <p class="stly-cert-desc">
+                Ejecutamos obras sostenibles minimizando el impacto ambiental en
+                nuestro entorno.
+              </p>
+            </div>
+          </article>
+
+          <article class="stly-cert-card">
+            <div class="stly-cert-img-wrapper">
+              <img
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTAr3ruWDnz2ZFsgSb_fVNEYJrnWXrGjY9TB8iPzIjDKYJPciOJqhZA1iSW&s=10"
+                alt="Certificación KNX Partner Domótica"
+                class="stly-cert-img"
+              />
+            </div>
+            <div class="stly-cert-content">
+              <div class="stly-cert-icon">
+                <i class="fa-solid fa-house-signal"></i>
+              </div>
+              <h3 class="stly-cert-name">KNX Partner</h3>
+              <h4 class="stly-cert-category">Domótica e Inmótica</h4>
+              <p class="stly-cert-desc">
+                Certificación mundial en automatización de viviendas y edificios
+                inteligentes para la eficiencia energética.
+              </p>
+            </div>
+          </article>
+
+          <article class="stly-cert-card">
+            <div class="stly-cert-img-wrapper">
+              <img
+                src="https://www.comsatel.com.pe/wp-content/uploads/2020/05/16.png"
+                alt="Homologación de Proveedores SGS Perú"
+                loading="lazy"
+                class="stly-cert-img"
+              />
+            </div>
+            <div class="stly-cert-content">
+              <div class="stly-cert-icon">
+                <i class="fa-solid fa-file-contract"></i>
+              </div>
+              <h3 class="stly-cert-name">SGS Perú</h3>
+              <h4 class="stly-cert-category">Homologación de Proveedores</h4>
+              <p class="stly-cert-desc">
+                Acreditación de alta capacidad operativa, financiera y legal
+                para contratar con grandes corporaciones.
+              </p>
+            </div>
+          </article>
+
+          <article class="stly-cert-card">
+            <div class="stly-cert-img-wrapper">
+              <img
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGtqekckpvTpIazyRqKLh4kzzrEvEtKQUMLFJ4FiLCwHHtA9BXhr2rCxI&s=10"
+                alt="Colegio de Ingenieros del Perú"
+                class="stly-cert-img"
+              />
+            </div>
+            <div class="stly-cert-content">
+              <div class="stly-cert-icon">
+                <i class="fa-solid fa-compass-drafting"></i>
+              </div>
+              <h3 class="stly-cert-name">CIP Habilitado</h3>
+              <h4 class="stly-cert-category">Colegio de Ingenieros del Perú</h4>
+              <p class="stly-cert-desc">
+                Contamos con profesionales colegiados y habilitados para el
+                respaldo técnico legal de las obras.
+              </p>
+            </div>
+          </article>
+
+          <article class="stly-cert-card">
+            <div class="stly-cert-img-wrapper">
+              <img
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTSzXMfIIZeAYips-Z_B8YAdnjgb1xJcPHMuSIor680b4AX0ZcXVIMYi8M&s=10"
+                alt="Registro Nacional de Proveedores"
+                class="stly-cert-img"
+              />
+            </div>
+            <div class="stly-cert-content">
+              <div class="stly-cert-icon">
+                <i class="fa-solid fa-file-signature"></i>
+              </div>
+              <h3 class="stly-cert-name">RNP Vigente</h3>
+              <h4 class="stly-cert-category">
+                Registro Nacional de Proveedores
+              </h4>
+              <p class="stly-cert-desc">
+                Autorizados para ejecutar obras públicas y privadas cumpliendo
+                con la normativa vigente de OSCE.
+              </p>
+            </div>
+          </article>
+
+          <article class="stly-cert-card">
+            <div class="stly-cert-img-wrapper">
+              <img
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQha4LVHeAYLBCd59El1BSI6Nf74hvSpXUKXUplx_bDOA&s=10"
+                alt="Certificación de Seguridad en Obras"
+                class="stly-cert-img"
+              />
+            </div>
+            <div class="stly-cert-content">
+              <div class="stly-cert-icon">
+                <i class="fa-solid fa-shield-halved"></i>
+              </div>
+              <h3 class="stly-cert-name">SST en Obras</h3>
+              <h4 class="stly-cert-category">Certificación de Seguridad</h4>
+              <p class="stly-cert-desc">
+                Auditorías superadas en protocolos estrictos de Seguridad y
+                Salud en el Trabajo para construcción.
+              </p>
+            </div>
+          </article>
+
+          <article class="stly-cert-card">
+            <div class="stly-cert-img-wrapper">
+              <img
+                src="https://cappiura.org.pe/wp-content/uploads/2025/04/LogoCAP2022-1.jpeg"
+                alt="Colegio de Arquitectos del Perú"
+                loading="lazy"
+                class="stly-cert-img"
+              />
+            </div>
+            <div class="stly-cert-content">
+              <div class="stly-cert-icon">
+                <i class="fa-solid fa-pen-ruler"></i>
+              </div>
+              <h3 class="stly-cert-name">CAP Habilitado</h3>
+              <h4 class="stly-cert-category">
+                Colegio de Arquitectos del Perú
+              </h4>
+              <p class="stly-cert-desc">
+                Arquitectos colegiados para el diseño, supervisión urbana y
+                planificación de edificaciones innovadoras.
+              </p>
+            </div>
+          </article>
+
+          <article class="stly-cert-card">
+            <div class="stly-cert-img-wrapper">
+              <img
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSsZaISE_t0IJ4NQMEAEe6jLD6Ge8xGV-KiFZz9cMQyLg&s=10"
+                alt="Colegio de Contadores Públicos"
+                loading="lazy"
+                class="stly-cert-img"
+              />
+            </div>
+            <div class="stly-cert-content">
+              <div class="stly-cert-icon">
+                <i class="fa-solid fa-calculator"></i>
+              </div>
+              <h3 class="stly-cert-name">CCP Colegiado</h3>
+              <h4 class="stly-cert-category">Colegio de Contadores Públicos</h4>
+              <p class="stly-cert-desc">
+                Gestión contable, auditoría financiera y rigor fiscal
+                garantizados por profesionales de la contabilidad.
+              </p>
+            </div>
+          </article>
+
+          <article class="stly-cert-card">
+            <div class="stly-cert-img-wrapper">
+              <img
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT-bZmQDplnRYNgKjuxRN5pRmyXYbaY9TgDD0bJ9yPEQw&s=10 "
+                alt="Colegio Licenciados en Administración"
+                class="stly-cert-img"
+              />
+            </div>
+            <div class="stly-cert-content">
+              <div class="stly-cert-icon">
+                <i class="fa-solid fa-briefcase"></i>
+              </div>
+              <h3 class="stly-cert-name">CLAD Habilitado</h3>
+              <h4 class="stly-cert-category">Licenciados en Administración</h4>
+              <p class="stly-cert-desc">
+                Liderazgo gerencial, optimización de recursos y planificación
+                estratégica en la ejecución del proyecto.
+              </p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>

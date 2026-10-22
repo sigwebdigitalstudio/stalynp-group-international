@@ -1,0 +1,671 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Stalynp - Servicios de Ingeniería</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+    <link rel="icon" type="image/png" href="/assets/iconos/logo2.png" />
+    <link rel="stylesheet" href="style_header_foot.css" />
+    <link rel="stylesheet" href="header.css" />
+    <link rel="stylesheet" href="footer.css" />
+  </head>
+  <!-- ======= ESTILOS CSS EXCLUSIVOS ======= -->
+  <style>
+    /* Reset y Variables locales con prefijo .st- */
+    .st-hero-section {
+      position: relative;
+      width: 100%;
+      min-height: 100vh;
+      background-color: #08070d;
+      color: #ffffff;
+      font-family:
+        "Segoe UI",
+        system-ui,
+        -apple-system,
+        sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      padding: 60px 20px;
+      box-sizing: border-box;
+    }
+
+    .st-hero-section * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* 1. CARRUSEL DE FONDO (CAMBIO CADA 3 SEG) */
+    .st-bg-carousel {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+    }
+
+    .st-bg-slide {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-size: cover;
+      background-position: center;
+      opacity: 0;
+      transform: scale(1.05);
+      transition:
+        opacity 1.2s ease-in-out,
+        transform 4s ease-out;
+    }
+
+    .st-bg-slide.active {
+      opacity: 0.28; /* Opacidad sutil para mantener el diseño oscuro */
+      transform: scale(1);
+    }
+
+    /* 2. OVERLAY Y EFECTOS VIOLETA Y REJILLA */
+    .st-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 2;
+      background:
+        radial-gradient(
+          circle at 50% 50%,
+          rgba(108, 40, 217, 0.096) 0%,
+          rgba(8, 7, 13, 0.568) 70%,
+          #08070d3b 100%
+        ),
+        linear-gradient(to bottom, rgba(8, 7, 13, 0.203), #08070d29);
+    }
+
+    /* Rejilla sutil de fondo */
+    .st-overlay::before {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background-image:
+        linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+      background-size: 50px 50px;
+    }
+
+    /* Luz resplandeciente centro-inferior */
+    .st-glow-effect {
+      position: absolute;
+      bottom: 20%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 400px;
+      height: 250px;
+      background: radial-gradient(
+        circle,
+        rgba(124, 58, 237, 0.196) 0%,
+        rgba(0, 0, 0, 0) 70%
+      );
+      filter: blur(50px);
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    /* 3. CONTENEDOR CENTRAL Y CONTENIDO */
+    .st-container {
+      position: relative;
+      z-index: 3;
+      max-width: 850px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* Badge "EMPRESA PERUANA" */
+    .st-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      padding: 6px 18px;
+      border-radius: 30px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      color: #e2e8f0;
+      margin-bottom: 25px;
+      backdrop-filter: blur(8px);
+    }
+
+    .st-badge-dot {
+      width: 6px;
+      height: 6px;
+      background-color: #a855f7;
+      border-radius: 50%;
+      box-shadow: 0 0 8px #a855f7;
+    }
+
+    /* Título Principal */
+    .st-title {
+      font-size: clamp(2.5rem, 6vw, 4.2rem);
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -1px;
+      color: #ffffff;
+      margin-bottom: 18px;
+    }
+
+    .st-title-highlight {
+      background: linear-gradient(135deg, #c084fc 0%, #60a5fa 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      display: inline-block;
+    }
+
+    /* Descripción */
+    .st-description {
+      font-size: clamp(0.95rem, 2vw, 1.1rem);
+      color: #94a3b8;
+      max-width: 650px;
+      line-height: 1.6;
+      margin-bottom: 35px;
+      font-weight: 400;
+    }
+
+    /* Chips / Píldoras */
+    .st-features {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 45px;
+    }
+
+    .st-feature-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(18, 16, 28, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 10px 20px;
+      border-radius: 25px;
+      font-size: 0.85rem;
+      color: #cbd5e1;
+      backdrop-filter: blur(10px);
+      transition: all 0.3s ease;
+    }
+
+    .st-feature-chip:hover {
+      border-color: rgba(168, 85, 247, 0.4);
+      background: rgba(30, 27, 46, 0.8);
+      transform: translateY(-2px);
+      color: #ffffff;
+    }
+
+    .st-icon {
+      width: 16px;
+      height: 16px;
+      color: #a855f7;
+    }
+
+    /* BOTÓN COTIZADOR (ESTILO PRO) */
+    .st-cta-wrapper {
+      margin-bottom: 40px;
+    }
+
+    .st-btn-cotizador {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 18px 42px;
+      font-size: 0.95rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      color: #ffffff;
+      text-decoration: none;
+      border-radius: 14px;
+      background: linear-gradient(135deg, #7c3aed 0%, #6366f1 100%);
+      box-shadow:
+        0 10px 30px -5px rgba(124, 58, 237, 0.5),
+        0 0 15px rgba(168, 85, 247, 0.3);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      overflow: hidden;
+    }
+
+    /* Animación de destello al pasar el mouse */
+    .st-btn-cotizador::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.3),
+        transparent
+      );
+      transition: left 0.6s ease;
+    }
+
+    .st-btn-cotizador:hover {
+      transform: translateY(-3px) scale(1.02);
+      box-shadow:
+        0 15px 35px -5px rgba(124, 58, 237, 0.7),
+        0 0 25px rgba(168, 85, 247, 0.5);
+    }
+
+    .st-btn-cotizador:hover::before {
+      left: 100%;
+    }
+
+    .st-btn-cotizador:active {
+      transform: translateY(-1px) scale(0.99);
+    }
+
+    /* Pie del Hero */
+    .st-footer-text {
+      font-size: 0.75rem;
+      letter-spacing: 2px;
+      color: #64748b;
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+
+    /* Adaptación Responsiva Móvil */
+    @media (max-width: 640px) {
+      .st-features {
+        gap: 8px;
+      }
+
+      .st-feature-chip {
+        padding: 8px 14px;
+        font-size: 0.8rem;
+      }
+
+      .st-btn-cotizador {
+        width: 100%;
+        padding: 16px 28px;
+      }
+    }
+  </style>
+
+  <script src="HeadFoot.js" defer></script>
+  <script src="scriptindex.js" defer></script>
+  <script src="scriptbtns.js"></script>
+
+  <body>
+    <div id="contenedor-botones"></div>
+    <header class="header" id="header">
+      <div class="header-container">
+        <a href="index.html" class="brand">
+          <div class="brand-logo">
+            <img src="./assets/iconos/logo2.png" alt="Logo Stalynp" />
+          </div>
+          <div class="brand-text">
+            <span class="brand-name">STALYNP</span>
+            <span class="brand-subtitle">GRUPO INTERNACIONAL</span>
+          </div>
+        </a>
+
+        <!-- NAVEGACIÓN DESKTOP -->
+        <nav class="desktop-nav">
+          <a href="index.html" class="nav-link">INICIO</a>
+
+          <div class="nav-item dropdown">
+            <a href="javascript:void(0);" class="nav-link">
+              NUESTRA EMPRESA
+              <svg
+                width="10"
+                height="6"
+                viewBox="0 0 10 6"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M1 1L5 5L9 1"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </a>
+            <div class="dropdown-menu">
+              <a href="nosotros.html" class="dropdown-item">NOSOTROS</a>
+              <a href="empleo.html" class="dropdown-item"
+                >TRABAJA CON NOSOTROS</a
+              >
+              <a href="certificaciones.html" class="dropdown-item"
+                >CERTIFICACIONES</a
+              >
+            </div>
+          </div>
+
+          <div class="nav-item dropdown">
+            <a href="javascript:void(0);" class="nav-link">
+              SERVICIOS
+              <svg
+                width="10"
+                height="6"
+                viewBox="0 0 10 6"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M1 1L5 5L9 1"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </a>
+            <div class="dropdown-menu">
+              <a href="servicios.html" class="dropdown-item"
+                >SERVICIOS GENERALES</a
+              >
+              <a href="ingenieria.html" class="dropdown-item">INGENIERÍA</a>
+              <a href="arquitectura.html" class="dropdown-item">ARQUITECTURA</a>
+              <a href="gerencia-proyectos.html" class="dropdown-item"
+                >GERENCIA Y SUPERVISION DE PROYECTOS</a
+              >
+            </div>
+          </div>
+
+          <a href="proyectos.html" class="nav-link">PROYECTOS</a>
+          <a href="contacto.html" class="nav-link">CONTACTO</a>
+        </nav>
+
+        <!-- BOTONES DE ACCIÓN DESKTOP -->
+        <div class="header-actions">
+          <a href="cotizar.html" class="header-button">COTIZAR</a>
+          <a
+            href="tienda.html"
+            class="header-button"
+            style="background: rgb(82, 64, 27); border-color: rgb(82, 64, 27)"
+          >
+            TIENDA
+          </a>
+        </div>
+
+        <!-- BOTÓN HAMBURGUESA MOBILE -->
+        <button
+          class="menu-toggle"
+          id="menuToggle"
+          aria-label="Abrir menú"
+          aria-expanded="false"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+
+      <!-- MENÚ MOBILE -->
+      <div class="mobile-menu" id="mobileMenu">
+        <a href="index.html" class="mobile-link">INICIO</a>
+
+        <div class="mobile-dropdown-container">
+          <div
+            class="mobile-link mobile-dropdown-toggle"
+            style="
+              cursor: pointer;
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+            "
+          >
+            <span>NUESTRA EMPRESA</span>
+            <svg
+              width="10"
+              height="6"
+              viewBox="0 0 10 6"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M1 1L5 5L9 1"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </div>
+          <div class="mobile-dropdown">
+            <a href="nosotros.html" class="mobile-sublink">NOSOTROS</a>
+            <a href="empleo.html" class="mobile-sublink"
+              >TRABAJA CON NOSOTROS</a
+            >
+            <a href="certificaciones.html" class="mobile-sublink"
+              >CERTIFICACIONES</a
+            >
+          </div>
+        </div>
+
+        <div class="mobile-dropdown-container">
+          <div
+            class="mobile-link mobile-dropdown-toggle"
+            style="
+              cursor: pointer;
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+            "
+          >
+            <span>SERVICIOS</span>
+            <svg
+              width="10"
+              height="6"
+              viewBox="0 0 10 6"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M1 1L5 5L9 1"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </div>
+          <div class="mobile-dropdown">
+            <a href="servicios.html" class="mobile-sublink"
+              >SERVICIOS GENERALES</a
+            >
+            <a href="ingenieria.html" class="mobile-sublink">INGENIERÍA</a>
+            <a href="arquitectura.html" class="mobile-sublink">ARQUITECTURA</a>
+
+            <a href="gerencia-proyectos.html" class="mobile-sublink"
+              >GERENCIA Y SUPERVISION DE PROYECTOS</a
+            >
+          </div>
+        </div>
+
+        <a href="proyectos.html" class="mobile-link">PROYECTOS</a>
+        <a href="contacto.html" class="mobile-link">CONTACTO</a>
+
+        <a href="cotizar.html" class="mobile-button">COTIZAR</a>
+        <a
+          href="tienda.html"
+          class="mobile-button"
+          style="background: rgb(82, 64, 27); border-color: rgb(82, 64, 27)"
+        >
+          TIENDA
+        </a>
+      </div>
+    </header>
+
+    <!-- ======= HERO SECTION - STALYNP GRUP ======= -->
+    <section class="st-hero-section">
+      <!-- Carrusel de imágenes de fondo -->
+      <div class="st-bg-carousel">
+        <div
+          class="st-bg-slide active"
+          style="background-image: url(&quot;./img/fondo2.png&quot;)"
+        ></div>
+        <div
+          class="st-bg-slide"
+          style="background-image: url(&quot;./img/fondo1.png&quot;)"
+        ></div>
+        <div
+          class="st-bg-slide"
+          style="background-image: url(&quot;./img/fondo2.png&quot;)"
+        ></div>
+        <div
+          class="st-bg-slide"
+          style="background-image: url(&quot;./img/fondo1.png&quot;)"
+        ></div>
+      </div>
+
+      <!-- Capa de color, rejilla y gradiente oscuro -->
+      <div class="st-overlay"></div>
+      <div class="st-glow-effect"></div>
+
+      <!-- Contenido Principal -->
+      <div class="st-container">
+        <!-- Badge Superior -->
+        <div class="st-badge">
+          <span class="st-badge-dot"></span> EMPRESA PERUANA
+        </div>
+
+        <!-- Título Principal -->
+        <h1 class="st-title">
+          STALYNP GRUP <br />
+          <span class="st-title-highlight">Internacional</span>
+        </h1>
+
+        <!-- Subtítulo / Descripción -->
+        <p class="st-description">
+          Sistema profesional para estimar mano de obra de construcción y
+          servicios de diseño arquitectónico para viviendas.
+        </p>
+
+        <!-- Píldoras de características / Chips -->
+        <div class="st-features">
+          <div class="st-feature-chip">
+            <svg
+              class="st-icon"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <path
+                d="M19 21V5a2 2 0 0 0-2-2H7a2 2 0 0 0-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5m0 0v-5a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v5m-4 0h4"
+              />
+            </svg>
+            <span>Mano de obra</span>
+          </div>
+
+          <div class="st-feature-chip">
+            <svg
+              class="st-icon"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <path
+                d="M21.3 15.3l-7.9-7.9c-.4-.4-1-.4-1.4 0l-2.1 2.1c-.4.4-.4 1 0 1.4l7.9 7.9c.4.4 1 .4 1.4 0l2.1-2.1c.4-.4.4-1 0-1.4z"
+              />
+              <path d="M14.5 12.5l-2-2" />
+              <path d="M2 22l3-1 11-11-2-2L3 19l-1 3z" />
+            </svg>
+            <span>Diseño de planos</span>
+          </div>
+
+          <div class="st-feature-chip">
+            <svg
+              class="st-icon"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <circle cx="12" cy="12" r="10" />
+              <path
+                d="M12 6v12M15 9.5H10.5a1.5 1.5 0 0 0 0 3h3a1.5 1.5 0 0 1 0 3H9"
+              />
+            </svg>
+            <span>PEN / USD</span>
+          </div>
+
+          <div class="st-feature-chip">
+            <svg
+              class="st-icon"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <path
+                d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"
+              />
+              <polyline points="14 2 14 8 20 8" />
+              <line x1="16" y1="13" x2="8" y2="13" />
+              <line x1="16" y1="17" x2="8" y2="17" />
+              <polyline points="10 9 9 9 8 9" />
+            </svg>
+            <span>Cotización PDF</span>
+          </div>
+        </div>
+
+        <!-- Botón Principal -->
+        <div class="st-cta-wrapper">
+          <a href="modelo3.html" class="st-btn-cotizador">
+            <span>INGRESAR AL COTIZADOR</span>
+          </a>
+        </div>
+
+        <!-- Pie de Hero -->
+        <div class="st-footer-text">STALYNPGRUPO INTERNACIONAL · PERÚ</div>
+      </div>
+    </section>
+
+    <!-- ======= SCRIPT JS CARRUSEL FOTOS CADA 3s ======= -->
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const slides = document.querySelectorAll(".st-bg-slide");
+        let currentSlide = 0;
+        const intervalTime = 3000; // 3 segundos exactos
+
+        function nextSlide() {
+          // Quitar clase activa a la foto actual
+          slides[currentSlide].classList.remove("active");
+
+          // Calcular siguiente índice
+          currentSlide = (currentSlide + 1) % slides.length;
+
+          // Añadir clase activa a la nueva foto
+          slides[currentSlide].classList.add("active");
+        }
+
+        // Ejecutar intervalo
+        setInterval(nextSlide, intervalTime);
+      });
+    </script>
+  </body>
+</html>

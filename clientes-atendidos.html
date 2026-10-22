@@ -1,0 +1,779 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Stalynp - Grupo Internacional</title>
+
+    <!--GOOGLE FONTS-->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+    <link rel="icon" type="image/png" href="/assets/iconos/logo2.png" />
+    <link rel="stylesheet" href="style_header_foot.css" />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: "Montserrat", sans-serif;
+        background: #111;
+        color: #fff;
+        overflow-x: hidden;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      button {
+        font-family: inherit;
+      }
+
+      /* ==========================================================
+         ESTILOS ÚNICOS PARA LA SECCIÓN DE CLIENTES ATENDIDOS
+      ========================================================== */
+      .clients-section {
+        position: relative;
+        padding: 100px 5%;
+        background: #0d0d0d;
+        overflow: hidden;
+      }
+
+      .clients-section::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        width: 300px;
+        height: 300px;
+        background: radial-gradient(
+          circle,
+          rgba(197, 160, 89, 0.04) 0%,
+          transparent 70%
+        );
+        pointer-events: none;
+      }
+
+      .clients-container {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .clients-header {
+        text-align: center;
+        margin-bottom: 60px;
+      }
+
+      .clients-badge {
+        display: inline-block;
+        padding: 6px 16px;
+        background: rgba(197, 160, 89, 0.1);
+        color: #c5a059;
+        font-size: 0.85rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        border-radius: 30px;
+        border: 1px solid rgba(197, 160, 89, 0.3);
+        margin-bottom: 15px;
+      }
+
+      .clients-title {
+        font-size: clamp(2rem, 3.5vw, 2.8rem);
+        font-weight: 800;
+        color: #fff;
+        margin-bottom: 15px;
+        letter-spacing: -0.5px;
+      }
+
+      .clients-title span {
+        color: #c5a059;
+      }
+
+      .clients-description {
+        color: #aaa;
+        font-size: 1.05rem;
+        max-width: 650px;
+        margin: 0 auto;
+        line-height: 1.6;
+      }
+
+      /* Grid de Logotipos */
+      .clients-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 25px;
+        margin-bottom: 80px;
+      }
+
+      .client-card {
+        background: #151515;
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        border-radius: 12px;
+        padding: 30px 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        position: relative;
+        transition: all 0.4s ease;
+      }
+
+      .client-card:hover {
+        background: #1c1c1c;
+        border-color: rgba(197, 160, 89, 0.4);
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+      }
+
+      .client-logo-box {
+        height: 70px;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 15px;
+      }
+
+      .client-logo-box img {
+        max-height: 100%;
+        max-width: 80%;
+        object-fit: contain;
+        filter: grayscale(100%) brightness(0.8);
+        opacity: 0.7;
+        transition: all 0.3s ease;
+      }
+
+      .client-card:hover .client-logo-box img {
+        filter: grayscale(0%) brightness(1);
+        opacity: 1;
+      }
+
+      .client-name {
+        font-size: 1rem;
+        font-weight: 700;
+        color: #fff;
+        margin-bottom: 4px;
+      }
+
+      .client-sector {
+        font-size: 0.78rem;
+        color: #c5a059;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-weight: 600;
+      }
+
+      /* Métricas e Impacto */
+      .clients-stats-wrapper {
+        background: linear-gradient(135deg, #181818 0%, #111111 100%);
+        border: 1px solid rgba(197, 160, 89, 0.2);
+        border-radius: 16px;
+        padding: 40px;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 30px;
+        text-align: center;
+      }
+
+      .client-stat-item {
+        position: relative;
+      }
+
+      .client-stat-number {
+        font-size: 2.8rem;
+        font-weight: 800;
+        color: #c5a059;
+        line-height: 1;
+        margin-bottom: 8px;
+      }
+
+      .client-stat-label {
+        font-size: 0.85rem;
+        color: #ccc;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-weight: 600;
+      }
+
+      @media (max-width: 768px) {
+        .clients-section {
+          padding: 60px 20px;
+        }
+        .clients-grid {
+          grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+          gap: 15px;
+        }
+        .clients-stats-wrapper {
+          padding: 25px 15px;
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+    </style>
+  </head>
+
+  <script src="script_principal.js" defer></script>
+
+  <body>
+    <header class="header" id="header">
+      <div class="header-container">
+        <a href="index.html" class="brand">
+          <div class="brand-logo">
+            <img src="./assets/iconos/logo2.png" alt="Logo Stalynp" />
+          </div>
+          <div class="brand-text">
+            <span class="brand-name">STALYNP</span>
+            <span class="brand-subtitle">GRUPO INTERNACIONAL</span>
+          </div>
+        </a>
+
+        <!--NAVEGACIÓN DESKTOP CON SUBMENÚS-->
+        <nav class="desktop-nav">
+          <a href="index.html" class="nav-link active">INICIO</a>
+
+          <!-- Dropdown NOSOTROS Desktop -->
+          <div class="nav-item dropdown">
+            <a class="nav-link">
+              NUESTRA EMPRESA
+              <svg
+                width="10"
+                height="6"
+                viewBox="0 0 10 6"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M1 1L5 5L9 1"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </a>
+            <div class="dropdown-menu">
+              <a href="nosotros.html" class="dropdown-item">NOSOTROS </a>
+              <a href="empleo.html" class="dropdown-item"
+                >TRABAJA CON NOSOTROS
+              </a>
+              <a href="certificaciones.html" class="dropdown-item"
+                >CERTIFICACIONES</a
+              >
+
+              <a href="clientes-atendidos.html" class="dropdown-item"
+                >CLIENTES ATENDIDOS</a
+              >
+            </div>
+          </div>
+
+          <!-- Dropdown Servicios Desktop -->
+          <div class="nav-item dropdown">
+            <a class="nav-link">
+              TE OFRECEMOS
+              <svg
+                width="10"
+                height="6"
+                viewBox="0 0 10 6"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M1 1L5 5L9 1"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </a>
+            <div class="dropdown-menu">
+              <a href="servicios.html" class="dropdown-item"
+                >SERVICIOS GENERALES</a
+              >
+              <a href="remodelacion.html" class="dropdown-item"
+                >MANTENIMIENTO Y REMODELACION</a
+              >
+              <a href="gerencia-proyectos.html" class="dropdown-item"
+                >GERENCIA Y SUPERVICION DE PROYECTOS</a
+              >
+            </div>
+          </div>
+          <a href="proyectos.html" class="nav-link">PROYECTOS</a>
+          <a href="contacto.html" class="nav-link">CONTACTO</a>
+        </nav>
+
+        <!-- BOTONES DE ACCIÓN DESKTOP -->
+        <div class="header-actions">
+          <a href="cotizar.html" class="header-button">COTIZAR</a>
+          <a
+            href="#tienda"
+            class="header-button"
+            style="background: rgb(82, 64, 27); border-color: rgb(82, 64, 27)"
+          >
+            PROVEEDOR
+          </a>
+        </div>
+
+        <!-- BOTÓN HAMBURGUESA MOBILE -->
+        <button
+          class="menu-toggle"
+          id="menuToggle"
+          aria-label="Abrir menú"
+          aria-expanded="false"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+
+      <!-- MENÚ MOBILE CON ACORDEÓN DE SUBMENÚS -->
+      <div class="mobile-menu" id="mobileMenu">
+        <a href="index.html" class="mobile-link">INICIO</a>
+
+        <!-- Dropdown Nosotros Mobile -->
+        <div class="mobile-dropdown-container">
+          <div
+            class="mobile-link mobile-dropdown-toggle"
+            style="
+              cursor: pointer;
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+            "
+          >
+            <span>NUESTRA EMPRESA</span>
+            <svg
+              width="10"
+              height="6"
+              viewBox="0 0 10 6"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M1 1L5 5L9 1"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </div>
+          <div class="mobile-dropdown">
+            <a href="nosotros.html" class="mobile-sublink">NOSOTROS</a>
+            <a href="empleo.html" class="mobile-sublink"
+              >TRABAJA CON NOSOTROS</a
+            >
+            <a href="certificaciones.html" class="mobile-sublink"
+              >CERTIFICACIONES</a
+            >
+            <a href="clientes-atendidos.html" class="mobile-sublink"
+              >CLIENTES ATENDIDOS</a
+            >
+          </div>
+        </div>
+
+        <!-- Dropdown Servicios Mobile -->
+        <div class="mobile-dropdown-container">
+          <div
+            class="mobile-link mobile-dropdown-toggle"
+            style="
+              cursor: pointer;
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+            "
+          >
+            <span>TE OFRECEMOS</span>
+            <svg
+              width="10"
+              height="6"
+              viewBox="0 0 10 6"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M1 1L5 5L9 1"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </div>
+          <div class="mobile-dropdown">
+            <a href="servicios.html" class="mobile-sublink"
+              >SERVICIOS GENERALES</a
+            >
+            <a href="remodelacion.html" class="mobile-sublink"
+              >MANTENIMIENTO Y REMODELACION</a
+            >
+            <a href="gerencia-proyectos.html" class="mobile-sublink"
+              >GERENCIA Y SUPERVICION DE PROYECTOS</a
+            >
+          </div>
+        </div>
+        <a href="proyectos.html" class="mobile-link">PROYECTOS</a>
+        <a href="contacto.html" class="mobile-link">CONTACTO</a>
+
+        <a href="cotizar.html" class="mobile-button">COTIZAR</a>
+        <a
+          href="tienda.html"
+          class="mobile-button"
+          style="background: rgb(82, 64, 27); border-color: rgb(82, 64, 27)"
+        >
+          PROVEEDOR DE BIENES
+        </a>
+      </div>
+    </header>
+
+    <!-- ==========================================================
+         SECCIÓN DE CLIENTES ATENDIDOS
+    ========================================================== -->
+    <section class="clients-section" id="clientes-atendidos">
+      <div class="clients-container">
+        <div class="clients-header">
+          <span class="clients-badge">Confianza Demostrada</span>
+          <h2 class="clients-title">Clientes <span>Atendidos</span></h2>
+          <p class="clients-description">
+            Nos avala la confianza de instituciones públicas y empresas privadas
+            líderes en infraestructura, minería, vialidad y desarrollo urbano a
+            nivel nacional.
+          </p>
+        </div>
+
+        <div class="clients-grid">
+          <!-- Cliente 1 -->
+          <div class="client-card">
+            <div class="client-logo-box">
+              <img src="./assets/iconos/logo1.png" alt="Gobierno Regional" />
+            </div>
+            <h3 class="client-name">Gobierno Regional</h3>
+            <span class="client-sector">Sector Público</span>
+          </div>
+
+          <!-- Cliente 2 -->
+          <div class="client-card">
+            <div class="client-logo-box">
+              <img
+                src="./assets/iconos/logo1.png"
+                alt="Constructora del Norte"
+              />
+            </div>
+            <h3 class="client-name">Constructora del Norte</h3>
+            <span class="client-sector">Infraestructura Vial</span>
+          </div>
+
+          <!-- Cliente 3 -->
+          <div class="client-card">
+            <div class="client-logo-box">
+              <img src="./assets/iconos/logo1.png" alt="Minera Santa Rosa" />
+            </div>
+            <h3 class="client-name">Minera Santa Rosa</h3>
+            <span class="client-sector">Sector Minero</span>
+          </div>
+
+          <!-- Cliente 4 -->
+          <div class="client-card">
+            <div class="client-logo-box">
+              <img
+                src="./assets/iconos/logo1.png"
+                alt="Municipalidad Provincial"
+              />
+            </div>
+            <h3 class="client-name">Municipalidad Provincial</h3>
+            <span class="client-sector">Obras Públicas</span>
+          </div>
+
+          <!-- Cliente 5 -->
+          <div class="client-card">
+            <div class="client-logo-box">
+              <img
+                src="./assets/iconos/logo1.png"
+                alt="Inmobiliaria Pacífico"
+              />
+            </div>
+            <h3 class="client-name">Inmobiliaria Pacífico</h3>
+            <span class="client-sector">Desarrollo Urbano</span>
+          </div>
+
+          <!-- Cliente 6 -->
+          <div class="client-card">
+            <div class="client-logo-box">
+              <img src="./assets/iconos/logo1.png" alt="Consorcio Vial" />
+            </div>
+            <h3 class="client-name">Consorcio Vial Sur</h3>
+            <span class="client-sector">Proyectos Especiales</span>
+          </div>
+        </div>
+
+        <!-- Métricas de Impacto -->
+        <div class="clients-stats-wrapper">
+          <div class="client-stat-item">
+            <div class="client-stat-number">+120</div>
+            <div class="client-stat-label">Obras Ejecutadas</div>
+          </div>
+          <div class="client-stat-item">
+            <div class="client-stat-number">100%</div>
+            <div class="client-stat-label">Cumplimiento Riguroso</div>
+          </div>
+          <div class="client-stat-item">
+            <div class="client-stat-number">+40</div>
+            <div class="client-stat-label">Empresas e Instituciones</div>
+          </div>
+          <div class="client-stat-item">
+            <div class="client-stat-number">15+</div>
+            <div class="client-stat-label">Años de Trayectoria</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer" id="footer">
+      <!-- FONDO DINÁMICO -->
+      <div class="footer-background">
+        <div class="footer-glow footer-glow-1"></div>
+        <div class="footer-glow footer-glow-2"></div>
+        <div class="footer-grid"></div>
+        <div class="footer-particles" id="footerParticles"></div>
+      </div>
+
+      <!--CONTENIDO PRINCIPAL DEL FOOTER-->
+      <div class="footer-container">
+        <!-- COLUMNA 1 — MARCA -->
+        <div class="footer-brand">
+          <a href="#inicio" class="footer-logo">
+            <div class="footer-logo-image">
+              <img
+                src="./assets/iconos/logo1.png"
+                alt="STALYNP Grupo Internacional"
+              />
+            </div>
+            <div class="footer-brand-name">
+              <strong> STALYNP </strong>
+              <span> GRUPO INTERNACIONAL </span>
+            </div>
+          </a>
+
+          <p class="footer-description">
+            Desarrollamos proyectos con visión, innovación y compromiso, creando
+            soluciones pensadas para trascender.
+          </p>
+
+          <!-- REDES SOCIALES -->
+          <div class="footer-social-title">SÍGUENOS</div>
+          <div class="footer-socials">
+            <a
+              href="#"
+              class="social-link"
+              aria-label="Facebook"
+              target="_blank"
+            >
+              <i class="fa-brands fa-facebook-f"></i>
+            </a>
+
+            <a
+              href="#"
+              class="social-link"
+              aria-label="Instagram"
+              target="_blank"
+            >
+              <i class="fa-brands fa-instagram"></i>
+            </a>
+
+            <a href="#" class="social-link" aria-label="TikTok" target="_blank">
+              <i class="fa-brands fa-tiktok"></i>
+            </a>
+
+            <a
+              href="#"
+              class="social-link"
+              aria-label="LinkedIn"
+              target="_blank"
+            >
+              <i class="fa-brands fa-linkedin-in"></i>
+            </a>
+
+            <a
+              href="#"
+              class="social-link"
+              aria-label="WhatsApp"
+              target="_blank"
+            >
+              <i class="fa-brands fa-whatsapp"></i>
+            </a>
+          </div>
+        </div>
+
+        <!--COLUMNA 2 — NAVEGACIÓN-->
+        <div class="footer-column">
+          <div class="footer-heading">
+            <span> EXPLORA </span>
+            <div></div>
+          </div>
+
+          <ul class="footer-links">
+            <li>
+              <a href="#inicio">
+                <i class="fa-solid fa-arrow-right"></i>
+                Inicio
+              </a>
+            </li>
+
+            <li>
+              <a href="#nosotros">
+                <i class="fa-solid fa-arrow-right"></i>
+                Nosotros
+              </a>
+            </li>
+
+            <li>
+              <a href="#servicios">
+                <i class="fa-solid fa-arrow-right"></i>
+                Servicios
+              </a>
+            </li>
+
+            <li>
+              <a href="#proyectos">
+                <i class="fa-solid fa-arrow-right"></i>
+                Proyectos
+              </a>
+            </li>
+
+            <li>
+              <a href="#contacto">
+                <i class="fa-solid fa-arrow-right"></i>
+                Contacto
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- COLUMNA 3 — CONTACTO -->
+        <div class="footer-column footer-contact">
+          <div class="footer-heading">
+            <span> CONTACTO </span>
+            <div></div>
+          </div>
+
+          <div class="contact-item">
+            <div class="contact-icon">
+              <i class="fa-solid fa-location-dot"></i>
+            </div>
+            <div>
+              <small> UBICACIÓN </small>
+              <p>Nuestra ubicación</p>
+            </div>
+          </div>
+
+          <div class="contact-item">
+            <div class="contact-icon">
+              <i class="fa-solid fa-phone"></i>
+            </div>
+            <div>
+              <small> TELÉFONO </small>
+              <p>+51 000 000 000</p>
+            </div>
+          </div>
+
+          <div class="contact-item">
+            <div class="contact-icon">
+              <i class="fa-regular fa-envelope"></i>
+            </div>
+            <div>
+              <small> EMAIL </small>
+              <p>Correo@.com</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- COLUMNA 4 — MAPA -->
+        <div class="footer-map-column">
+          <div class="footer-heading">
+            <span> ENCUÉNTRANOS </span>
+            <div></div>
+          </div>
+
+          <div class="map-wrapper">
+            <iframe
+              src="https://www.google.com/maps?q=Peru&output=embed"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              allowfullscreen
+              title="Ubicación STALYNP"
+            >
+            </iframe>
+
+            <div class="map-overlay">
+              <div class="map-pin">
+                <i class="fa-solid fa-location-dot"></i>
+              </div>
+              <span> VER UBICACIÓN </span>
+            </div>
+          </div>
+
+          <a
+            href="https://www.google.com/maps"
+            target="_blank"
+            class="map-button"
+          >
+            ABRIR EN GOOGLE MAPS
+            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+          </a>
+        </div>
+      </div>
+
+      <!--SEPARADOR -->
+      <div class="footer-divider">
+        <span></span>
+        <div class="footer-divider-logo">
+          <i class="fa-solid fa-building"></i>
+        </div>
+        <span></span>
+      </div>
+
+      <!--PARTE INFERIOR-->
+      <div class="footer-bottom">
+        <div class="footer-bottom-container">
+          <p>
+            © <span id="currentYear"></span>
+            <strong> STALYNP </strong>
+            — GRUPO INTERNACIONAL. TODOS LOS DERECHOS RESERVADOS.
+          </p>
+
+          <div class="footer-legal">
+            <a href="#"> Privacidad </a>
+            <span>•</span>
+            <a href="#"> Términos </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- BOTÓN VOLVER ARRIBA-->
+      <button class="back-to-top" id="backToTop" aria-label="Volver al inicio">
+        <span class="back-to-top-line"></span>
+        <i class="fa-solid fa-arrow-up"></i>
+        <span class="back-to-top-text"> ARRIBA </span>
+      </button>
+    </footer>
+  </body>
+</html>

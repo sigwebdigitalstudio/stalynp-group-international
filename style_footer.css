@@ -1,0 +1,909 @@
+/* ============================================================
+   FOOTER — STALYNP GRUPO INTERNACIONAL
+============================================================ */
+
+.footer {
+  position: relative;
+
+  overflow: hidden;
+
+  background: #080a0d;
+
+  color: #fff;
+
+  isolation: isolate;
+}
+
+/* ============================================================
+   FONDO DINÁMICO
+============================================================ */
+
+.footer-background {
+  position: absolute;
+
+  inset: 0;
+
+  z-index: -1;
+
+  overflow: hidden;
+
+  background:
+    radial-gradient(
+      circle at 10% 20%,
+      rgba(255, 255, 255, 0.07),
+      transparent 30%
+    ),
+    radial-gradient(
+      circle at 90% 80%,
+      rgba(255, 255, 255, 0.05),
+      transparent 30%
+    ),
+    #080a0d;
+}
+
+.footer-glow {
+  position: absolute;
+
+  width: 500px;
+
+  height: 500px;
+
+  border-radius: 50%;
+
+  filter: blur(100px);
+
+  opacity: 0.12;
+
+  animation: footerGlow 12s ease-in-out infinite alternate;
+}
+
+.footer-glow-1 {
+  top: -250px;
+
+  left: -200px;
+
+  background: #ffffff;
+}
+
+.footer-glow-2 {
+  right: -250px;
+
+  bottom: -250px;
+
+  background: #777;
+
+  animation-delay: -5s;
+}
+
+@keyframes footerGlow {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+
+  50% {
+    transform: translate3d(100px, 50px, 0) scale(1.15);
+  }
+
+  100% {
+    transform: translate3d(-50px, 100px, 0) scale(0.95);
+  }
+}
+
+/* ============================================================
+   GRID DECORATIVO
+============================================================ */
+
+.footer-grid {
+  position: absolute;
+
+  inset: 0;
+
+  opacity: 0.045;
+
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.4) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.4) 1px, transparent 1px);
+
+  background-size: 70px 70px;
+
+  mask-image: linear-gradient(
+    to bottom,
+    transparent,
+    #000 20%,
+    #000 80%,
+    transparent
+  );
+}
+
+/* ============================================================
+   PARTÍCULAS
+============================================================ */
+
+.footer-particles {
+  position: absolute;
+
+  inset: 0;
+
+  pointer-events: none;
+
+  overflow: hidden;
+}
+
+.footer-particle {
+  position: absolute;
+
+  width: 2px;
+
+  height: 2px;
+
+  border-radius: 50%;
+
+  background: rgba(255, 255, 255, 0.7);
+
+  animation: particleFloat linear infinite;
+}
+
+@keyframes particleFloat {
+  from {
+    transform: translateY(30px);
+
+    opacity: 0;
+  }
+
+  20% {
+    opacity: 0.8;
+  }
+
+  80% {
+    opacity: 0.3;
+  }
+
+  to {
+    transform: translateY(-350px);
+
+    opacity: 0;
+  }
+}
+
+/* ============================================================
+   CONTENEDOR
+============================================================ */
+
+.footer-container {
+  position: relative;
+
+  width: min(1500px, 92%);
+
+  margin: auto;
+
+  padding: 100px 0 75px;
+
+  display: grid;
+
+  grid-template-columns:
+    1.5fr
+    0.75fr
+    1fr
+    1.35fr;
+
+  gap: 65px;
+}
+
+/* ============================================================
+   MARCA
+============================================================ */
+
+.footer-logo {
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 14px;
+
+  margin-bottom: 28px;
+}
+
+.footer-logo-image {
+  width: 58px;
+
+  height: 58px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+}
+
+.footer-logo-image img {
+  width: 100%;
+
+  height: 100%;
+
+  object-fit: contain;
+}
+
+.footer-brand-name {
+  display: flex;
+
+  flex-direction: column;
+
+  line-height: 1;
+}
+
+.footer-brand-name strong {
+  font-size: 21px;
+
+  letter-spacing: 5px;
+
+  font-weight: 700;
+}
+
+.footer-brand-name span {
+  margin-top: 8px;
+
+  font-size: 7px;
+
+  letter-spacing: 3px;
+
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.footer-description {
+  max-width: 360px;
+
+  color: rgba(255, 255, 255, 0.58);
+
+  font-size: 13px;
+
+  line-height: 1.8;
+
+  margin-bottom: 28px;
+}
+
+/* ============================================================
+   REDES SOCIALES
+============================================================ */
+
+.footer-social-title {
+  font-size: 9px;
+
+  letter-spacing: 3px;
+
+  font-weight: 700;
+
+  color: rgba(255, 255, 255, 0.55);
+
+  margin-bottom: 15px;
+}
+
+.footer-socials {
+  display: flex;
+
+  align-items: center;
+
+  gap: 9px;
+}
+
+.social-link {
+  position: relative;
+
+  width: 40px;
+
+  height: 40px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  border: 1px solid rgba(255, 255, 255, 0.18);
+
+  border-radius: 50%;
+
+  background: rgba(255, 255, 255, 0.035);
+
+  color: rgba(255, 255, 255, 0.8);
+
+  transition:
+    transform 0.35s ease,
+    background 0.35s ease,
+    color 0.35s ease,
+    border-color 0.35s ease;
+}
+
+.social-link:hover {
+  transform: translateY(-6px) rotate(5deg);
+
+  background: #fff;
+
+  color: #111;
+
+  border-color: #fff;
+
+  box-shadow: 0 10px 30px rgba(255, 255, 255, 0.12);
+}
+
+.social-link i {
+  font-size: 14px;
+}
+
+/* ============================================================
+   ENCABEZADOS
+============================================================ */
+
+.footer-heading {
+  margin-bottom: 28px;
+}
+
+.footer-heading span {
+  display: block;
+
+  font-size: 10px;
+
+  letter-spacing: 3px;
+
+  font-weight: 700;
+
+  color: rgba(255, 255, 255, 0.9);
+
+  margin-bottom: 11px;
+}
+
+.footer-heading div {
+  width: 35px;
+
+  height: 1px;
+
+  background: rgba(255, 255, 255, 0.6);
+}
+
+/* ============================================================
+   LINKS
+============================================================ */
+
+.footer-links {
+  list-style: none;
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 15px;
+}
+
+.footer-links a {
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 10px;
+
+  font-size: 12px;
+
+  color: rgba(255, 255, 255, 0.55);
+
+  transition:
+    color 0.3s ease,
+    transform 0.3s ease;
+}
+
+.footer-links a i {
+  font-size: 9px;
+
+  opacity: 0;
+
+  transform: translateX(-8px);
+
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease;
+}
+
+.footer-links a:hover {
+  color: #fff;
+
+  transform: translateX(5px);
+}
+
+.footer-links a:hover i {
+  opacity: 1;
+
+  transform: translateX(0);
+}
+
+/* ============================================================
+   CONTACTO
+============================================================ */
+
+.footer-contact {
+  display: flex;
+
+  flex-direction: column;
+}
+
+.contact-item {
+  display: flex;
+
+  gap: 14px;
+
+  margin-bottom: 22px;
+}
+
+.contact-icon {
+  width: 37px;
+
+  height: 37px;
+
+  flex: 0 0 37px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  border: 1px solid rgba(255, 255, 255, 0.16);
+
+  border-radius: 50%;
+
+  background: rgba(255, 255, 255, 0.04);
+
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.contact-icon i {
+  font-size: 12px;
+}
+
+.contact-item small {
+  display: block;
+
+  margin-bottom: 5px;
+
+  font-size: 7px;
+
+  letter-spacing: 2px;
+
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.contact-item p {
+  font-size: 11px;
+
+  line-height: 1.5;
+
+  color: rgba(255, 255, 255, 0.72);
+}
+
+/* ============================================================
+   MAPA
+============================================================ */
+
+.map-wrapper {
+  position: relative;
+
+  width: 100%;
+
+  height: 215px;
+
+  overflow: hidden;
+
+  border: 1px solid rgba(255, 255, 255, 0.15);
+
+  border-radius: 12px;
+
+  background: #111;
+
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+}
+
+.map-wrapper iframe {
+  width: 100%;
+
+  height: 100%;
+
+  display: block;
+
+  border: 0;
+
+  filter: grayscale(100%) contrast(1.05) brightness(0.72);
+
+  transition:
+    filter 0.5s ease,
+    transform 0.7s ease;
+}
+
+.map-wrapper:hover iframe {
+  filter: grayscale(30%) contrast(1.05) brightness(0.82);
+
+  transform: scale(1.03);
+}
+
+.map-overlay {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  pointer-events: none;
+}
+
+.map-pin {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.72);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  box-shadow: 0 0 0 8px rgba(255, 255, 255, 0.06);
+  animation: mapPulse 2s ease-in-out infinite;
+}
+
+.map-pin i {
+  font-size: 16px;
+
+  color: #fff;
+}
+
+.map-overlay span {
+  padding: 6px 10px;
+  border-radius: 4px;
+  background: rgba(0, 0, 0, 0.7);
+  font-size: 7px;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+@keyframes mapPulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.08);
+  }
+}
+
+/*  BOTÓN MAPS*/
+
+.map-button {
+  margin-top: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 11px 14px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 6px;
+  color: rgba(255, 255, 255, 0.65);
+  font-size: 8px;
+  letter-spacing: 2px;
+  transition:
+    color 0.3s ease,
+    background 0.3s ease;
+}
+
+.map-button:hover {
+  color: #fff;
+
+  background: rgba(255, 255, 255, 0.06);
+}
+
+/* =====DIVISOR==== */
+
+.footer-divider {
+  width: min(1500px, 92%);
+  margin: auto;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.footer-divider span {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.14));
+}
+
+.footer-divider span:last-child {
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.14), transparent);
+}
+
+.footer-divider-logo {
+  width: 30px;
+  height: 30px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255, 255, 255, 0.45);
+  font-size: 10px;
+}
+
+/* ============================================================
+   FOOTER BOTTOM
+============================================================ */
+
+.footer-bottom {
+  padding: 25px 0;
+  margin-top: 25px;
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.footer-bottom-container {
+  width: min(1500px, 92%);
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.footer-bottom p {
+  font-size: 8px;
+
+  letter-spacing: 1.2px;
+
+  color: rgba(255, 255, 255, 0.38);
+}
+
+.footer-bottom strong {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.footer-legal {
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+
+  font-size: 8px;
+
+  color: rgba(255, 255, 255, 0.35);
+}
+
+.footer-legal a {
+  transition: color 0.3s ease;
+}
+
+.footer-legal a:hover {
+  color: #fff;
+}
+
+/* ============================================================
+   BOTÓN VOLVER ARRIBA
+============================================================ */
+
+.back-to-top {
+  position: fixed;
+
+  right: 28px;
+
+  bottom: 28px;
+
+  z-index: 900;
+
+  width: 54px;
+
+  height: 54px;
+
+  border: 1px solid rgba(255, 255, 255, 0.25);
+
+  border-radius: 50%;
+
+  background: rgba(10, 12, 15, 0.82);
+
+  backdrop-filter: blur(10px);
+
+  -webkit-backdrop-filter: blur(10px);
+
+  color: #fff;
+
+  cursor: pointer;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  opacity: 0;
+
+  visibility: hidden;
+
+  transform: translateY(20px);
+
+  transition:
+    opacity 0.4s ease,
+    visibility 0.4s ease,
+    transform 0.4s ease,
+    background 0.3s ease;
+}
+
+.back-to-top.show {
+  opacity: 1;
+
+  visibility: visible;
+
+  transform: translateY(0);
+}
+
+.back-to-top:hover {
+  background: #fff;
+
+  color: #111;
+
+  transform: translateY(-5px);
+}
+
+.back-to-top i {
+  font-size: 14px;
+}
+
+.back-to-top-text {
+  position: absolute;
+
+  right: 65px;
+
+  white-space: nowrap;
+
+  padding: 6px 9px;
+
+  background: #fff;
+
+  color: #111;
+
+  border-radius: 3px;
+
+  font-size: 7px;
+
+  font-weight: 700;
+
+  letter-spacing: 2px;
+
+  opacity: 0;
+
+  transform: translateX(8px);
+
+  pointer-events: none;
+
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease;
+}
+
+.back-to-top:hover .back-to-top-text {
+  opacity: 1;
+
+  transform: translateX(0);
+}
+
+/* ============================================================
+   TABLET
+============================================================ */
+
+@media (max-width: 1100px) {
+  .footer-container {
+    grid-template-columns:
+      1.3fr
+      0.7fr
+      1fr;
+
+    gap: 50px;
+  }
+
+  .footer-map-column {
+    grid-column: 1 / -1;
+
+    max-width: 600px;
+  }
+}
+
+/* ============================================================
+   MOBILE
+============================================================ */
+
+@media (max-width: 800px) {
+  .footer-container {
+    width: calc(100% - 38px);
+
+    padding: 75px 0 55px;
+
+    grid-template-columns: 1fr;
+
+    gap: 48px;
+  }
+
+  .footer-brand {
+    max-width: 500px;
+  }
+
+  .footer-map-column {
+    grid-column: auto;
+
+    max-width: none;
+  }
+
+  .map-wrapper {
+    height: 230px;
+  }
+
+  .footer-bottom-container {
+    width: calc(100% - 38px);
+
+    flex-direction: column;
+
+    align-items: flex-start;
+
+    gap: 14px;
+  }
+
+  .footer-divider {
+    width: calc(100% - 38px);
+  }
+
+  .back-to-top {
+    right: 18px;
+
+    bottom: 18px;
+
+    width: 48px;
+
+    height: 48px;
+  }
+
+  .back-to-top-text {
+    display: none;
+  }
+}
+
+/* ============================================================
+   MOBILE PEQUEÑO
+============================================================ */
+
+@media (max-width: 480px) {
+  .footer-container {
+    width: calc(100% - 30px);
+  }
+
+  .footer-brand-name strong {
+    font-size: 18px;
+
+    letter-spacing: 4px;
+  }
+
+  .footer-description {
+    font-size: 12px;
+  }
+
+  .footer-socials {
+    gap: 7px;
+  }
+
+  .social-link {
+    width: 38px;
+
+    height: 38px;
+  }
+
+  .map-wrapper {
+    height: 200px;
+  }
+
+  .footer-bottom-container {
+    width: calc(100% - 30px);
+  }
+
+  .footer-bottom p {
+    line-height: 1.7;
+  }
+}

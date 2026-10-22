@@ -1,0 +1,2219 @@
+<!-- tienda.html -->
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>STALYNP Grupo Internacional | Materiales de Construcción</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" type="image/png" href="/assets/iconos/logo2.png" />
+    <link rel="stylesheet" href="style_header_foot.css" />
+    <style>
+      /* --   RESET & VARIABLES========================= */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      :root {
+        --bg-dark: #111315;
+        --bg-card: #1a1c1e;
+        --gold-primary: #b38a3d;
+        --gold-light: #c29a51;
+        --text-white: #ffffff;
+        --text-light: #f4f5f7;
+        --text-muted: #e5e5e5;
+        --border-dark: #2a2d32;
+        --font-main: "Montserrat", sans-serif;
+        --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+      }
+
+      body {
+        background-color: var(--bg-dark);
+        color: var(--text-light);
+        font-family: var(--font-main);
+        line-height: 1.5;
+        overflow-x: hidden;
+        width: 100%;
+      }
+
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+
+      button,
+      input,
+      select {
+        font-family: var(--font-main);
+        outline: none;
+        border: none;
+      }
+
+      button {
+        cursor: pointer;
+      }
+
+      /* ==========================================================================
+   TOP BAR (NO HEADER, NO NAV MENU)
+   ========================================================================== */
+      .top-bar {
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        background-color: rgba(17, 19, 21, 0.95);
+        backdrop-filter: blur(8px);
+        border-bottom: 1px solid rgba(194, 154, 81, 0.2);
+        padding: 12px 24px;
+        height: 70px;
+      }
+
+      .top-bar-container {
+        max-width: 1400px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 100%;
+      }
+
+      .logo-img {
+        height: 42px;
+        width: auto;
+        object-fit: contain;
+        display: block;
+      }
+
+      .cart-btn {
+        background: linear-gradient(135deg, var(--bg-card) 0%, #25282c 100%);
+        border: 1px solid var(--gold-primary);
+        color: var(--text-white);
+        padding: 8px 18px;
+        border-radius: 4px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-weight: 600;
+        font-size: 0.85rem;
+        letter-spacing: 1px;
+        transition: var(--transition);
+        position: relative;
+      }
+
+      .cart-btn:hover {
+        background: var(--gold-primary);
+        color: var(--bg-dark);
+        box-shadow: 0 0 15px rgba(179, 138, 61, 0.4);
+      }
+
+      .cart-badge {
+        background-color: var(--gold-light);
+        color: var(--bg-dark);
+        font-size: 0.75rem;
+        font-weight: 800;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .cart-btn:hover .cart-badge {
+        background-color: var(--bg-dark);
+        color: var(--gold-light);
+      }
+
+      /* ==========================================================================
+   MAIN CONTENT & HERO
+   ========================================================================== */
+      .main-content {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 0 20px 60px 20px;
+      }
+
+      .hero {
+        position: relative;
+        background: linear-gradient(135deg, #15171a 0%, #0b0c0d 100%);
+        border-radius: 12px;
+        border: 1px solid var(--border-dark);
+        margin: 20px 0 40px 0;
+        overflow: hidden;
+        padding: 60px 40px;
+      }
+
+      .hero-overlay {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 50%;
+        height: 100%;
+        background: radial-gradient(
+          circle,
+          rgba(192, 154, 81, 0.08) 0%,
+          rgba(0, 0, 0, 0) 70%
+        );
+        pointer-events: none;
+      }
+
+      .hero-container {
+        display: grid;
+        grid-template-columns: 1.2fr 0.8fr;
+        gap: 40px;
+        align-items: center;
+        position: relative;
+        z-index: 2;
+      }
+
+      .hero-tag {
+        color: var(--gold-primary);
+        font-size: 0.8rem;
+        font-weight: 700;
+        letter-spacing: 2px;
+        margin-bottom: 12px;
+        display: block;
+      }
+
+      .hero-title {
+        font-size: 2.2rem;
+        font-weight: 800;
+        line-height: 1.2;
+        margin-bottom: 16px;
+        color: var(--text-white);
+      }
+
+      .text-gold {
+        color: var(--gold-light);
+      }
+
+      .hero-desc {
+        color: var(--text-muted);
+        font-size: 0.95rem;
+        margin-bottom: 30px;
+        max-width: 580px;
+        font-weight: 300;
+      }
+
+      .hero-search-box {
+        display: flex;
+        gap: 0;
+        background: var(--bg-card);
+        border: 1px solid var(--gold-primary);
+        border-radius: 6px;
+        overflow: hidden;
+        max-width: 600px;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+      }
+
+      .hero-search-box input {
+        flex: 1;
+        background: transparent;
+        padding: 16px 20px;
+        color: var(--text-white);
+        font-size: 0.85rem;
+        letter-spacing: 0.5px;
+      }
+
+      .hero-search-box input::placeholder {
+        color: #777;
+      }
+
+      .hero-search-box button {
+        background: linear-gradient(
+          135deg,
+          var(--gold-primary) 0%,
+          var(--gold-light) 100%
+        );
+        color: var(--bg-dark);
+        padding: 0 30px;
+        font-weight: 700;
+        letter-spacing: 1px;
+        transition: var(--transition);
+      }
+
+      .hero-search-box button:hover {
+        filter: brightness(1.15);
+      }
+
+      /* Architectural Visual Card */
+      .architectural-card {
+        background: rgba(26, 28, 30, 0.8);
+        border: 1px solid rgba(194, 154, 81, 0.3);
+        border-radius: 8px;
+        padding: 30px;
+        position: relative;
+        backdrop-filter: blur(10px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+      }
+
+      .card-grid-pattern {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-image:
+          linear-gradient(
+            to right,
+            rgba(255, 255, 255, 0.03) 1px,
+            transparent 1px
+          ),
+          linear-gradient(
+            to bottom,
+            rgba(255, 255, 255, 0.03) 1px,
+            transparent 1px
+          );
+        background-size: 20px 20px;
+        pointer-events: none;
+      }
+
+      .badge-gold {
+        display: inline-block;
+        background: rgba(179, 138, 61, 0.15);
+        border: 1px solid var(--gold-primary);
+        color: var(--gold-light);
+        font-size: 0.65rem;
+        font-weight: 700;
+        padding: 4px 10px;
+        border-radius: 20px;
+        margin-bottom: 15px;
+        letter-spacing: 1px;
+      }
+
+      .architectural-card h3 {
+        font-size: 1.3rem;
+        color: var(--text-white);
+        margin-bottom: 10px;
+      }
+
+      .architectural-card p {
+        font-size: 0.85rem;
+        color: var(--text-muted);
+        margin-bottom: 25px;
+      }
+
+      .stat-row {
+        display: flex;
+        gap: 20px;
+        border-top: 1px solid var(--border-dark);
+        padding-top: 20px;
+      }
+
+      .stat-num {
+        display: block;
+        font-size: 1.4rem;
+        font-weight: 800;
+        color: var(--gold-light);
+      }
+
+      .stat-label {
+        font-size: 0.7rem;
+        color: #888;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+
+      /* ==========================================================================
+   CATEGORIES SECTION
+   ========================================================================== */
+      .categories-section {
+        margin-bottom: 40px;
+      }
+
+      .section-header {
+        margin-bottom: 20px;
+      }
+
+      .section-header h2 {
+        font-size: 1.1rem;
+        letter-spacing: 1.5px;
+        color: var(--text-white);
+        font-weight: 700;
+      }
+
+      .gold-divider {
+        height: 2px;
+        width: 50px;
+        background-color: var(--gold-primary);
+        margin-top: 6px;
+      }
+
+      .categories-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+        gap: 12px;
+      }
+
+      .cat-card {
+        background-color: var(--bg-card);
+        border: 1px solid var(--border-dark);
+        border-radius: 6px;
+        padding: 16px 10px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
+        transition: var(--transition);
+      }
+
+      .cat-icon {
+        font-size: 1.5rem;
+      }
+
+      .cat-name {
+        font-size: 0.7rem;
+        font-weight: 700;
+        color: var(--text-muted);
+        letter-spacing: 0.5px;
+      }
+
+      .cat-card:hover {
+        border-color: var(--gold-primary);
+        transform: translateY(-3px);
+        background-color: #22252a;
+      }
+
+      .cat-card.active {
+        background: linear-gradient(
+          135deg,
+          var(--gold-primary) 0%,
+          var(--gold-light) 100%
+        );
+        border-color: var(--gold-light);
+      }
+
+      .cat-card.active .cat-name {
+        color: var(--bg-dark);
+      }
+
+      /* ==========================================================================
+   CATALOG CONTROLS & FILTERS
+   ========================================================================== */
+      .catalog-controls {
+        background-color: var(--bg-card);
+        border: 1px solid var(--border-dark);
+        padding: 20px;
+        border-radius: 8px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        align-items: flex-end;
+        margin-bottom: 30px;
+      }
+
+      .filter-group {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        flex: 1;
+        min-width: 180px;
+      }
+
+      .filter-group label {
+        font-size: 0.75rem;
+        font-weight: 700;
+        color: var(--gold-light);
+        letter-spacing: 1px;
+      }
+
+      .filter-group input[type="range"] {
+        accent-color: var(--gold-primary);
+        cursor: pointer;
+      }
+
+      .filter-group select {
+        background-color: var(--bg-dark);
+        color: var(--text-white);
+        border: 1px solid var(--border-dark);
+        padding: 10px 12px;
+        border-radius: 4px;
+        font-size: 0.8rem;
+        cursor: pointer;
+      }
+
+      .filter-group select:focus {
+        border-color: var(--gold-primary);
+      }
+
+      .reset-btn {
+        background: transparent;
+        border: 1px solid var(--border-dark);
+        color: #888;
+        padding: 10px 16px;
+        border-radius: 4px;
+        font-size: 0.75rem;
+        font-weight: 600;
+        transition: var(--transition);
+        height: 40px;
+      }
+
+      .reset-btn:hover {
+        color: var(--text-white);
+        border-color: var(--gold-primary);
+      }
+
+      /* ==========================================================================
+   PRODUCTS GRID (4 Columns Desktop Standard)
+   ========================================================================== */
+      .products-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 24px;
+      }
+
+      .product-card {
+        background-color: var(--bg-card);
+        border: 1px solid var(--border-dark);
+        border-radius: 8px;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        transition: var(--transition);
+        position: relative;
+      }
+
+      .product-card:hover {
+        border-color: var(--gold-primary);
+        transform: translateY(-5px);
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
+      }
+
+      .product-img-wrapper {
+        width: 100%;
+        height: 200px;
+        overflow: hidden;
+        position: relative;
+        background-color: #151719;
+      }
+
+      .product-img-wrapper img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s ease;
+      }
+
+      .product-card:hover .product-img-wrapper img {
+        transform: scale(1.08);
+      }
+
+      .stock-badge {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        font-size: 0.65rem;
+        font-weight: 700;
+        padding: 3px 8px;
+        border-radius: 3px;
+        letter-spacing: 0.5px;
+        text-transform: uppercase;
+      }
+
+      .stock-badge.stock {
+        background-color: rgba(46, 204, 113, 0.2);
+        color: #2ecc71;
+        border: 1px solid #2ecc71;
+      }
+
+      .stock-badge.pedido {
+        background-color: rgba(230, 126, 34, 0.2);
+        color: #e67e22;
+        border: 1px solid #e67e22;
+      }
+
+      .product-info {
+        padding: 18px;
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+      }
+
+      .product-category {
+        font-size: 0.65rem;
+        font-weight: 700;
+        color: var(--gold-primary);
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        margin-bottom: 6px;
+      }
+
+      .product-title {
+        font-size: 0.95rem;
+        font-weight: 700;
+        color: var(--text-white);
+        margin-bottom: 12px;
+        line-height: 1.3;
+      }
+
+      .product-price-row {
+        margin-top: auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        margin-bottom: 15px;
+        padding-top: 10px;
+        border-top: 1px solid rgba(255, 255, 255, 0.05);
+      }
+
+      .product-price {
+        font-size: 1.15rem;
+        font-weight: 800;
+        color: var(--gold-light);
+      }
+
+      .product-unit {
+        font-size: 0.75rem;
+        color: #888;
+      }
+
+      .add-btn {
+        width: 100%;
+        background-color: transparent;
+        border: 1px solid var(--gold-primary);
+        color: var(--gold-light);
+        padding: 10px;
+        border-radius: 4px;
+        font-weight: 700;
+        font-size: 0.75rem;
+        letter-spacing: 1px;
+        transition: var(--transition);
+      }
+
+      .add-btn:hover {
+        background-color: var(--gold-primary);
+        color: var(--bg-dark);
+      }
+
+      /* Empty State */
+      .no-results {
+        text-align: center;
+        padding: 60px 20px;
+        background-color: var(--bg-card);
+        border: 1px solid var(--border-dark);
+        border-radius: 8px;
+        grid-column: 1 / -1;
+      }
+
+      .no-results-icon {
+        font-size: 3rem;
+        margin-bottom: 15px;
+      }
+
+      .no-results h3 {
+        color: var(--text-white);
+        font-size: 1.2rem;
+        margin-bottom: 8px;
+        letter-spacing: 1px;
+      }
+
+      .no-results p {
+        color: #888;
+        font-size: 0.85rem;
+      }
+
+      .hidden {
+        display: none !important;
+      }
+
+      /* ==========================================================================
+   DRAWER / SIDE PANEL (MI LISTA)
+   ========================================================================== */
+      .drawer-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.75);
+        backdrop-filter: blur(4px);
+        z-index: 200;
+        opacity: 0;
+        visibility: hidden;
+        transition: var(--transition);
+      }
+
+      .drawer-overlay.active {
+        opacity: 1;
+        visibility: visible;
+      }
+
+      .drawer {
+        position: fixed;
+        top: 0;
+        right: -450px;
+        width: 450px;
+        height: 100%;
+        background-color: var(--bg-card);
+        border-left: 1px solid var(--gold-primary);
+        z-index: 201;
+        display: flex;
+        flex-direction: column;
+        transition: right 0.4s ease;
+        box-shadow: -10px 0 30px rgba(0, 0, 0, 0.8);
+      }
+
+      .drawer.active {
+        right: 0;
+      }
+
+      .drawer-header {
+        padding: 20px;
+        border-bottom: 1px solid var(--border-dark);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #141618;
+      }
+
+      .drawer-title {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .drawer-title h2 {
+        font-size: 0.95rem;
+        color: var(--text-white);
+        letter-spacing: 1px;
+        font-weight: 700;
+      }
+
+      .close-drawer-btn {
+        background: transparent;
+        color: var(--text-muted);
+        font-size: 1.5rem;
+        line-height: 1;
+      }
+
+      .close-drawer-btn:hover {
+        color: var(--gold-light);
+      }
+
+      .drawer-body {
+        flex: 1;
+        overflow-y: auto;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+      }
+
+      /* Cart Item */
+      .cart-item {
+        background-color: var(--bg-dark);
+        border: 1px solid var(--border-dark);
+        border-radius: 6px;
+        padding: 12px;
+        display: grid;
+        grid-template-columns: 60px 1fr;
+        gap: 12px;
+        align-items: center;
+        position: relative;
+        animation: fadeIn 0.3s ease;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(5px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .cart-item-img {
+        width: 60px;
+        height: 60px;
+        object-fit: cover;
+        border-radius: 4px;
+      }
+
+      .cart-item-details {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .cart-item-title {
+        font-size: 0.8rem;
+        font-weight: 700;
+        color: var(--text-white);
+        margin-bottom: 4px;
+      }
+
+      .cart-item-price {
+        font-size: 0.8rem;
+        color: var(--gold-light);
+        font-weight: 600;
+        margin-bottom: 8px;
+      }
+
+      .cart-item-actions {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .qty-controls {
+        display: flex;
+        align-items: center;
+        border: 1px solid var(--border-dark);
+        border-radius: 4px;
+        overflow: hidden;
+        background-color: #1a1c1e;
+        width: 92px;
+      }
+
+      .qty-input {
+        width: 100%;
+        height: 30px;
+        background: transparent;
+        color: var(--text-white);
+        text-align: center;
+        font-size: 0.78rem;
+        font-weight: 700;
+        padding: 4px 6px;
+        border: 0;
+        outline: none;
+        -moz-appearance: textfield;
+      }
+
+      .qty-input::-webkit-outer-spin-button,
+      .qty-input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+
+      .qty-input:focus {
+        background-color: rgba(179, 138, 61, 0.12);
+      }
+
+      .delete-item-btn {
+        background: transparent;
+        color: #e74c3c;
+        font-size: 0.7rem;
+        font-weight: 600;
+        transition: var(--transition);
+      }
+
+      .delete-item-btn:hover {
+        text-decoration: underline;
+      }
+
+      /* Drawer Footer */
+      .drawer-footer {
+        padding: 20px;
+        border-top: 1px solid var(--border-dark);
+        background-color: #141618;
+      }
+
+      .totals-area {
+        margin-bottom: 15px;
+      }
+
+      .total-row {
+        display: flex;
+        justify-content: space-between;
+        font-size: 0.8rem;
+        color: var(--text-muted);
+        margin-bottom: 6px;
+      }
+
+      .total-row.main-total {
+        font-size: 1.1rem;
+        font-weight: 800;
+        color: var(--gold-light);
+        border-top: 1px solid var(--border-dark);
+        padding-top: 8px;
+        margin-top: 8px;
+      }
+
+      .disclaimer-text {
+        font-size: 0.65rem;
+        color: #777;
+        margin-top: 6px;
+        font-style: italic;
+      }
+
+      .action-buttons {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      .btn-whatsapp {
+        background-color: #25d366;
+        color: #ffffff;
+        padding: 12px;
+        border-radius: 4px;
+        font-weight: 700;
+        font-size: 0.8rem;
+        letter-spacing: 0.5px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 8px;
+        transition: var(--transition);
+      }
+
+      .btn-whatsapp:hover {
+        background-color: #20ba5a;
+        box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+      }
+
+      .btn-pdf {
+        background: linear-gradient(
+          135deg,
+          var(--gold-primary) 0%,
+          var(--gold-light) 100%
+        );
+        color: var(--bg-dark);
+        padding: 12px;
+        border-radius: 4px;
+        font-weight: 700;
+        font-size: 0.8rem;
+        letter-spacing: 0.5px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 8px;
+        transition: var(--transition);
+      }
+
+      .btn-pdf:hover {
+        filter: brightness(1.1);
+      }
+
+      .btn-clear {
+        background: transparent;
+        border: 1px solid rgba(231, 76, 60, 0.4);
+        color: #e74c3c;
+        padding: 8px;
+        border-radius: 4px;
+        font-weight: 600;
+        font-size: 0.75rem;
+        transition: var(--transition);
+      }
+
+      .btn-clear:hover {
+        background-color: rgba(231, 76, 60, 0.1);
+      }
+
+      /* ==========================================================================
+   TOAST NOTIFICATION
+   ========================================================================== */
+      .toast {
+        position: fixed;
+        bottom: -60px;
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: var(--gold-primary);
+        color: var(--bg-dark);
+        padding: 12px 24px;
+        border-radius: 30px;
+        font-weight: 700;
+        font-size: 0.8rem;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+        transition: bottom 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        z-index: 300;
+      }
+
+      .toast.show {
+        bottom: 30px;
+      }
+
+      /* ==========================================================================
+   PRINT LAYOUT
+   ========================================================================== */
+      .print-header,
+      .print-container {
+        display: none;
+      }
+
+      @media print {
+        body * {
+          visibility: hidden;
+        }
+        .print-header,
+        .print-header *,
+        .print-container,
+        .print-container * {
+          visibility: visible;
+        }
+
+        body {
+          background-color: #ffffff !important;
+          color: #000000 !important;
+        }
+
+        .print-header {
+          display: flex !important;
+          justify-content: space-between;
+          align-items: flex-end;
+          border-bottom: 2px solid #111;
+          padding-bottom: 15px;
+          margin-bottom: 20px;
+        }
+
+        .print-brand h1 {
+          font-size: 24pt;
+          font-weight: 800;
+          color: #000;
+          margin: 0;
+        }
+
+        .print-brand p {
+          font-size: 9pt;
+          color: #555;
+          margin: 0;
+        }
+
+        .print-meta {
+          text-align: right;
+        }
+
+        .print-meta h2 {
+          font-size: 12pt;
+          margin: 0;
+        }
+
+        .print-meta p {
+          font-size: 9pt;
+          color: #555;
+        }
+
+        .print-container {
+          display: block !important;
+          position: absolute;
+          left: 0;
+          top: 100px;
+          width: 100%;
+        }
+
+        .print-table {
+          width: 100%;
+          border-collapse: collapse;
+          margin-bottom: 20px;
+        }
+
+        .print-table th,
+        .print-table td {
+          border: 1px solid #ddd;
+          padding: 8pt;
+          font-size: 9pt;
+          text-align: left;
+        }
+
+        .print-table th {
+          background-color: #f2f2f2 !important;
+          font-weight: bold;
+          color: #000;
+        }
+
+        .print-totals {
+          display: flex;
+          justify-content: flex-end;
+          margin-bottom: 30px;
+        }
+
+        .print-total-box {
+          border: 1px solid #000;
+          padding: 10pt 20pt;
+          font-size: 11pt;
+          background-color: #f9f9f9 !important;
+        }
+
+        .print-footer-text {
+          text-align: center;
+          font-size: 8pt;
+          color: #666;
+          border-top: 1px solid #ccc;
+          padding-top: 10px;
+        }
+      }
+
+      /* ==========================================================================
+   RESPONSIVE BREAKPOINTS
+   ========================================================================== */
+
+      /* 1200px - Large Desktop */
+      @media (max-width: 1200px) {
+        .products-grid {
+          grid-template-columns: repeat(3, 1fr);
+        }
+        .hero-title {
+          font-size: 1.8rem;
+        }
+      }
+
+      /* 1024px - Tablet Landscape */
+      @media (max-width: 1024px) {
+        .hero-container {
+          grid-template-columns: 1fr;
+        }
+        .hero-visual {
+          display: none;
+        }
+      }
+
+      /* 768px - Tablet Portrait */
+      @media (max-width: 768px) {
+        .products-grid {
+          grid-template-columns: repeat(2, 1fr);
+          gap: 16px;
+        }
+        .hero {
+          padding: 30px 20px;
+        }
+        .hero-title {
+          font-size: 1.5rem;
+        }
+        .hero-search-box {
+          flex-direction: column;
+        }
+        .hero-search-box button {
+          padding: 12px;
+        }
+        .drawer {
+          width: 100%;
+          right: -100%;
+        }
+      }
+
+      /* 480px - Mobile */
+      @media (max-width: 480px) {
+        .products-grid {
+          grid-template-columns: repeat(2, 1fr);
+          gap: 10px;
+        }
+        .product-info {
+          padding: 10px;
+        }
+        .product-title {
+          font-size: 0.8rem;
+        }
+        .product-price {
+          font-size: 0.95rem;
+        }
+        .top-bar {
+          padding: 10px 15px;
+        }
+        .logo-img {
+          height: 32px;
+        }
+        .cart-text {
+          display: none;
+        }
+      }
+
+      /* 360px - Small Mobile */
+      @media (max-width: 360px) {
+        .products-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+
+  <script src="tienda.js" defer></script>
+  <body>
+    <!-- Small Header -->
+    <header class="top-bar">
+      <div class="top-bar-container">
+        <a href="index.html" class="brand">
+          <div class="brand-logo">
+            <img src="./assets/iconos/logo2.png" alt="Logo Stalynp" />
+          </div>
+          <div class="brand-text">
+            <span class="brand-name">STALYNP</span>
+            <span class="brand-subtitle">GRUPO INTERNACIONAL</span>
+          </div>
+        </a>
+
+        <button class="cart-btn" id="open-cart-btn">
+          <span class="cart-icon">🛒</span>
+          <span class="cart-text">MI LISTA</span>
+          <span class="cart-badge" id="cart-badge">0</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- Printable Header / Document Title -->
+    <div class="print-header">
+      <div class="print-brand">
+        <h1>STALYNP</h1>
+        <p>GRUPO INTERNACIONAL — INGENIERÍA & CONSTRUCCIÓN</p>
+      </div>
+      <div class="print-meta">
+        <h2>LISTA DE MATERIALES / SOLICITUD DE COTIZACIÓN</h2>
+        <p id="print-date">Fecha: --/--/----</p>
+      </div>
+    </div>
+
+    <!-- Main Container -->
+    <main class="main-content">
+      <!-- Hero Section -->
+      <section class="hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-container">
+          <div class="hero-text">
+            <span class="hero-tag">STALYNP GRUPO INTERNACIONAL</span>
+            <h1 class="hero-title">
+              MATERIALES PARA CONSTRUIR<br /><span class="text-gold"
+                >PROYECTOS QUE PERDURAN.</span
+              >
+            </h1>
+            <p class="hero-desc">
+              Encuentra materiales para ingeniería civil, arquitectura,
+              construcción, obra y remodelación de la más alta calidad.
+            </p>
+
+            <div class="hero-search-box">
+              <input
+                type="text"
+                id="hero-search-input"
+                placeholder="¿QUÉ MATERIAL ESTÁS BUSCANDO?"
+                autocomplete="off"
+              />
+              <button id="hero-search-btn">BUSCAR</button>
+            </div>
+          </div>
+          <div class="hero-visual">
+            <div class="architectural-card">
+              <div class="card-grid-pattern"></div>
+              <div class="badge-gold">CALIDAD ESTRUCTURAL</div>
+              <h3>Ingeniería & Arquitectura</h3>
+              <p>
+                Suministros certificados con estándares internacionales de
+                resistencia para obras públicas y privadas.
+              </p>
+              <div class="stat-row">
+                <div class="stat-item">
+                  <span class="stat-num">+300</span>
+                  <span class="stat-label">Obras Suministradas</span>
+                </div>
+                <div class="stat-item">
+                  <span class="stat-num">100%</span>
+                  <span class="stat-label">Garantía de Calidad</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Categories Section -->
+      <section class="categories-section">
+        <div class="section-header">
+          <h2>CATEGORÍAS DE MATERIALES</h2>
+          <div class="gold-divider"></div>
+        </div>
+        <div class="categories-grid" id="categories-grid">
+          <!-- Dynamically generated or static HTML -->
+          <button class="cat-card active" data-cat="TODOS">
+            <span class="cat-icon">🏗️</span>
+            <span class="cat-name">TODOS</span>
+          </button>
+          <button class="cat-card" data-cat="ESTRUCTURA">
+            <span class="cat-icon">🏛️</span>
+            <span class="cat-name">METALICA</span>
+          </button>
+          <button class="cat-card" data-cat="ALBAÑILERÍA">
+            <span class="cat-icon">🧱</span>
+            <span class="cat-name">ALBAÑILERÍA Y CONSTRUCCION</span>
+          </button>
+          <button class="cat-card" data-cat="AGREGADOS">
+            <span class="cat-icon">⛰️</span>
+            <span class="cat-name">AGREGADOS</span>
+          </button>
+          <button class="cat-card" data-cat="SANITARIOS">
+            <span class="cat-icon">🚰</span>
+            <span class="cat-name">SANITARIOS</span>
+          </button>
+          <button class="cat-card" data-cat="ELECTRICIDAD">
+            <span class="cat-icon">⚡</span>
+            <span class="cat-name">ELECTRICIDAD</span>
+          </button>
+          <button class="cat-card" data-cat="HERRAMIENTAS">
+            <span class="cat-icon">🛠️</span>
+            <span class="cat-name">HERRAMIENTAS</span>
+          </button>
+          <button class="cat-card" data-cat="ACABADOS">
+            <span class="cat-icon">🎨</span>
+            <span class="cat-name">ACABADOS</span>
+          </button>
+          <button class="cat-card" data-cat="SEGURIDAD">
+            <span class="cat-icon">🛟</span>
+            <span class="cat-name">SEGURIDAD</span>
+          </button>
+        </div>
+      </section>
+
+      <!-- Catalog Section -->
+      <section class="catalog-section">
+        <div class="catalog-controls">
+          <div class="filter-group">
+            <label for="price-filter"
+              >PRECIO MÁX: <span id="price-val">S/ 500</span></label
+            >
+            <input
+              type="range"
+              id="price-filter"
+              min="0"
+              max="500"
+              step="5"
+              value="500"
+            />
+          </div>
+
+          <div class="filter-group">
+            <label for="stock-filter">DISPONIBILIDAD</label>
+            <select id="stock-filter">
+              <option value="TODOS">Todos los estados</option>
+              <option value="EN STOCK">En Stock</option>
+              <option value="SOB R PEDIDO">Bajo Pedido</option>
+            </select>
+          </div>
+
+          <div class="filter-group">
+            <label for="sort-filter">ORDENAR POR</label>
+            <select id="sort-filter">
+              <option value="RECOMENDADOS">Recomendados</option>
+              <option value="PRECIO_MENOR">Precio: Menor a Mayor</option>
+              <option value="PRECIO_MAYOR">Precio: Mayor a Menor</option>
+              <option value="NOMBRE_AZ">Nombre: A - Z</option>
+            </select>
+          </div>
+
+          <button class="reset-btn" id="reset-filters">LIMPIAR FILTROS</button>
+        </div>
+
+        <!-- Products Grid -->
+        <div class="products-grid" id="products-grid">
+          <!-- Injected via JS -->
+        </div>
+
+        <!-- Empty State -->
+        <div class="no-results hidden" id="no-results">
+          <div class="no-results-icon">🔍</div>
+          <h3>NO ENCONTRAMOS MATERIALES</h3>
+          <p>
+            Intenta ajustando los términos de búsqueda o eliminando los filtros
+            seleccionados.
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <!-- Side Panel Drawer (Cart / List) -->
+    <div class="drawer-overlay" id="drawer-overlay"></div>
+    <aside class="drawer" id="cart-drawer">
+      <div class="drawer-header">
+        <div class="drawer-title">
+          <span>🛒</span>
+          <h2>MI LISTA DE MATERIALES</h2>
+        </div>
+        <button class="close-drawer-btn" id="close-drawer-btn">&times;</button>
+      </div>
+
+      <div class="drawer-body" id="cart-items-container">
+        <!-- Items injected by JS -->
+      </div>
+
+      <div class="drawer-footer">
+        <div class="totals-area">
+          <div class="total-row">
+            <span>CANTIDAD DE ITEMS:</span>
+            <span id="cart-total-count">0</span>
+          </div>
+          <div class="total-row">
+            <span>SUBTOTAL ESTIMADO:</span>
+            <span id="cart-subtotal">S/ 0.00</span>
+          </div>
+          <div class="total-row main-total">
+            <span>TOTAL ESTIMADO:</span>
+            <span id="cart-total">S/ 0.00</span>
+          </div>
+          <p class="disclaimer-text">
+            * Precios sujetos a confirmación técnica en cotización.
+          </p>
+        </div>
+
+        <div class="action-buttons">
+          <button class="btn-whatsapp" id="btn-whatsapp">
+            <span>💬</span> ENVIAR POR WHATSAPP
+          </button>
+          <button class="btn-pdf" id="btn-pdf">
+            <span>📄</span> DESCARGAR PDF
+          </button>
+          <button class="btn-clear" id="btn-clear">
+            <span>🗑️</span> VACIAR LISTA
+          </button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Print View Container (Hidden in normal screen, visible in window.print) -->
+    <div class="print-container" id="print-container">
+      <table class="print-table">
+        <thead>
+          <tr>
+            <th>ITEM</th>
+            <th>PRODUCTO</th>
+            <th>UNIDAD</th>
+            <th>CANTIDAD</th>
+            <th>PRECIO UNIT.</th>
+            <th>SUBTOTAL</th>
+          </tr>
+        </thead>
+        <tbody id="print-table-body">
+          <!-- Injected by JS -->
+        </tbody>
+      </table>
+      <div class="print-totals">
+        <div class="print-total-box">
+          <p>
+            <strong
+              >TOTAL ESTIMADO: <span id="print-total-val">S/ 0.00</span></strong
+            >
+          </p>
+        </div>
+      </div>
+      <div class="print-footer-text">
+        <p>PRECIOS SUJETOS A CONFIRMACIÓN.</p>
+        <p>
+          STALYNP GRUPO INTERNACIONAL — Suministros y Soluciones para la
+          Construcción
+        </p>
+      </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast">
+      <span class="toast-icon">✓</span>
+      <span class="toast-msg" id="toast-msg">Producto agregado a la lista</span>
+    </div>
+    <!-- Librerías para generar el PDF directamente -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.8.4/jspdf.plugin.autotable.min.js"></script>
+
+    <script>
+      // CONFIGURATION & CONSTANTS
+      // ==========================================================================
+      const WHATSAPP_NUMBER = "519999999999";
+
+      // PRODUCT DATABASE (30 MINIMUM PRODUCTS)
+
+      const PRODUCTS = [
+        {
+          id: "MAT-001",
+          nombre: "Cemento INKA ",
+          categoria: "ESTRUCTURA",
+          precio: 32.9,
+          unidad: "Bolsa 42.5kg",
+          imagen:
+            "https://www.cementosinka.com.pe/wp-content/uploads/2023/09/bolsa_nosotros.png",
+          disponibilidad: "EN STOCK",
+        },
+        {
+          id: "MAT-002",
+          nombre: 'Fierro Corrugado 1/2"',
+          categoria: "ESTRUCTURA",
+          precio: 48.5,
+          unidad: "Varilla 9m",
+          imagen:
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSkvw5PzjHRmTgz8vHGZpfrN0h88DIF_YV-YosW9oxZ-g&s=10",
+          disponibilidad: "EN STOCK",
+        },
+        {
+          id: "MAT-003",
+          nombre: 'Fierro Corrugado 3/8"',
+          categoria: "ESTRUCTURA",
+          precio: 28.0,
+          unidad: "Varilla 9m",
+          imagen:
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQfXydqQ_NJLpCbIhVE4eWGJJwx1ofrB3dZembC-2wE9eBwSbHoZ02PFFcN&s=10",
+          disponibilidad: "EN STOCK",
+        },
+        {
+          id: "MAT-004",
+          nombre: 'Fierro Corrugado 5/8"',
+          categoria: "ESTRUCTURA",
+          precio: 76.2,
+          unidad: "Varilla 9m",
+          imagen:
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSkvw5PzjHRmTgz8vHGZpfrN0h88DIF_YV-YosW9oxZ-g&s=10",
+          disponibilidad: "EN STOCK",
+        },
+        {
+          id: "MAT-005",
+          nombre: "Alambre Recocido #16",
+          categoria: "ESTRUCTURA",
+          precio: 7.5,
+          unidad: "Kg",
+          imagen:
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTLtjct7f_ObyiACOoGI7SL6r-Qk-bRopbWxEsOfd82WPHhUbg7-PeUDzg&s=10",
+          disponibilidad: "EN STOCK",
+        },
+        {
+          id: "MAT-006",
+          nombre: "Malla Electrosoldada 4.5mm",
+          categoria: "ESTRUCTURA",
+          precio: 185.0,
+          unidad: "Panel 2x3m",
+          imagen:
+            "https://dojiw2m9tvv09.cloudfront.net/43701/product/malla1278.jpg",
+          disponibilidad: "BAJO PEDIDO",
+        },
+        {
+          id: "MAT-007",
+          nombre: "Ladrillo King Kong 18 Huecos",
+          categoria: "ALBAÑILERÍA",
+          precio: 1.4,
+          unidad: "Unidad",
+          imagen:
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSW5g5w5BPvF_SA8yBjw1-ME-m_zKi_oJLyT-dEmPxmTc82ckgyeLsBAZl6&s=10",
+          disponibilidad: "EN STOCK",
+        },
+        {
+          id: "MAT-008",
+          nombre: "Ladrillo Pandereta",
+          categoria: "ALBAÑILERÍA",
+          precio: 1.1,
+          unidad: "Unidad",
+          imagen:
+            "https://promart.vteximg.com.br/arquivos/ids/9721029-1000-1000/17707.jpg?v=638996053753570000",
+          disponibilidad: "EN STOCK",
+        },
+        {
+          id: "MAT-009",
+          nombre: "Bloque de Concreto 15x20x40",
+          categoria: "ALBAÑILERÍA",
+          precio: 3.8,
+          unidad: "Unidad",
+          imagen:
+            "https://cademac.com.co/wp-content/uploads/2025/10/BLOQUE-ESTRUCTUTAL-15X20X40.jpg",
+          disponibilidad: "EN STOCK",
+        },
+        {
+          id: "MAT-010",
+          nombre: "Arena Gruesa Seleccionada",
+          categoria: "AGREGADOS",
+          precio: 65.0,
+          unidad: "m³",
+          imagen:
+            "https://insumosfirstpro.com/wp-content/uploads/2024/03/arenagruesa6702.png",
+          disponibilidad: "EN STOCK",
+        },
+        {
+          id: "MAT-011",
+          nombre: "Arena Fina para Tarrajeo",
+          categoria: "AGREGADOS",
+          precio: 75.0,
+          unidad: "m³",
+          imagen:
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQO6gTcpGBugbD_DMYnSY03btbJs3eJfkzg5kyGQW9ogSdgSE0BUJsqjyWk&s=10",
+          disponibilidad: "EN STOCK",
+        },
+        {
+          id: "MAT-012",
+          nombre: 'Piedra Chancada 1/2"',
+          categoria: "AGREGADOS",
+          precio: 80.0,
+          unidad: "m³",
+          imagen:
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRXHoNVXaDsf2GtwKxbJH5vxR64ofd8YiASvjkd1fFGw&s=10",
+          disponibilidad: "EN STOCK",
+        },
+        {
+          id: "MAT-013",
+          nombre: "Hormigón de Relleno",
+          categoria: "AGREGADOS",
+          precio: 55.0,
+          unidad: "m³",
+          imagen:
+            "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=500&q=80",
+          disponibilidad: "EN STOCK",
+        },
+        {
+          id: "MAT-014",
+          nombre: 'Tubo PVC SAP 4" para Desagüe',
+          categoria: "SANITARIOS",
+          precio: 42.0,
+          unidad: "Tubo 3m",
+          imagen:
+            "https://images.unsplash.com/photo-1542013936693-884638332954?auto=format&fit=crop&w=500&q=80",
+          disponibilidad: "EN STOCK",
+        },
+        {
+          id: "MAT-015",
+          nombre: 'Codo PVC 4" x 90°',
+          categoria: "SANITARIOS",
+          precio: 6.5,
+          unidad: "Unidad",
+          imagen:
+            "https://images.unsplash.com/photo-1542013936693-884638332954?auto=format&fit=crop&w=500&q=80",
+          disponibilidad: "EN STOCK",
+        },
+        {
+          id: "MAT-016",
+          nombre: "Pegamento PVC Transparente",
+          categoria: "SANITARIOS",
+          precio: 18.5,
+          unidad: "Lata 1/4 galón",
+          imagen:
+            "https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=500&q=80",
+          disponibilidad: "EN STOCK",
+        },
+        {
+          id: "MAT-017",
+          nombre: "Cable Eléctrico THW #12 AWG",
+          categoria: "ELECTRICIDAD",
+          precio: 210.0,
+          unidad: "Rollo 100m",
+          imagen:
+            "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=500&q=80",
+          disponibilidad: "EN STOCK",
+        },
+        {
+          id: "MAT-018",
+          nombre: "Tomacorriente Doble con Tierra",
+          categoria: "ELECTRICIDAD",
+          precio: 14.9,
+          unidad: "Unidad",
+          imagen:
+            "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=500&q=80",
+          disponibilidad: "EN STOCK",
+        },
+        {
+          id: "MAT-019",
+          nombre: "Interruptor Conmutable Simple",
+          categoria: "ELECTRICIDAD",
+          precio: 12.5,
+          unidad: "Unidad",
+          imagen:
+            "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=500&q=80",
+          disponibilidad: "EN STOCK",
+        },
+        {
+          id: "MAT-020",
+          nombre: "Taladro Percutor 650W",
+          categoria: "HERRAMIENTAS",
+          precio: 249.0,
+          unidad: "Unidad",
+          imagen:
+            "https://images.unsplash.com/photo-1504148455328-c376907d081c?auto=format&fit=crop&w=500&q=80",
+          disponibilidad: "EN STOCK",
+        },
+        {
+          id: "MAT-021",
+          nombre: 'Amoladora Angular 4.5" 850W',
+          categoria: "HERRAMIENTAS",
+          precio: 199.0,
+          unidad: "Unidad",
+          imagen:
+            "https://images.unsplash.com/photo-1504148455328-c376907d081c?auto=format&fit=crop&w=500&q=80",
+          disponibilidad: "EN STOCK",
+        },
+        {
+          id: "MAT-022",
+          nombre: "Martillo de Peña 16oz",
+          categoria: "HERRAMIENTAS",
+          precio: 28.5,
+          unidad: "Unidad",
+          imagen:
+            "https://images.unsplash.com/photo-1586864387967-d02ef85d93e8?auto=format&fit=crop&w=500&q=80",
+          disponibilidad: "EN STOCK",
+        },
+        {
+          id: "MAT-023",
+          nombre: 'Nivel de Aluminio 24"',
+          categoria: "HERRAMIENTAS",
+          precio: 45.0,
+          unidad: "Unidad",
+          imagen:
+            "https://images.unsplash.com/photo-1586864387967-d02ef85d93e8?auto=format&fit=crop&w=500&q=80",
+          disponibilidad: "EN STOCK",
+        },
+        {
+          id: "MAT-024",
+          nombre: "Palana Cuchara con Mango",
+          categoria: "HERRAMIENTAS",
+          precio: 42.0,
+          unidad: "Unidad",
+          imagen:
+            "https://images.unsplash.com/photo-1586864387967-d02ef85d93e8?auto=format&fit=crop&w=500&q=80",
+          disponibilidad: "EN STOCK",
+        },
+        {
+          id: "MAT-025",
+          nombre: "Pintura Látex Blanco Supremo",
+          categoria: "ACABADOS",
+          precio: 125.0,
+          unidad: "Balde 5 Gal",
+          imagen:
+            "https://images.unsplash.com/photo-1589939705384-5185137a7f0f?auto=format&fit=crop&w=500&q=80",
+          disponibilidad: "EN STOCK",
+        },
+        {
+          id: "MAT-026",
+          nombre: "Sellador para Muros Base Agua",
+          categoria: "ACABADOS",
+          precio: 68.0,
+          unidad: "Balde 5 Gal",
+          imagen:
+            "https://images.unsplash.com/photo-1589939705384-5185137a7f0f?auto=format&fit=crop&w=500&q=80",
+          disponibilidad: "EN STOCK",
+        },
+        {
+          id: "MAT-027",
+          nombre: "Cerámico Cemento Gris 60x60",
+          categoria: "ACABADOS",
+          precio: 42.9,
+          unidad: "m²",
+          imagen:
+            "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=500&q=80",
+          disponibilidad: "BAJO PEDIDO",
+        },
+        {
+          id: "MAT-028",
+          nombre: "Pegamento Blanco Flexible Ceramic",
+          categoria: "ACABADOS",
+          precio: 34.5,
+          unidad: "Bolsa 25kg",
+          imagen:
+            "https://images.unsplash.com/photo-1589939705384-5185137a7f0f?auto=format&fit=crop&w=500&q=80",
+          disponibilidad: "EN STOCK",
+        },
+        {
+          id: "MAT-029",
+          nombre: "Casco de Seguridad Dielectrico",
+          categoria: "SEGURIDAD",
+          precio: 25.0,
+          unidad: "Unidad",
+          imagen:
+            "https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=500&q=80",
+          disponibilidad: "EN STOCK",
+        },
+        {
+          id: "MAT-030",
+          nombre: "Guantes de Cuero Badana Operario",
+          categoria: "SEGURIDAD",
+          precio: 12.0,
+          unidad: "Par",
+          imagen:
+            "https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=500&q=80",
+          disponibilidad: "EN STOCK",
+        },
+      ];
+
+      // ==========================================================================
+      // APP STATE
+      // ==========================================================================
+      let cart = JSON.parse(localStorage.getItem("STALYNP_CART")) || [];
+      let activeCategory = "TODOS";
+      let searchQuery = "";
+      let maxPrice = 500;
+      let availabilityFilter = "TODOS";
+      let sortOrder = "RECOMENDADOS";
+
+      // ==========================================================================
+      // DOM ELEMENTS
+      // ==========================================================================
+      const productsGrid = document.getElementById("products-grid");
+      const noResults = document.getElementById("no-results");
+      const heroSearchInput = document.getElementById("hero-search-input");
+      const heroSearchBtn = document.getElementById("hero-search-btn");
+      const priceFilter = document.getElementById("price-filter");
+      const priceVal = document.getElementById("price-val");
+      const stockFilter = document.getElementById("stock-filter");
+      const sortFilter = document.getElementById("sort-filter");
+      const resetFiltersBtn = document.getElementById("reset-filters");
+      const categoriesGrid = document.getElementById("categories-grid");
+
+      // Drawer Elements
+      const cartDrawer = document.getElementById("cart-drawer");
+      const drawerOverlay = document.getElementById("drawer-overlay");
+      const openCartBtn = document.getElementById("open-cart-btn");
+      const closeDrawerBtn = document.getElementById("close-drawer-btn");
+      const cartItemsContainer = document.getElementById(
+        "cart-items-container",
+      );
+      const cartBadge = document.getElementById("cart-badge");
+      const cartTotalCount = document.getElementById("cart-total-count");
+      const cartSubtotal = document.getElementById("cart-subtotal");
+      const cartTotal = document.getElementById("cart-total");
+
+      // Actions
+      const btnWhatsapp = document.getElementById("btn-whatsapp");
+      const btnPdf = document.getElementById("btn-pdf");
+      const btnClear = document.getElementById("btn-clear");
+      const toast = document.getElementById("toast");
+      const toastMsg = document.getElementById("toast-msg");
+
+      // Print Elements
+      const printTableBody = document.getElementById("print-table-body");
+      const printTotalVal = document.getElementById("print-total-val");
+      const printDate = document.getElementById("print-date");
+
+      // ==========================================================================
+      // INITIALIZATION
+      // ==========================================================================
+      document.addEventListener("DOMContentLoaded", () => {
+        renderProducts();
+        updateCartUI();
+        setupEventListeners();
+      });
+
+      // ==========================================================================
+      // EVENT LISTENERS
+      // ==========================================================================
+      function setupEventListeners() {
+        // Search
+        heroSearchBtn.addEventListener("click", () => {
+          searchQuery = heroSearchInput.value.trim().toLowerCase();
+          renderProducts();
+        });
+
+        heroSearchInput.addEventListener("keyup", (e) => {
+          searchQuery = e.target.value.trim().toLowerCase();
+          renderProducts();
+        });
+
+        // Categories
+        categoriesGrid.addEventListener("click", (e) => {
+          const btn = e.target.closest(".cat-card");
+          if (!btn) return;
+
+          document
+            .querySelectorAll(".cat-card")
+            .forEach((b) => b.classList.remove("active"));
+          btn.classList.add("active");
+          activeCategory = btn.dataset.cat;
+          renderProducts();
+        });
+
+        // Price Filter
+        priceFilter.addEventListener("input", (e) => {
+          maxPrice = parseFloat(e.target.value);
+          priceVal.textContent = `S/ ${maxPrice}`;
+          renderProducts();
+        });
+
+        // Stock Filter
+        stockFilter.addEventListener("change", (e) => {
+          availabilityFilter = e.target.value;
+          renderProducts();
+        });
+
+        // Sort Filter
+        sortFilter.addEventListener("change", (e) => {
+          sortOrder = e.target.value;
+          renderProducts();
+        });
+
+        // Reset Filters
+        resetFiltersBtn.addEventListener("click", () => {
+          searchQuery = "";
+          activeCategory = "TODOS";
+          maxPrice = 500;
+          availabilityFilter = "TODOS";
+          sortOrder = "RECOMENDADOS";
+
+          heroSearchInput.value = "";
+          priceFilter.value = 500;
+          priceVal.textContent = "S/ 500";
+          stockFilter.value = "TODOS";
+          sortFilter.value = "RECOMENDADOS";
+
+          document
+            .querySelectorAll(".cat-card")
+            .forEach((b) => b.classList.remove("active"));
+          document
+            .querySelector('.cat-card[data-cat="TODOS"]')
+            .classList.add("active");
+
+          renderProducts();
+        });
+
+        // Drawer Controls
+        openCartBtn.addEventListener("click", openDrawer);
+        closeDrawerBtn.addEventListener("click", closeDrawer);
+        drawerOverlay.addEventListener("click", closeDrawer);
+
+        // Cart Actions
+        btnClear.addEventListener("click", clearCart);
+        btnWhatsapp.addEventListener("click", sendWhatsApp);
+        btnPdf.addEventListener("click", generatePDF);
+      }
+
+      // ==========================================================================
+      // FILTER & RENDER PRODUCTS
+      // ==========================================================================
+      function renderProducts() {
+        let filtered = PRODUCTS.filter((p) => {
+          // Search Query
+          const matchesSearch =
+            p.nombre.toLowerCase().includes(searchQuery) ||
+            p.categoria.toLowerCase().includes(searchQuery);
+          // Category
+          const matchesCat =
+            activeCategory === "TODOS" || p.categoria === activeCategory;
+          // Price
+          const matchesPrice = p.precio <= maxPrice;
+          // Stock
+          const matchesStock =
+            availabilityFilter === "TODOS" ||
+            p.disponibilidad === availabilityFilter;
+
+          return matchesSearch && matchesCat && matchesPrice && matchesStock;
+        });
+
+        // Sorting
+        if (sortOrder === "PRECIO_MENOR") {
+          filtered.sort((a, b) => a.precio - b.precio);
+        } else if (sortOrder === "PRECIO_MAYOR") {
+          filtered.sort((a, b) => b.precio - a.precio);
+        } else if (sortOrder === "NOMBRE_AZ") {
+          filtered.sort((a, b) => a.nombre.localeCompare(b.nombre));
+        }
+
+        // DOM Injection
+        productsGrid.innerHTML = "";
+
+        if (filtered.length === 0) {
+          noResults.classList.remove("hidden");
+        } else {
+          noResults.classList.add("hidden");
+          filtered.forEach((product) => {
+            const isStock = product.disponibilidad === "EN STOCK";
+            const card = document.createElement("div");
+            card.className = "product-card";
+            card.innerHTML = `
+                <div class="product-img-wrapper">
+                    <img src="${product.imagen}" alt="${product.nombre}" onerror="this.src='https://via.placeholder.com/300x200/1A1C1E/C29A51?text=STALYNP'">
+                    <span class="stock-badge ${isStock ? "stock" : "pedido"}">${product.disponibilidad}</span>
+                </div>
+                <div class="product-info">
+                    <span class="product-category">${product.categoria}</span>
+                    <h3 class="product-title">${product.nombre}</h3>
+                    <div class="product-price-row">
+                        <span class="product-price">S/ ${product.precio.toFixed(2)}</span>
+                        <span class="product-unit">x ${product.unidad}</span>
+                    </div>
+                    <button class="add-btn" onclick="addToCart('${product.id}')">+ AGREGAR A LA LISTA</button>
+                </div>
+            `;
+            productsGrid.appendChild(card);
+          });
+        }
+      }
+
+      // ==========================================================================
+      // CART / LIST LOGIC & LOCALSTORAGE
+      // ==========================================================================
+      function addToCart(id) {
+        const product = PRODUCTS.find((p) => p.id === id);
+        if (!product) return;
+
+        const existingIndex = cart.findIndex((item) => item.id === id);
+        if (existingIndex > -1) {
+          cart[existingIndex].cantidad += 1;
+        } else {
+          cart.push({ ...product, cantidad: 1 });
+        }
+
+        saveCart();
+        updateCartUI();
+        showToast(`Agregado: ${product.nombre}`);
+      }
+
+      function updateQuantity(id, value) {
+        const index = cart.findIndex((item) => item.id === id);
+        if (index === -1) return;
+
+        // La cantidad ahora se escribe directamente.
+        let cantidad = parseInt(value, 10);
+
+        // Evita cantidades inválidas, decimales o valores menores a 1.
+        if (!Number.isFinite(cantidad) || cantidad < 1) {
+          cantidad = 1;
+        }
+
+        cart[index].cantidad = cantidad;
+        saveCart();
+        updateCartUI();
+      }
+
+      function removeFromCart(id) {
+        cart = cart.filter((item) => item.id !== id);
+        saveCart();
+        updateCartUI();
+      }
+
+      function clearCart() {
+        if (cart.length === 0) return;
+        cart = [];
+        saveCart();
+        updateCartUI();
+        showToast("Lista vaciada correctamente");
+      }
+
+      function saveCart() {
+        localStorage.setItem("STALYNP_CART", JSON.stringify(cart));
+      }
+
+      function updateCartUI() {
+        // Calculate Totals
+        const totalItemsCount = cart.reduce(
+          (acc, item) => acc + item.cantidad,
+          0,
+        );
+        const totalAmount = cart.reduce(
+          (acc, item) => acc + item.precio * item.cantidad,
+          0,
+        );
+
+        // Update Badges & Labels
+        cartBadge.textContent = totalItemsCount;
+        cartTotalCount.textContent = totalItemsCount;
+        cartSubtotal.textContent = `S/ ${totalAmount.toFixed(2)}`;
+        cartTotal.textContent = `S/ ${totalAmount.toFixed(2)}`;
+
+        // Render Drawer Items
+        cartItemsContainer.innerHTML = "";
+
+        if (cart.length === 0) {
+          cartItemsContainer.innerHTML = `
+            <div style="text-align: center; color: #777; margin-top: 40px;">
+                <p style="font-size: 2rem;">🛒</p>
+                <p style="font-size: 0.85rem; margin-top: 10px;">Tu lista de materiales está vacía.</p>
+            </div>
+        `;
+          return;
+        }
+
+        cart.forEach((item) => {
+          const itemEl = document.createElement("div");
+          itemEl.className = "cart-item";
+          itemEl.innerHTML = `
+            <img src="${item.imagen}" alt="${item.nombre}" class="cart-item-img" onerror="this.src='https://via.placeholder.com/60x60/1A1C1E/C29A51?text=MAT'">
+            <div class="cart-item-details">
+                <span class="cart-item-title">${item.nombre}</span>
+                <span class="cart-item-price">S/ ${(item.precio * item.cantidad).toFixed(2)} (${item.unidad})</span>
+                <div class="cart-item-actions">
+                    <div class="qty-controls" title="Escribe la cantidad">
+                        <input
+                            class="qty-input"
+                            type="number"
+                            min="1"
+                            step="1"
+                            value="${item.cantidad}"
+                            aria-label="Cantidad de ${item.nombre}"
+                            onchange="updateQuantity('${item.id}', this.value)"
+                            onkeydown="if(event.key === 'Enter'){this.blur();}"
+                        />
+                    </div>
+                    <button class="delete-item-btn" onclick="removeFromCart('${item.id}')">Eliminar</button>
+                </div>
+            </div>
+        `;
+          cartItemsContainer.appendChild(itemEl);
+        });
+      }
+
+      // ==========================================================================
+      // DRAWER TOGGLE
+      // ==========================================================================
+      function openDrawer() {
+        cartDrawer.classList.add("active");
+        drawerOverlay.classList.add("active");
+      }
+
+      function closeDrawer() {
+        cartDrawer.classList.remove("active");
+        drawerOverlay.classList.remove("active");
+      }
+
+      // ==========================================================================
+      // WHATSAPP INTEGRATION
+      // ==========================================================================
+      function sendWhatsApp() {
+        // WhatsApp recibe únicamente una solicitud general de cotización.
+        // No se envía el contenido del carrito.
+        const msg = "Hola STALYNP Grupo Internacional, quiero cotizar.";
+        const encodedMsg = encodeURIComponent(msg);
+
+        window.open(
+          `https://wa.me/${WHATSAPP_NUMBER}?text=${encodedMsg}`,
+          "_blank",
+        );
+      }
+
+      // ==========================================================================
+      // PRINT / PDF GENERATION
+      // ==========================================================================
+      function generatePDF() {
+        if (cart.length === 0) {
+          showToast("La lista está vacía");
+          return;
+        }
+
+        // Verifica que las librerías estén disponibles.
+        if (!window.jspdf || typeof window.jspdf.jsPDF !== "function") {
+          showToast("No se pudo cargar el generador PDF");
+          return;
+        }
+
+        const { jsPDF } = window.jspdf;
+        const doc = new jsPDF({
+          orientation: "portrait",
+          unit: "mm",
+          format: "a4",
+        });
+
+        const today = new Date();
+        const fecha = today.toLocaleDateString("es-PE");
+
+        // Encabezado
+        doc.setFont("helvetica", "bold");
+        doc.setFontSize(18);
+        doc.text("STALYNP", 14, 18);
+
+        doc.setFont("helvetica", "normal");
+        doc.setFontSize(9);
+        doc.text("GRUPO INTERNACIONAL — INGENIERÍA & CONSTRUCCIÓN", 14, 24);
+
+        doc.setFont("helvetica", "bold");
+        doc.setFontSize(11);
+        doc.text("LISTA DE MATERIALES / SOLICITUD DE COTIZACIÓN", 14, 34);
+
+        doc.setFont("helvetica", "normal");
+        doc.setFontSize(9);
+        doc.text(`Fecha: ${fecha}`, 14, 40);
+
+        // Datos exactos del carrito
+        const rows = [];
+        let grandTotal = 0;
+
+        cart.forEach((item, index) => {
+          const cantidad = Number(item.cantidad) || 0;
+          const precio = Number(item.precio) || 0;
+          const subtotal = precio * cantidad;
+          grandTotal += subtotal;
+
+          rows.push([
+            index + 1,
+            item.nombre,
+            item.unidad,
+            cantidad,
+            `S/ ${precio.toFixed(2)}`,
+            `S/ ${subtotal.toFixed(2)}`,
+          ]);
+        });
+
+        // Tabla
+        if (typeof doc.autoTable === "function") {
+          doc.autoTable({
+            startY: 47,
+            head: [
+              [
+                "ITEM",
+                "PRODUCTO",
+                "UNIDAD",
+                "CANTIDAD",
+                "PRECIO UNIT.",
+                "SUBTOTAL",
+              ],
+            ],
+            body: rows,
+            theme: "grid",
+            styles: {
+              font: "helvetica",
+              fontSize: 8,
+              cellPadding: 3,
+              textColor: [30, 30, 30],
+            },
+            headStyles: {
+              fillColor: [179, 138, 61],
+              textColor: [255, 255, 255],
+              fontStyle: "bold",
+            },
+            columnStyles: {
+              0: { cellWidth: 12, halign: "center" },
+              3: { cellWidth: 20, halign: "center" },
+              4: { cellWidth: 27, halign: "right" },
+              5: { cellWidth: 27, halign: "right" },
+            },
+          });
+
+          const finalY = doc.lastAutoTable.finalY || 55;
+
+          doc.setFont("helvetica", "bold");
+          doc.setFontSize(12);
+          doc.text(
+            `TOTAL ESTIMADO: S/ ${grandTotal.toFixed(2)}`,
+            14,
+            finalY + 12,
+          );
+
+          doc.setFont("helvetica", "italic");
+          doc.setFontSize(8);
+          doc.text(
+            "Precios sujetos a confirmación técnica en cotización.",
+            14,
+            finalY + 19,
+          );
+          doc.text(
+            "STALYNP GRUPO INTERNACIONAL — Suministros y Soluciones para la Construcción",
+            14,
+            finalY + 25,
+          );
+        } else {
+          // Respaldo si AutoTable no llegó a cargar.
+          let y = 50;
+          doc.setFontSize(8);
+          rows.forEach((row) => {
+            doc.text(
+              `${row[0]}. ${row[1]} | ${row[2]} | Cant.: ${row[3]} | ${row[5]}`,
+              14,
+              y,
+            );
+            y += 6;
+            if (y > 275) {
+              doc.addPage();
+              y = 20;
+            }
+          });
+          doc.setFont("helvetica", "bold");
+          doc.text(`TOTAL ESTIMADO: S/ ${grandTotal.toFixed(2)}`, 14, y + 8);
+        }
+
+        // Descarga automática.
+        const fechaArchivo = today.toISOString().slice(0, 10);
+        doc.save(`STALYNP_Lista_Materiales_${fechaArchivo}.pdf`);
+        showToast("PDF descargado correctamente");
+      }
+
+      // TOAST NOTIFICATIONS========================================
+      function showToast(message) {
+        toastMsg.textContent = message;
+        toast.classList.add("show");
+        setTimeout(() => {
+          toast.classList.remove("show");
+        }, 2500);
+      }
+    </script>
+  </body>
+</html>

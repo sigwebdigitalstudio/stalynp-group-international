@@ -1,0 +1,422 @@
+.about-section-light {
+  position: relative;
+  background-color: #e2e5e7;
+  color: #0f172a;
+  padding: 100px 24px;
+  font-family: "Montserrat", sans-serif;
+  overflow: hidden;
+}
+
+/* Fondos Decorativos Claros */
+.about-bg-light {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.about-bg-circle-light {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(90px);
+  opacity: 0.6;
+}
+
+.about-circle-1-light {
+  top: -10%;
+  right: -5%;
+  width: 450px;
+  height: 450px;
+  background: radial-gradient(
+    circle,
+    rgba(186, 103, 8, 0.15) 0%,
+    rgba(255, 255, 255, 0) 70%
+  );
+}
+
+.about-circle-2-light {
+  bottom: -10%;
+  left: -5%;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(
+    circle,
+    rgba(180, 83, 9, 0.1) 0%,
+    rgba(255, 255, 255, 0) 70%
+  );
+}
+
+.about-grid-light {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(#cbd5e1 1px, transparent 1px);
+  background-size: 32px 32px;
+  opacity: 0.4;
+}
+
+/* Contenedor Principal */
+.about-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+/* Header de Sección */
+.about-header-light {
+  text-align: center;
+  margin-bottom: 70px;
+}
+
+.about-mini-title-light {
+  display: inline-block;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 3px;
+  color: #b67e17;
+  text-transform: uppercase;
+  background: rgba(217, 119, 6, 0.1);
+  padding: 6px 18px;
+  border-radius: 30px;
+  margin-bottom: 16px;
+}
+
+.about-header-light h2 {
+  font-size: 2.8rem;
+  font-weight: 800;
+  color: #0f172a;
+  line-height: 1.2;
+}
+
+.about-header-light h2 em {
+  font-style: normal;
+  color: #d97706;
+  background: linear-gradient(135deg, #d97706 0%, #b45309 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Bloque Principal */
+.about-main-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+  margin-bottom: 90px;
+}
+
+/* Imagen y Marco */
+.about-image-wrapper-light {
+  position: relative;
+}
+
+.about-image-frame-light {
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 20px 40px -15px rgba(15, 23, 42, 0.12);
+  border: 4px solid #ffffff;
+  background: #ffffff;
+}
+
+.about-image-frame-light img {
+  width: 100%;
+  height: 480px;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s ease;
+}
+
+.about-image-frame-light:hover img {
+  transform: scale(1.03);
+}
+
+.about-year-badge {
+  position: absolute;
+  bottom: -25px;
+  right: -20px;
+  background: #ffffff;
+  padding: 20px 28px;
+  border-radius: 16px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  border: 1px solid #e2e8f0;
+}
+
+.about-year-badge strong {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: #d97706;
+  line-height: 1;
+}
+
+.about-year-badge span {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #475569;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  line-height: 1.3;
+}
+
+/* Contenido Texto */
+.about-kicker-light {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #d97706;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+  display: block;
+}
+
+.about-content-light h3 {
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: #0f172a;
+  margin-bottom: 24px;
+  line-height: 1.25;
+}
+
+.about-content-light h3 span {
+  color: #d97706;
+}
+
+.about-lead-light {
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #334155;
+  line-height: 1.7;
+  margin-bottom: 16px;
+}
+
+.about-content-light p {
+  font-size: 0.95rem;
+  color: #64748b;
+  line-height: 1.7;
+  margin-bottom: 16px;
+}
+
+/* Estadísticas Claros */
+.about-stats-light {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-top: 35px;
+  padding-top: 30px;
+  border-top: 1px solid #e2e8f0;
+}
+
+.about-stat-light strong {
+  display: block;
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: #0f172a;
+}
+
+.about-stat-light span {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #64748b;
+  line-height: 1.3;
+}
+
+/* Tarjetas Misión y Visión */
+.about-purpose-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  margin-bottom: 90px;
+}
+
+.purpose-card-light {
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 40px;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.purpose-card-light:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+  border-color: #cbd5e1;
+}
+
+.purpose-number-light {
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: #f1f5f9;
+}
+
+.purpose-icon-light {
+  width: 60px;
+  height: 60px;
+  background: rgba(217, 119, 6, 0.1);
+  color: #d97706;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  margin-bottom: 24px;
+}
+
+.purpose-content-light span {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #b45309;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.purpose-content-light h3 {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 12px;
+}
+
+.purpose-content-light p {
+  font-size: 0.95rem;
+  color: #64748b;
+  line-height: 1.6;
+}
+
+/* Sección Valores */
+.values-container-light {
+  background: #ffffff;
+  border-radius: 24px;
+  padding: 60px 40px;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.02);
+}
+
+.values-title-light {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.values-title-light span {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #d97706;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.values-title-light h3 {
+  font-size: 2rem;
+  font-weight: 800;
+  color: #0f172a;
+  margin-top: 8px;
+}
+
+.values-grid-light {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+.value-item-light {
+  background: #f8fafc;
+  padding: 30px 20px;
+  border-radius: 16px;
+  border: 1px solid #f1f5f9;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.value-item-light:hover {
+  background: #ffffff;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
+  border-color: #cbd5e1;
+  transform: translateY(-3px);
+}
+
+.value-icon-light {
+  width: 50px;
+  height: 50px;
+  background: rgba(217, 119, 6, 0.1);
+  color: #d97706;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  margin: 0 auto 18px;
+}
+
+.value-item-light h4 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 8px;
+}
+
+.value-item-light p {
+  font-size: 0.85rem;
+  color: #64748b;
+  line-height: 1.5;
+}
+
+/* Cita Final */
+.about-final-light {
+  text-align: center;
+  margin-top: 80px;
+}
+
+.about-final-light p {
+  font-size: 1.4rem;
+  font-weight: 600;
+  font-style: italic;
+  color: #334155;
+  max-width: 700px;
+  margin: 0 auto 12px;
+}
+
+.about-final-light span {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #d97706;
+  letter-spacing: 2px;
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+  .about-main-grid,
+  .about-purpose-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .values-grid-light {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 576px) {
+  .values-grid-light {
+    grid-template-columns: 1fr;
+  }
+
+  .about-stats-light {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .about-year-badge {
+    right: 10px;
+    bottom: -15px;
+    padding: 12px 20px;
+  }
+}

@@ -1,0 +1,613 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Stalynp - Grupo Internacional</title>
+
+    <!-- GOOGLE FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+
+    <link rel="stylesheet" href="style_header_foot.css" />
+    <link rel="stylesheet" href="styleiconos.css" />
+    <link rel="icon" type="image/png" href="/assets/iconos/logo2.png" />
+
+    <style>
+      /* =========================================
+         SECCIÓN TRABAJA CON NOSOTROS (TEMA CLARO)
+         ========================================= */
+
+      .work-with-us-section {
+        padding: 90px 20px;
+        background: #161426c5;
+        position: relative;
+        overflow: hidden;
+        border-bottom: 1px solid #e5e7eb;
+      }
+
+      .work-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 1.1fr 1fr;
+        gap: 50px;
+        align-items: center;
+      }
+
+      @media (max-width: 968px) {
+        .work-container {
+          grid-template-columns: 1fr;
+          gap: 40px;
+        }
+      }
+
+      .work-info-side h2 {
+        font-size: 2.3rem;
+        font-weight: 800;
+        color: #f8f6f6;
+        margin-bottom: 20px;
+        line-height: 1.25;
+      }
+
+      .work-info-side h2 span {
+        color: #b8860b; /* Dorado corporativo/ingeniería */
+      }
+
+      .work-info-side p.work-description {
+        font-size: 1.05rem;
+        color: #555555;
+        line-height: 1.6;
+        margin-bottom: 30px;
+      }
+
+      .work-features {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      .work-feature-card {
+        display: flex;
+        align-items: flex-start;
+        gap: 18px;
+        background: #f8f9fa;
+        padding: 20px;
+        border-radius: 12px;
+        border-left: 4px solid #b8860b;
+        border-top: 1px solid #eee;
+        border-right: 1px solid #eee;
+        border-bottom: 1px solid #eee;
+        box-shadow: 0 4px 12px rgba(111, 10, 10, 0.03);
+        transition:
+          transform 0.3s ease,
+          box-shadow 0.3s ease;
+      }
+
+      .work-feature-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+        background: #ffffff;
+      }
+
+      .work-feature-icon {
+        font-size: 1.5rem;
+        color: #b8860b;
+        background: #fef9e7;
+        width: 48px;
+        height: 48px;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+      }
+
+      .work-feature-content h4 {
+        font-size: 1.1rem;
+        font-weight: 700;
+        color: #1a1a1a;
+        margin-bottom: 6px;
+      }
+
+      .work-feature-content p {
+        font-size: 0.92rem;
+        color: #666666;
+        margin: 0;
+        line-height: 1.5;
+      }
+
+      /* Formulario */
+      .work-form-side {
+        background: #ffffff;
+        border: 1px solid #e2e8f0;
+        padding: 40px;
+        border-radius: 16px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+      }
+
+      .work-form-side h3 {
+        font-size: 1.6rem;
+        font-weight: 800;
+        margin-bottom: 8px;
+        color: #111111;
+      }
+
+      .work-form-side p.form-subtitle {
+        font-size: 0.92rem;
+        color: #666;
+        margin-bottom: 28px;
+        line-height: 1.4;
+      }
+
+      .work-form-group {
+        margin-bottom: 22px;
+      }
+
+      .work-form-group label {
+        display: block;
+        font-size: 0.85rem;
+        font-weight: 700;
+        color: #333333;
+        margin-bottom: 8px;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+
+      .work-form-control {
+        width: 100%;
+        padding: 14px 16px;
+        background: #f8f9fa;
+        border: 1px solid #d1d5db;
+        border-radius: 8px;
+        color: #111111;
+        font-family: inherit;
+        font-size: 0.95rem;
+        transition: all 0.25s ease;
+      }
+
+      .work-form-control:focus {
+        outline: none;
+        border-color: #b8860b;
+        background: #ffffff;
+        box-shadow: 0 0 0 4px rgba(184, 134, 11, 0.12);
+      }
+
+      textarea.work-form-control {
+        resize: vertical;
+        min-height: 110px;
+      }
+
+      .work-submit-btn {
+        width: 100%;
+        padding: 16px;
+        background: #25d366;
+        color: #ffffff;
+        border: none;
+        border-radius: 8px;
+        font-weight: 700;
+        font-size: 1rem;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        transition:
+          background 0.3s ease,
+          transform 0.2s ease,
+          box-shadow 0.2s ease;
+        box-shadow: 0 4px 14px rgba(37, 211, 102, 0.35);
+      }
+
+      .work-submit-btn:hover {
+        background: #1eb956;
+        transform: translateY(-2px);
+        box-shadow: 0 6px 18px rgba(37, 211, 102, 0.45);
+      }
+
+      .work-submit-btn i {
+        font-size: 1.3rem;
+      }
+    </style>
+  </head>
+  <script src="header.js"></script>
+  <script src="scriptbtns.js"></script>
+  <script src="script_principal.js" defer></script>
+
+  <body>
+    <div id="contenedor-botones"></div>
+
+    <header class="header" id="header">
+      <div class="header-container">
+        <a href="index.html" class="brand">
+          <div class="brand-logo">
+            <img src="./assets/iconos/logo2.png" alt="Logo Stalynp" />
+          </div>
+          <div class="brand-text">
+            <span class="brand-name">STALYNP</span>
+            <span class="brand-subtitle">GRUPO INTERNACIONAL</span>
+          </div>
+        </a>
+
+        <!-- NAVEGACIÓN DESKTOP -->
+        <nav class="desktop-nav">
+          <a href="index.html" class="nav-link">INICIO</a>
+
+          <div class="nav-item dropdown">
+            <a href="javascript:void(0);" class="nav-link active">
+              NUESTRA EMPRESA
+              <svg
+                width="10"
+                height="6"
+                viewBox="0 0 10 6"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M1 1L5 5L9 1"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </a>
+            <div class="dropdown-menu">
+              <a href="nosotros.html" class="dropdown-item">NOSOTROS</a>
+              <a href="empleo.html" class="dropdown-item"
+                >TRABAJA CON NOSOTROS</a
+              >
+              <a href="certificaciones.html" class="dropdown-item"
+                >CERTIFICACIONES</a
+              >
+            </div>
+          </div>
+
+          <div class="nav-item dropdown">
+            <a href="javascript:void(0);" class="nav-link">
+              SERVICIOS
+              <svg
+                width="10"
+                height="6"
+                viewBox="0 0 10 6"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M1 1L5 5L9 1"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </a>
+            <div class="dropdown-menu">
+              <a href="servicios.html" class="dropdown-item"
+                >SERVICIOS GENERALES</a
+              >
+              <a href="ingenieria.html" class="dropdown-item">INGENIERÍA</a>
+              <a href="arquitectura.html" class="dropdown-item">ARQUITECTURA</a>
+              <a href="gerencia-proyectos.html" class="dropdown-item"
+                >GERENCIA Y SUPERVISION DE PROYECTOS</a
+              >
+            </div>
+          </div>
+
+          <a href="proyectos.html" class="nav-link">PROYECTOS</a>
+          <a href="contacto.html" class="nav-link">CONTACTO</a>
+        </nav>
+
+        <!-- BOTONES DE ACCIÓN DESKTOP -->
+        <div class="header-actions">
+          <a href="contacto.html" class="header-button">COTIZAR</a>
+          <a
+            href="tienda.html"
+            class="header-button"
+            style="background: rgb(82, 64, 27); border-color: rgb(82, 64, 27)"
+          >
+            TIENDA
+          </a>
+        </div>
+
+        <!-- BOTÓN HAMBURGUESA MOBILE -->
+        <button
+          class="menu-toggle"
+          id="menuToggle"
+          aria-label="Abrir menú"
+          aria-expanded="false"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+
+      <!-- MENÚ MOBILE -->
+      <div class="mobile-menu" id="mobileMenu">
+        <a href="index.html" class="mobile-link">INICIO</a>
+
+        <div class="mobile-dropdown-container">
+          <div
+            class="mobile-link mobile-dropdown-toggle"
+            style="
+              cursor: pointer;
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+            "
+          >
+            <span>NUESTRA EMPRESA</span>
+            <svg
+              width="10"
+              height="6"
+              viewBox="0 0 10 6"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M1 1L5 5L9 1"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </div>
+          <div class="mobile-dropdown">
+            <a href="nosotros.html" class="mobile-sublink">NOSOTROS</a>
+            <a href="empleo.html" class="mobile-sublink"
+              >TRABAJA CON NOSOTROS</a
+            >
+            <a href="certificaciones.html" class="mobile-sublink"
+              >CERTIFICACIONES</a
+            >
+          </div>
+        </div>
+
+        <div class="mobile-dropdown-container">
+          <div
+            class="mobile-link mobile-dropdown-toggle"
+            style="
+              cursor: pointer;
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+            "
+          >
+            <span>SERVICIOS</span>
+            <svg
+              width="10"
+              height="6"
+              viewBox="0 0 10 6"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M1 1L5 5L9 1"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </div>
+          <div class="mobile-dropdown">
+            <a href="servicios.html" class="mobile-sublink"
+              >SERVICIOS GENERALES</a
+            >
+            <a href="ingenieria.html" class="mobile-sublink">INGENIERÍA</a>
+            <a href="arquitectura.html" class="mobile-sublink">ARQUITECTURA</a>
+            <a href="remodelacion.html" class="mobile-sublink"
+              >MANTENIMIENTO Y REMODELACION</a
+            >
+            <a href="gerencia-proyectos.html" class="mobile-sublink"
+              >GERENCIA Y SUPERVISION DE PROYECTOS</a
+            >
+          </div>
+        </div>
+
+        <a href="proyectos.html" class="mobile-link">PROYECTOS</a>
+        <a href="contacto.html" class="mobile-link">CONTACTO</a>
+
+        <a href="cotizar.html" class="mobile-button">COTIZAR</a>
+        <a
+          href="tienda.html"
+          class="mobile-button"
+          style="background: rgb(82, 64, 27); border-color: rgb(82, 64, 27)"
+        >
+          TIENDA
+        </a>
+      </div>
+    </header>
+    <!-- SECCIÓN: TRABAJA CON NOSOTROS -->
+    <section class="work-with-us-section" id="trabaja-con-nosotros">
+      <div class="work-container">
+        <!-- Columna Informativa -->
+        <div class="work-info-side">
+          <h2>
+            Únete a Nuestro Equipo de <span>Ingeniería y Construcción</span> en
+            Piura
+          </h2>
+          <p class="work-description">
+            Forma parte de una constructora líder en el norte del país. Buscamos
+            talentos apasionados: ingenieros, técnicos y profesionales
+            comprometidos con la excelencia en proyectos de infraestructura e
+            ingeniería.
+          </p>
+
+          <div class="work-features">
+            <div class="work-feature-card">
+              <div class="work-feature-icon">
+                <i class="fa-solid fa-hard-hat"></i>
+              </div>
+              <div class="work-feature-content">
+                <h4>Proyectos Innovadores</h4>
+                <p>
+                  Participa activamente en obras civiles, remodelaciones y
+                  gerencia de proyectos de alta exigencia técnica.
+                </p>
+              </div>
+            </div>
+
+            <div class="work-feature-card">
+              <div class="work-feature-icon">
+                <i class="fa-solid fa-chart-line"></i>
+              </div>
+              <div class="work-feature-content">
+                <h4>Crecimiento Profesional</h4>
+                <p>
+                  Desarrolla tu línea de carrera junto a un equipo
+                  multidisciplinario calificado.
+                </p>
+              </div>
+            </div>
+
+            <div class="work-feature-card">
+              <div class="work-feature-icon">
+                <i class="fa-solid fa-location-dot"></i>
+              </div>
+              <div class="work-feature-content">
+                <h4>Oportunidades en Piura</h4>
+                <p>
+                  Estabilidad laboral e incorporación directa a las principales
+                  obras de la región.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Columna Formulario -->
+        <div class="work-form-side">
+          <h3>Postula Directamente</h3>
+          <p class="form-subtitle">
+            Completa tus datos para contactar inmediatamente con el área de
+            Selección por WhatsApp.
+          </p>
+
+          <form id="workWhatsAppForm">
+            <div class="work-form-group">
+              <label for="workName">Nombre Completo</label>
+              <input
+                type="text"
+                id="workName"
+                class="work-form-control"
+                placeholder="Ej. Carlos Mendoza"
+                required
+              />
+            </div>
+
+            <div class="work-form-group">
+              <label for="workSpecialty"
+                >Especialidad / Puesto al que Postulas</label
+              >
+              <select id="workSpecialty" class="work-form-control" required>
+                <option value="" disabled selected>
+                  Selecciona una opción
+                </option>
+                <option value="Ingeniero Civil / Residente de Obra">
+                  Ingeniero Civil / Residente de Obra
+                </option>
+                <option value="Arquitecto / Diseñador">
+                  Arquitecto / Diseñador
+                </option>
+                <option value="Maestro de Obra / Capataz">
+                  Maestro de Obra / Capataz
+                </option>
+                <option value="Técnico Electricista / Sanitario">
+                  Técnico Electricista / Sanitario
+                </option>
+                <option value="Personal Operativo / Ayudante">
+                  Personal Operativo / Ayudante
+                </option>
+                <option value="Otro Puesto de Ingeniería">
+                  Otro Puesto de Ingeniería
+                </option>
+              </select>
+            </div>
+
+            <div class="work-form-group">
+              <label for="workExperience">Años de Experiencia</label>
+              <input
+                type="text"
+                id="workExperience"
+                class="work-form-control"
+                placeholder="Ej. 3 años en construcción"
+                required
+              />
+            </div>
+
+            <div class="work-form-group">
+              <label for="workMessage">Breve Mensaje / Presentación</label>
+              <textarea
+                id="workMessage"
+                class="work-form-control"
+                placeholder="Cuéntanos brevemente sobre tus proyectos previos..."
+              ></textarea>
+            </div>
+
+            <button type="submit" class="work-submit-btn">
+              <i class="fa-brands fa-whatsapp"></i> Enviar Postulación por
+              WhatsApp
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- Script de Envío a WhatsApp -->
+    <script>
+      document
+        .getElementById("workWhatsAppForm")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+
+          const name = document.getElementById("workName").value.trim();
+          const specialty = document.getElementById("workSpecialty").value;
+          const experience = document
+            .getElementById("workExperience")
+            .value.trim();
+          const message = document.getElementById("workMessage").value.trim();
+
+          const phoneNumber = "51925631826";
+
+          const text =
+            `¡Hola, STALYNP Grupo Internacional! 👷‍♂️\n\n` +
+            `Me interesa postular a una vacante en su constructora:\n` +
+            `👤 *Nombre:* ${name}\n` +
+            `🛠️ *Puesto:* ${specialty}\n` +
+            `⏳ *Experiencia:* ${experience}\n` +
+            `💬 *Mensaje:* ${message}`;
+
+          const encodedText = encodeURIComponent(text);
+          const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodedText}`;
+
+          window.open(whatsappURL, "_blank");
+        });
+
+      // Año dinámico footer
+      const yearSpan = document.getElementById("currentYear");
+      if (yearSpan) {
+        yearSpan.textContent = new Date().getFullYear();
+      }
+
+      // Botón Back to Top
+      const backToTopBtn = document.getElementById("backToTop");
+      if (backToTopBtn) {
+        backToTopBtn.addEventListener("click", () => {
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        });
+      }
+    </script>
+  </body>
+</html>

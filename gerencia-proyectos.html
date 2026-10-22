@@ -1,0 +1,673 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Stalynp - Servicios de Ingeniería</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+
+    <link rel="stylesheet" href="style_header_foot.css" />
+    <link rel="stylesheet" href="header.css" />
+    <link rel="stylesheet" href="footer.css" />
+    <link rel="icon" type="image/png" href="/assets/iconos/logo2.png" />
+  </head>
+
+  <script src="HeadFoot.js" defer></script>
+  <script src="scriptindex.js" defer></script>
+  <script src="scriptbtns.js"></script>
+
+  <!-- ESTILOS EXCLUSIVOS CON PREFIJO AISLADO .pm- -->
+  <style>
+    /* ==========================================================================
+     SECCIÓN DE GERENCIA Y SUPERVISIÓN DE PROYECTOS (.pm-)
+     ========================================================================== */
+
+    .pm-services-section {
+      position: relative;
+      background-color: #070d19;
+      color: #f8fafc;
+      padding: 100px 20px;
+      font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      box-sizing: border-box;
+      overflow: hidden;
+    }
+
+    /* Fondo dinámico con temática industrial/gestión */
+    .pm-bg-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image:
+        linear-gradient(
+          to bottom,
+          rgba(7, 13, 25, 0.96) 0%,
+          rgba(15, 23, 42, 0.88) 50%,
+          rgba(7, 13, 25, 0.98) 100%
+        ),
+        url("https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1920&q=80");
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      z-index: 1;
+    }
+
+    .pm-services-section * {
+      box-sizing: inherit;
+      margin: 0;
+      padding: 0;
+    }
+
+    .pm-container {
+      position: relative;
+      z-index: 2;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    /* Encabezado */
+    .pm-header {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .pm-badge {
+      display: inline-block;
+      background-color: rgba(2, 132, 199, 0.18);
+      color: #38bdf8;
+      padding: 6px 18px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+      border: 1px solid rgba(56, 189, 248, 0.35);
+    }
+
+    .pm-title {
+      font-size: 2.6rem;
+      font-weight: 800;
+      color: #ffffff;
+      margin-bottom: 16px;
+      line-height: 1.2;
+      letter-spacing: -0.5px;
+    }
+
+    .pm-description {
+      font-size: 1.1rem;
+      color: #cbd5e1;
+      max-width: 720px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    /* Grid Layout */
+    .pm-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 30px;
+    }
+
+    /* Tarjeta Individual con Cristal Ahumado */
+    .pm-card {
+      background-color: rgba(15, 23, 42, 0.8);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      transition:
+        transform 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+        box-shadow 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+        border-color 0.35s ease;
+      display: flex;
+      flex-direction: column;
+      opacity: 0;
+      transform: translateY(30px);
+    }
+
+    .pm-card.pm-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .pm-card:hover {
+      transform: translateY(-8px);
+      border-color: #38bdf8;
+      box-shadow: 0 16px 35px rgba(2, 132, 199, 0.25);
+    }
+
+    /* Contenedor de Imagen y Badge de Número */
+    .pm-card-image-wrapper {
+      position: relative;
+      height: 210px;
+      overflow: hidden;
+    }
+
+    .pm-card-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+
+    .pm-card:hover .pm-card-img {
+      transform: scale(1.08);
+    }
+
+    /* Indicador Numérico de Proceso */
+    .pm-card-number {
+      position: absolute;
+      bottom: 12px;
+      left: 15px;
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: rgba(255, 255, 255, 0.9);
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
+      line-height: 1;
+      font-family: monospace, sans-serif;
+    }
+
+    .pm-card-category {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      background-color: rgba(7, 13, 25, 0.88);
+      backdrop-filter: blur(4px);
+      color: #f59e0b;
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 5px 12px;
+      border-radius: 6px;
+      border: 1px solid rgba(245, 158, 11, 0.35);
+    }
+
+    /* Contenido */
+    .pm-card-content {
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+
+    .pm-card-title {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: #f8fafc;
+      margin-bottom: 12px;
+    }
+
+    .pm-card-text {
+      font-size: 0.95rem;
+      color: #94a3b8;
+      line-height: 1.55;
+      margin-bottom: 22px;
+      flex-grow: 1;
+    }
+
+    .pm-card-footer {
+      margin-top: auto;
+    }
+
+    /* Botón con degradado cobalto */
+    .pm-btn {
+      display: block;
+      text-align: center;
+      background: linear-gradient(135deg, #0284c7, #0369a1);
+      color: #ffffff;
+      padding: 11px 20px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition:
+        background 0.3s ease,
+        transform 0.2s ease,
+        box-shadow 0.3s ease;
+    }
+
+    .pm-btn:hover {
+      background: linear-gradient(135deg, #0369a1, #075985);
+      transform: scale(1.02);
+      box-shadow: 0 4px 14px rgba(2, 132, 199, 0.4);
+    }
+
+    /* Adaptabilidad Móvil */
+    @media (max-width: 768px) {
+      .pm-services-section {
+        padding: 60px 15px;
+      }
+
+      .pm-title {
+        font-size: 2rem;
+      }
+
+      .pm-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+
+  <body>
+    <div id="contenedor-botones"></div>
+    <header class="header" id="header">
+      <div class="header-container">
+        <a href="index.html" class="brand">
+          <div class="brand-logo">
+            <img src="./assets/iconos/logo2.png" alt="Logo Stalynp" />
+          </div>
+          <div class="brand-text">
+            <span class="brand-name">STALYNP</span>
+            <span class="brand-subtitle">GRUPO INTERNACIONAL</span>
+          </div>
+        </a>
+
+        <!-- NAVEGACIÓN DESKTOP -->
+        <nav class="desktop-nav">
+          <a href="index.html" class="nav-link">INICIO</a>
+
+          <div class="nav-item dropdown">
+            <a href="javascript:void(0);" class="nav-link">
+              NUESTRA EMPRESA
+              <svg
+                width="10"
+                height="6"
+                viewBox="0 0 10 6"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M1 1L5 5L9 1"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </a>
+            <div class="dropdown-menu">
+              <a href="nosotros.html" class="dropdown-item">NOSOTROS</a>
+              <a href="empleo.html" class="dropdown-item"
+                >TRABAJA CON NOSOTROS</a
+              >
+              <a href="certificaciones.html" class="dropdown-item"
+                >CERTIFICACIONES</a
+              >
+            </div>
+          </div>
+
+          <div class="nav-item dropdown">
+            <a href="javascript:void(0);" class="nav-link active">
+              SERVICIOS
+              <svg
+                width="10"
+                height="6"
+                viewBox="0 0 10 6"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M1 1L5 5L9 1"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </a>
+            <div class="dropdown-menu">
+              <a href="servicios.html" class="dropdown-item"
+                >SERVICIOS GENERALES</a
+              >
+              <a href="ingenieria.html" class="dropdown-item">INGENIERÍA</a>
+              <a href="arquitectura.html" class="dropdown-item">ARQUITECTURA</a>
+              <a href="gerencia-proyectos.html" class="dropdown-item"
+                >GERENCIA Y SUPERVISION DE PROYECTOS</a
+              >
+            </div>
+          </div>
+
+          <a href="proyectos.html" class="nav-link">PROYECTOS</a>
+          <a href="contacto.html" class="nav-link">CONTACTO</a>
+        </nav>
+
+        <!-- BOTONES DE ACCIÓN DESKTOP -->
+        <div class="header-actions">
+          <a href="cotizar.html" class="header-button">COTIZAR</a>
+          <a
+            href="tienda.html"
+            class="header-button"
+            style="background: rgb(82, 64, 27); border-color: rgb(82, 64, 27)"
+          >
+            TIENDA
+          </a>
+        </div>
+
+        <!-- BOTÓN HAMBURGUESA MOBILE -->
+        <button
+          class="menu-toggle"
+          id="menuToggle"
+          aria-label="Abrir menú"
+          aria-expanded="false"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+
+      <!-- MENÚ MOBILE -->
+      <div class="mobile-menu" id="mobileMenu">
+        <a href="index.html" class="mobile-link">INICIO</a>
+
+        <div class="mobile-dropdown-container">
+          <div
+            class="mobile-link mobile-dropdown-toggle"
+            style="
+              cursor: pointer;
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+            "
+          >
+            <span>NUESTRA EMPRESA</span>
+            <svg
+              width="10"
+              height="6"
+              viewBox="0 0 10 6"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M1 1L5 5L9 1"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </div>
+          <div class="mobile-dropdown">
+            <a href="nosotros.html" class="mobile-sublink">NOSOTROS</a>
+            <a href="empleo.html" class="mobile-sublink"
+              >TRABAJA CON NOSOTROS</a
+            >
+            <a href="certificaciones.html" class="mobile-sublink"
+              >CERTIFICACIONES</a
+            >
+          </div>
+        </div>
+
+        <div class="mobile-dropdown-container">
+          <div
+            class="mobile-link mobile-dropdown-toggle"
+            style="
+              cursor: pointer;
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+            "
+          >
+            <span>SERVICIOS</span>
+            <svg
+              width="10"
+              height="6"
+              viewBox="0 0 10 6"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M1 1L5 5L9 1"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </div>
+          <div class="mobile-dropdown">
+            <a href="servicios.html" class="mobile-sublink"
+              >SERVICIOS GENERALES</a
+            >
+            <a href="ingenieria.html" class="mobile-sublink">INGENIERÍA</a>
+            <a href="arquitectura.html" class="mobile-sublink">ARQUITECTURA</a>
+
+            <a href="gerencia-proyectos.html" class="mobile-sublink"
+              >GERENCIA Y SUPERVISION DE PROYECTOS</a
+            >
+          </div>
+        </div>
+
+        <a href="proyectos.html" class="mobile-link">PROYECTOS</a>
+        <a href="contacto.html" class="mobile-link">CONTACTO</a>
+
+        <a href="cotizar.html" class="mobile-button">COTIZAR</a>
+        <a
+          href="tienda.html"
+          class="mobile-button"
+          style="background: rgb(82, 64, 27); border-color: rgb(82, 64, 27)"
+        >
+          TIENDA
+        </a>
+      </div>
+    </header>
+    <!-- ======= SECCIÓN DE GERENCIA Y SUPERVISIÓN DE PROYECTOS ==== -->
+    <section class="pm-services-section" id="gerencia-supervision">
+      <!-- Capa de imagen de fondo industrial/corporativa -->
+      <div class="pm-bg-overlay"></div>
+
+      <div class="pm-container">
+        <!-- Encabezado de la Sección -->
+        <header class="pm-header">
+          <span class="pm-badge">Control, Eficiencia & Calidad</span>
+          <h2 class="pm-title">Gerencia y Supervisión de Proyectos</h2>
+          <p class="pm-description">
+            Dirigimos, controlamos y fiscalizamos cada etapa constructiva
+            garantizando el cumplimiento estricto del alcance, cronograma,
+            presupuesto y normativas de seguridad.
+          </p>
+        </header>
+
+        <!-- Grid de Servicios de Gerencia y Supervisión -->
+        <div class="pm-grid">
+          <!-- Servicio 1: Planificación y Programación de Obra (Gantt/BIM) -->
+          <article class="pm-card">
+            <div class="pm-card-image-wrapper">
+              <img
+                src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=800&q=80"
+                alt="Planificación y Programación de Obra"
+                class="pm-card-img"
+              />
+              <span class="pm-card-number">01</span>
+              <span class="pm-card-category">Planificación</span>
+            </div>
+            <div class="pm-card-content">
+              <h3 class="pm-card-title">Planificación & Control de Tiempos</h3>
+              <p class="pm-card-text">
+                Elaboración de cronogramas integrales (Ruta Crítica / CPM, MS
+                Project, Primavera P6). Optimización de hitos constructivos para
+                evitar retrasos y sobrecostos.
+              </p>
+              <div class="pm-card-footer">
+                <a href="#contacto" class="pm-btn">Solicitar Asesoría</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Servicio 2: Control Presupuestal y Valorizaciones -->
+          <article class="pm-card">
+            <div class="pm-card-image-wrapper">
+              <img
+                src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=800&q=80"
+                alt="Control Presupuestal y Costos"
+                class="pm-card-img"
+              />
+              <span class="pm-card-number">02</span>
+              <span class="pm-card-category">Finanzas & Costos</span>
+            </div>
+            <div class="pm-card-content">
+              <h3 class="pm-card-title">Gestión Económica & Valorizaciones</h3>
+              <p class="pm-card-text">
+                Supervisión presupuestal, revisión de metrados, aprobación de
+                valorizaciones periódicas, control de adicionales de obra y
+                gestión del flujo de caja.
+              </p>
+              <div class="pm-card-footer">
+                <a href="#contacto" class="pm-btn">Solicitar Asesoría</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Servicio 3: Supervisión Técnica y Aseguramiento de Calidad (QA/QC) -->
+          <article class="pm-card">
+            <div class="pm-card-image-wrapper">
+              <img
+                src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=800&q=80"
+                alt="Supervisión Técnica de Campo"
+                class="pm-card-img"
+              />
+              <span class="pm-card-number">03</span>
+              <span class="pm-card-category">Calidad QA/QC</span>
+            </div>
+            <div class="pm-card-content">
+              <h3 class="pm-card-title">Supervisión Técnica en Sitio</h3>
+              <p class="pm-card-text">
+                Fiscalización directa del proceso constructivo en campo.
+                Verificación técnica de materiales, ensayos de laboratorio y
+                cumplimiento fiel del expediente técnico.
+              </p>
+              <div class="pm-card-footer">
+                <a href="#contacto" class="pm-btn">Solicitar Asesoría</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Servicio 4: Gestión de Licencias, Permisos y Normativa -->
+          <article class="pm-card">
+            <div class="pm-card-image-wrapper">
+              <img
+                src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&w=800&q=80"
+                alt="Gestión de Licencias y Permisos"
+                class="pm-card-img"
+              />
+              <span class="pm-card-number">04</span>
+              <span class="pm-card-category">Legal & Normativo</span>
+            </div>
+            <div class="pm-card-content">
+              <h3 class="pm-card-title">Gestión de Licencias & Permisología</h3>
+              <p class="pm-card-text">
+                Tramitación de licencias de edificación, expedientes de defensa
+                civil (ITSE), factibilidades de servicios públicos y conformidad
+                final de obra.
+              </p>
+              <div class="pm-card-footer">
+                <a href="#contacto" class="pm-btn">Solicitar Asesoría</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Servicio 5: Seguridad, Salud Ocupacional y Medio Ambiente (SSOMA) -->
+          <article class="pm-card">
+            <div class="pm-card-image-wrapper">
+              <img
+                src="https://images.unsplash.com/photo-1508873696983-2df515122519?auto=format&fit=crop&w=800&q=80"
+                alt="Seguridad e Higiene SSOMA"
+                class="pm-card-img"
+              />
+              <span class="pm-card-number">05</span>
+              <span class="pm-card-category">SSOMA</span>
+            </div>
+            <div class="pm-card-content">
+              <h3 class="pm-card-title">Supervisión SSOMA & Riesgos</h3>
+              <p class="pm-card-text">
+                Implementación y auditoría de planes de seguridad y salud en el
+                trabajo. Mitigación de riesgos operacionales y monitoreo
+                ambiental preventivo.
+              </p>
+              <div class="pm-card-footer">
+                <a href="#contacto" class="pm-btn">Solicitar Asesoría</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Servicio 6: Recepción, Comisionamiento y Cierre de Obra -->
+          <article class="pm-card">
+            <div class="pm-card-image-wrapper">
+              <img
+                src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80"
+                alt="Recepción y Cierre de Obra"
+                class="pm-card-img"
+              />
+              <span class="pm-card-number">06</span>
+              <span class="pm-card-category">Entrega Final</span>
+            </div>
+            <div class="pm-card-content">
+              <h3 class="pm-card-title">Liquidación & Entrega de Obra</h3>
+              <p class="pm-card-text">
+                Auditoría de recepción, pruebas de funcionamiento de
+                equipos/sistemas, entrega de planos As-Built y elaboración de la
+                liquidación técnica-financiera.
+              </p>
+              <div class="pm-card-footer">
+                <a href="#contacto" class="pm-btn">Solicitar Asesoría</a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- SCRIPT INDEPENDIENTE CON INTERSECTION OBSERVER -->
+    <script>
+      (function () {
+        "use strict";
+        document.addEventListener("DOMContentLoaded", function () {
+          const cards = document.querySelectorAll(".pm-card");
+
+          if ("IntersectionObserver" in window) {
+            const observerOptions = {
+              root: null,
+              rootMargin: "0px",
+              threshold: 0.15,
+            };
+
+            const cardObserver = new IntersectionObserver(function (
+              entries,
+              observer,
+            ) {
+              entries.forEach(function (entry, index) {
+                if (entry.isIntersecting) {
+                  setTimeout(function () {
+                    entry.target.classList.add("pm-visible");
+                  }, index * 100);
+                  observer.unobserve(entry.target);
+                }
+              });
+            }, observerOptions);
+
+            cards.forEach(function (card) {
+              cardObserver.observe(card);
+            });
+          } else {
+            cards.forEach(function (card) {
+              card.classList.add("pm-visible");
+            });
+          }
+        });
+      })();
+    </script>
+  </body>
+</html>

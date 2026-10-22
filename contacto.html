@@ -1,0 +1,900 @@
+<!doctype html>
+<html lang="es-PE">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- SEO PRINCIPAL: PÁGINA DE CONTACTO -->
+    <title>Contacto y Cotizaciones | STALYNP Grupo Internacional</title>
+    <meta
+      name="description"
+      content="Contacta con STALYNP Grupo Internacional para consultas sobre proyectos, ingeniería, arquitectura, construcción y servicios profesionales. Solicita información o una cotización."
+    />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="author" content="STALYNP Grupo Internacional" />
+    <meta name="theme-color" content="#111111" />
+    <link
+      rel="canonical"
+      href="https://stalynpgroupinternational.com/contacto.html"
+    />
+
+    <!-- SEO PARA COMPARTIR EN REDES SOCIALES -->
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="es_PE" />
+    <meta property="og:site_name" content="STALYNP Grupo Internacional" />
+    <meta
+      property="og:title"
+      content="Contacto y Cotizaciones | STALYNP Grupo Internacional"
+    />
+    <meta
+      property="og:description"
+      content="Comunícate con STALYNP Grupo Internacional para consultar sobre nuestros servicios y proyectos o solicitar una cotización."
+    />
+    <meta
+      property="og:url"
+      content="https://stalynpgroupinternational.com/contacto.html"
+    />
+    <meta
+      property="og:image"
+      content="https://stalynpgroupinternational.com/assets/iconos/logo2.png"
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="Contacto y Cotizaciones | STALYNP Grupo Internacional"
+    />
+    <meta
+      name="twitter:description"
+      content="Contacta con STALYNP Grupo Internacional para consultas sobre proyectos y servicios."
+    />
+    <meta
+      name="twitter:image"
+      content="https://stalynpgroupinternational.com/assets/iconos/logo2.png"
+    />
+
+    <!-- DATOS ESTRUCTURADOS PARA BUSCADORES -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "ContactPage",
+        "name": "Contacto y Cotizaciones | STALYNP Grupo Internacional",
+        "url": "https://stalynpgroupinternational.com/contacto.html",
+        "inLanguage": "es-PE",
+        "description": "Página de contacto de STALYNP Grupo Internacional para consultas sobre proyectos, ingeniería, arquitectura, construcción y servicios profesionales.",
+        "mainEntity": {
+          "@type": "Organization",
+          "name": "STALYNP Grupo Internacional",
+          "url": "https://stalynpgroupinternational.com/",
+          "logo": "https://stalynpgroupinternational.com/assets/iconos/logo2.png"
+        }
+      }
+    </script>
+
+    <!--GOOGLE FONTS-->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+    <link rel="icon" type="image/png" href="/assets/iconos/logo2.png" />
+    <link rel="stylesheet" href="style_header_foot.css" />
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: "Montserrat", sans-serif;
+        background: #111;
+        color: #fff;
+        overflow-x: hidden;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      button {
+        font-family: inherit;
+      }
+
+      /* =================================================
+          ESTILOS DE LA NUEVA SECCIÓN DE CONTACTO DIRECTO
+      ================================================== */
+      .contact-section-unique {
+        position: relative;
+        padding: 100px 5%;
+        background: #161616;
+        overflow: hidden;
+      }
+
+      .contact-section-unique::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100%;
+        height: 100%;
+        background: radial-gradient(
+          circle at 50% 20%,
+          rgba(82, 64, 27, 0.15) 0%,
+          transparent 60%
+        );
+        pointer-events: none;
+      }
+
+      .contact-container-unique {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 50px;
+        align-items: center;
+        position: relative;
+        z-index: 2;
+      }
+
+      .contact-info-side h2 {
+        font-size: 2.5rem;
+        font-weight: 800;
+        margin-bottom: 20px;
+        color: #fff;
+        letter-spacing: -0.5px;
+      }
+
+      .contact-info-side h2 span {
+        color: #d4af37;
+      }
+
+      .contact-info-side p {
+        color: #aaa;
+        font-size: 1rem;
+        line-height: 1.6;
+        margin-bottom: 35px;
+      }
+
+      .contact-cards-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+        margin-bottom: 30px;
+      }
+
+      .contact-direct-card {
+        background: #1e1e1e;
+        border: 1px solid #2a2a2a;
+        padding: 25px 20px;
+        border-radius: 12px;
+        transition: all 0.3s ease;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .contact-direct-card:hover {
+        border-color: #d4af37;
+        transform: translateY(-5px);
+        box-shadow: 0 10px 30px rgba(212, 175, 55, 0.1);
+      }
+
+      .contact-direct-card .icon-box {
+        width: 45px;
+        height: 45px;
+        background: rgba(212, 175, 55, 0.1);
+        color: #d4af37;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 8px;
+        font-size: 1.2rem;
+      }
+
+      .contact-direct-card h4 {
+        font-size: 0.85rem;
+        color: #888;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+      }
+
+      .contact-direct-card span {
+        font-size: 1rem;
+        font-weight: 600;
+        color: #fff;
+      }
+
+      /* Social Links Box */
+      .contact-social-box {
+        background: #1e1e1e;
+        border: 1px solid #2a2a2a;
+        padding: 20px;
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .contact-social-box span {
+        font-weight: 600;
+        font-size: 0.9rem;
+        color: #ccc;
+      }
+
+      .social-icons-row {
+        display: flex;
+        gap: 12px;
+      }
+
+      .social-icons-row a {
+        width: 38px;
+        height: 38px;
+        background: #252525;
+        color: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        transition: all 0.3s ease;
+      }
+
+      .social-icons-row a:hover {
+        background: #d4af37;
+        color: #111;
+        transform: scale(1.1);
+      }
+
+      /* Image & Dynamic Location Side */
+      .contact-visual-side {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        gap: 25px;
+      }
+
+      .contact-image-wrapper {
+        position: relative;
+        width: 100%;
+        height: 320px;
+        border-radius: 16px;
+        overflow: hidden;
+        border: 1px solid #2a2a2a;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+      }
+
+      .contact-image-wrapper img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s ease;
+      }
+
+      .contact-image-wrapper:hover img {
+        transform: scale(1.05);
+      }
+
+      .dynamic-location-card {
+        background: linear-gradient(135deg, #1e1e1e, #141414);
+        border: 1px solid #333;
+        padding: 25px;
+        border-radius: 16px;
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .dynamic-location-card::after {
+        content: "";
+        position: absolute;
+        right: -20px;
+        bottom: -20px;
+        width: 100px;
+        height: 100px;
+        background: rgba(212, 175, 55, 0.05);
+        border-radius: 50%;
+      }
+
+      .location-pulse-icon {
+        width: 55px;
+        height: 55px;
+        background: #d4af37;
+        color: #111;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.4rem;
+        flex-shrink: 0;
+        box-shadow: 0 0 0 rgba(212, 175, 55, 0.4);
+        animation: pulse-gold 2s infinite;
+      }
+
+      @keyframes pulse-gold {
+        0% {
+          box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.4);
+        }
+        70% {
+          box-shadow: 0 0 0 15px rgba(212, 175, 55, 0);
+        }
+        100% {
+          box-shadow: 0 0 0 0 rgba(212, 175, 55, 0);
+        }
+      }
+
+      .location-details h3 {
+        font-size: 1.1rem;
+        font-weight: 700;
+        color: #fff;
+        margin-bottom: 5px;
+      }
+
+      .location-details p {
+        font-size: 0.9rem;
+        color: #aaa;
+        line-height: 1.4;
+      }
+
+      /* Responsive para la sección de contacto */
+      @media (max-width: 968px) {
+        .contact-container-unique {
+          grid-template-columns: 1fr;
+          gap: 40px;
+        }
+      }
+
+      @media (max-width: 576px) {
+        .contact-cards-grid {
+          grid-template-columns: 1fr;
+        }
+        .contact-social-box {
+          flex-direction: column;
+          gap: 15px;
+          align-items: flex-start;
+        }
+        .contact-info-side h2 {
+          font-size: 2rem;
+        }
+      }
+    </style>
+  </head>
+
+  <script src="scriptbtns.js" defer></script>
+  <script src="HeadFoot.js" defer></script>
+
+  <body>
+    <div id="contenedor-botones"></div>
+
+    <header class="header" id="header">
+      <div class="header-container">
+        <a href="index.html" class="brand">
+          <div class="brand-logo">
+            <img src="./assets/iconos/logo2.png" alt="Logo Stalynp" />
+          </div>
+          <div class="brand-text">
+            <span class="brand-name">STALYNP</span>
+            <span class="brand-subtitle">GRUPO INTERNACIONAL</span>
+          </div>
+        </a>
+
+        <!-- NAVEGACIÓN DESKTOP -->
+        <nav class="desktop-nav">
+          <a href="index.html" class="nav-link">INICIO</a>
+
+          <div class="nav-item dropdown">
+            <a href="javascript:void(0);" class="nav-link">
+              NUESTRA EMPRESA
+              <svg
+                width="10"
+                height="6"
+                viewBox="0 0 10 6"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M1 1L5 5L9 1"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </a>
+            <div class="dropdown-menu">
+              <a href="nosotros.html" class="dropdown-item">NOSOTROS</a>
+              <a href="empleo.html" class="dropdown-item"
+                >TRABAJA CON NOSOTROS</a
+              >
+              <a href="certificaciones.html" class="dropdown-item"
+                >CERTIFICACIONES</a
+              >
+            </div>
+          </div>
+
+          <div class="nav-item dropdown">
+            <a href="javascript:void(0);" class="nav-link">
+              SERVICIOS
+              <svg
+                width="10"
+                height="6"
+                viewBox="0 0 10 6"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M1 1L5 5L9 1"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </a>
+            <div class="dropdown-menu">
+              <a href="servicios.html" class="dropdown-item"
+                >SERVICIOS GENERALES</a
+              >
+              <a href="ingenieria.html" class="dropdown-item">INGENIERÍA</a>
+              <a href="arquitectura.html" class="dropdown-item">ARQUITECTURA</a>
+              <a href="gerencia-proyectos.html" class="dropdown-item"
+                >GERENCIA Y SUPERVISION DE PROYECTOS</a
+              >
+            </div>
+          </div>
+
+          <a href="proyectos.html" class="nav-link">PROYECTOS</a>
+          <a href="contacto.html" class="nav-link active">CONTACTO</a>
+        </nav>
+
+        <!-- BOTONES DE ACCIÓN DESKTOP -->
+        <div class="header-actions">
+          <a href="cotizar.html" class="header-button">COTIZAR</a>
+          <a
+            href="tienda.html"
+            class="header-button"
+            style="background: rgb(82, 64, 27); border-color: rgb(82, 64, 27)"
+          >
+            TIENDA
+          </a>
+        </div>
+
+        <!-- BOTÓN HAMBURGUESA MOBILE -->
+        <button
+          class="menu-toggle"
+          id="menuToggle"
+          aria-label="Abrir menú"
+          aria-expanded="false"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+
+      <!-- MENÚ MOBILE -->
+      <div class="mobile-menu" id="mobileMenu">
+        <a href="index.html" class="mobile-link">INICIO</a>
+
+        <div class="mobile-dropdown-container">
+          <div
+            class="mobile-link mobile-dropdown-toggle"
+            style="
+              cursor: pointer;
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+            "
+          >
+            <span>NUESTRA EMPRESA</span>
+            <svg
+              width="10"
+              height="6"
+              viewBox="0 0 10 6"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M1 1L5 5L9 1"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </div>
+          <div class="mobile-dropdown">
+            <a href="nosotros.html" class="mobile-sublink">NOSOTROS</a>
+            <a href="empleo.html" class="mobile-sublink"
+              >TRABAJA CON NOSOTROS</a
+            >
+            <a href="certificaciones.html" class="mobile-sublink"
+              >CERTIFICACIONES</a
+            >
+          </div>
+        </div>
+
+        <div class="mobile-dropdown-container">
+          <div
+            class="mobile-link mobile-dropdown-toggle"
+            style="
+              cursor: pointer;
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+            "
+          >
+            <span>SERVICIOS</span>
+            <svg
+              width="10"
+              height="6"
+              viewBox="0 0 10 6"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M1 1L5 5L9 1"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </div>
+          <div class="mobile-dropdown">
+            <a href="servicios.html" class="mobile-sublink"
+              >SERVICIOS GENERALES</a
+            >
+            <a href="ingenieria.html" class="mobile-sublink">INGENIERÍA</a>
+            <a href="arquitectura.html" class="mobile-sublink">ARQUITECTURA</a>
+
+            <a href="gerencia-proyectos.html" class="mobile-sublink"
+              >GERENCIA Y SUPERVISION DE PROYECTOS</a
+            >
+          </div>
+        </div>
+
+        <a href="proyectos.html" class="mobile-link">PROYECTOS</a>
+        <a href="contacto.html" class="mobile-link">CONTACTO</a>
+
+        <a href="cotizar.html" class="mobile-button">COTIZAR</a>
+        <a
+          href="tienda.html"
+          class="mobile-button"
+          style="background: rgb(82, 64, 27); border-color: rgb(82, 64, 27)"
+        >
+          TIENDA
+        </a>
+      </div>
+    </header>
+
+    <!-- =====NUEVA SECCIÓN DE CONTACTO DIRECTO INTEGRADA====== -->
+
+    <section class="contact-section-unique" id="contacto">
+      <div class="contact-container-unique">
+        <!-- Columna de Información y Canales Directos -->
+        <div class="contact-info-side">
+          <h2>Conéctate con <span>Stalynp</span></h2>
+          <p>
+            Estamos listos para atender tus requerimientos, proyectos y
+            consultas de manera inmediata a través de nuestros canales oficiales
+            directos.
+          </p>
+
+          <div class="contact-cards-grid">
+            <!-- WhatsApp Directo -->
+            <a
+              href="https://wa.me/51925631826?text=Hola%20Stalynp,%20deseo%20más%20información%20sobre%20sus%20servicios"
+              target="_blank"
+              class="contact-direct-card"
+            >
+              <div class="icon-box">
+                <i class="fa-brands fa-whatsapp"></i>
+              </div>
+              <h4>WhatsApp</h4>
+              <span>+51 925 631 826</span>
+            </a>
+
+            <!-- Correo Directo -->
+            <a href="mailto:098stalynp@gmail.com" class="contact-direct-card">
+              <div class="icon-box">
+                <i class="fa-regular fa-envelope"></i>
+              </div>
+              <h4>Correo</h4>
+              <span>098stalynp@gmail.com</span>
+            </a>
+          </div>
+
+          <!-- Redes Sociales -->
+          <div class="contact-social-box">
+            <span>Síguenos en nuestras redes oficiales:</span>
+            <div class="social-icons-row">
+              <a href="#" target="_blank" aria-label="Facebook"
+                ><i class="fa-brands fa-facebook-f"></i
+              ></a>
+              <a href="#" target="_blank" aria-label="Instagram"
+                ><i class="fa-brands fa-instagram"></i
+              ></a>
+              <a href="#" target="_blank" aria-label="TikTok"
+                ><i class="fa-brands fa-tiktok"></i
+              ></a>
+              <a href="#" target="_blank" aria-label="LinkedIn"
+                ><i class="fa-brands fa-linkedin-in"></i
+              ></a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Columna Visual con Imagen Corporativa y Tarjeta de Ubicación Dinámica -->
+        <div class="contact-visual-side">
+          <!-- Imagen Corporativa Estilizada -->
+          <div class="contact-image-wrapper">
+            <img
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTJgNDLOhPwNOSCP3ovnVzb4xQqPBkBjeLTqpubT1aOnKfezGXTRThF-snL&s=10"
+              alt="Stalynp Grupo Internacional - Proyectos y Servicios"
+            />
+          </div>
+
+          <!-- Tarjeta Dinámica de Ubicación -->
+          <div class="dynamic-location-card">
+            <div class="location-pulse-icon">
+              <i class="fa-solid fa-location-dot"></i>
+            </div>
+            <div class="location-details">
+              <h3>Presencia Internacional Piura - Perú</h3>
+              <p>
+                Operaciones y gestión de proyectos a nivel nacional e
+                internacional desde Perú.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer" id="footer">
+      <!-- FONDO DINÁMICO -->
+      <div class="footer-background">
+        <div class="footer-glow footer-glow-1"></div>
+        <div class="footer-glow footer-glow-2"></div>
+        <div class="footer-grid"></div>
+        <div class="footer-particles" id="footerParticles"></div>
+      </div>
+
+      <!--CONTENIDO PRINCIPAL DEL FOOTER-->
+      <div class="footer-container">
+        <!-- COLUMNA 1 — MARCA -->
+        <div class="footer-brand">
+          <a href="#inicio" class="footer-logo">
+            <div class="footer-logo-image">
+              <img
+                src="./assets/iconos/logo1.png"
+                alt="STALYNP Grupo Internacional"
+              />
+            </div>
+            <div class="footer-brand-name">
+              <strong> STALYNP </strong>
+              <span> GRUPO INTERNACIONAL </span>
+            </div>
+          </a>
+
+          <p class="footer-description">
+            Desarrollamos proyectos con visión, innovación y compromiso, creando
+            soluciones pensadas para trascender.
+          </p>
+
+          <!-- REDES SOCIALES -->
+          <div class="footer-social-title">SÍGUENOS</div>
+          <div class="footer-socials">
+            <a
+              href="#"
+              class="social-link"
+              aria-label="Facebook"
+              target="_blank"
+            >
+              <i class="fa-brands fa-facebook-f"></i>
+            </a>
+
+            <a
+              href="#"
+              class="social-link"
+              aria-label="Instagram"
+              target="_blank"
+            >
+              <i class="fa-brands fa-instagram"></i>
+            </a>
+
+            <a href="#" class="social-link" aria-label="TikTok" target="_blank">
+              <i class="fa-brands fa-tiktok"></i>
+            </a>
+
+            <a
+              href="#"
+              class="social-link"
+              aria-label="LinkedIn"
+              target="_blank"
+            >
+              <i class="fa-brands fa-linkedin-in"></i>
+            </a>
+
+            <a
+              href="#"
+              class="social-link"
+              aria-label="WhatsApp"
+              target="_blank"
+            >
+              <i class="fa-brands fa-whatsapp"></i>
+            </a>
+          </div>
+        </div>
+
+        <!--COLUMNA 2 — NAVEGACIÓN-->
+        <div class="footer-column">
+          <div class="footer-heading">
+            <span> EXPLORA </span>
+            <div></div>
+          </div>
+
+          <ul class="footer-links">
+            <li>
+              <a href="#inicio">
+                <i class="fa-solid fa-arrow-right"></i>
+                Inicio
+              </a>
+            </li>
+
+            <li>
+              <a href="#nosotros">
+                <i class="fa-solid fa-arrow-right"></i>
+                Nosotros
+              </a>
+            </li>
+
+            <li>
+              <a href="#servicios">
+                <i class="fa-solid fa-arrow-right"></i>
+                Servicios
+              </a>
+            </li>
+
+            <li>
+              <a href="#proyectos">
+                <i class="fa-solid fa-arrow-right"></i>
+                Proyectos
+              </a>
+            </li>
+
+            <li>
+              <a href="#contacto">
+                <i class="fa-solid fa-arrow-right"></i>
+                Contacto
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- COLUMNA 3 — CONTACTO -->
+        <div class="footer-column footer-contact">
+          <div class="footer-heading">
+            <span> CONTACTO </span>
+            <div></div>
+          </div>
+
+          <div class="contact-item">
+            <div class="contact-icon">
+              <i class="fa-solid fa-location-dot"></i>
+            </div>
+            <div>
+              <small> UBICACIÓN </small>
+              <p>Nuestra ubicación</p>
+            </div>
+          </div>
+
+          <div class="contact-item">
+            <div class="contact-icon">
+              <i class="fa-solid fa-phone"></i>
+            </div>
+            <div>
+              <small> TELÉFONO </small>
+              <p>+51 925 631 826</p>
+            </div>
+          </div>
+
+          <div class="contact-item">
+            <div class="contact-icon">
+              <i class="fa-regular fa-envelope"></i>
+            </div>
+            <div>
+              <small> EMAIL </small>
+              <p>098stalynp@gmail.com</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- COLUMNA 4 — MAPA -->
+        <div class="footer-map-column">
+          <div class="footer-heading">
+            <span> ENCUÉNTRANOS </span>
+            <div></div>
+          </div>
+
+          <div class="map-wrapper">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d1498.937277209692!2d-80.6627476729036!3d-5.1517894567207545!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2s!5e1!3m2!1ses-419!2spe!4v1792624655613!5m2!1ses-419!2spe"
+              width="100%"
+              height="100%"
+              style="border: 0"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="strict-origin-when-cross-origin"
+              title="Ubicación STALYNP"
+            >
+            </iframe>
+
+            <div class="map-overlay">
+              <div class="map-pin">
+                <i class="fa-solid fa-location-dot"></i>
+              </div>
+              <span> VER UBICACIÓN </span>
+            </div>
+          </div>
+
+          <a
+            href="https://www.google.com/maps?q=-5.1517894567207545,-80.6627476729036"
+            target="_blank"
+            class="map-button"
+          >
+            ABRIR EN GOOGLE MAPS
+            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+          </a>
+        </div>
+      </div>
+
+      <!--SEPARADOR -->
+      <div class="footer-divider">
+        <span></span>
+        <div class="footer-divider-logo">
+          <i class="fa-solid fa-building"></i>
+        </div>
+        <span></span>
+      </div>
+
+      <!--PARTE INFERIOR-->
+      <div class="footer-bottom">
+        <div class="footer-bottom-container">
+          <p>
+            © <span id="currentYear"></span>
+            <strong> STALYNP </strong>
+            — GRUPO INTERNACIONAL. TODOS LOS DERECHOS RESERVADOS.
+          </p>
+
+          <div class="footer-legal">
+            <a href="#"> Privacidad </a>
+            <span>•</span>
+            <a href="#"> Términos </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- BOTÓN VOLVER ARRIBA-->
+      <button class="back-to-top" id="backToTop" aria-label="Volver al inicio">
+        <span class="back-to-top-line"></span>
+        <i class="fa-solid fa-arrow-up"></i>
+        <span class="back-to-top-text"> ARRIBA </span>
+      </button>
+    </footer>
+  </body>
+</html>

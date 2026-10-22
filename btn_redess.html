@@ -1,0 +1,230 @@
+<!-- BOTONES FLOTANTES REDES SOCIALES - STALYNP -->
+
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+/>
+
+<!-- BOTONES FLOTANTES REDES SOCIALES - STALYNP -->
+<style>
+  /* =========== BOTONES FLOTANTES REDES SOCIALES ================ */
+
+  .stbf-container {
+    position: fixed;
+    right: 22px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  /* BOTÓN */
+
+  .stbf-btn {
+    position: relative;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    color: #77d4e8;
+    text-decoration: none;
+    font-size: 19px;
+    border: 1px solid rgba(14, 26, 198, 0.15);
+    background: linear-gradient(
+      135deg,
+      rgba(0, 0, 0, 0.9) 0%,
+      rgba(0, 0, 0, 0.95) 100%
+    );
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.35);
+    transition:
+      transform 0.35s ease,
+      background 0.35s ease,
+      box-shadow 0.35s ease;
+    animation: stbfFloatIn 0.7s ease backwards;
+  }
+
+  /* ENTRADA ESCALONADA */
+
+  .stbf-btn:nth-child(1) {
+    animation-delay: 0.2s;
+  }
+
+  .stbf-btn:nth-child(2) {
+    animation-delay: 0.3s;
+  }
+
+  .stbf-btn:nth-child(3) {
+    animation-delay: 0.4s;
+  }
+
+  .stbf-btn:nth-child(4) {
+    animation-delay: 0.5s;
+  }
+
+  /* HOVER */
+
+  .stbf-btn:hover {
+    transform: translateX(-8px) scale(1.12);
+    color: #fff;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  }
+
+  /* =========================================================
+     COLORES POR RED SOCIAL
+  ========================================================= */
+
+  .stbf-btn.stbf-tiktok:hover {
+    background: #000;
+    border-color: #fff;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+  }
+
+  .stbf-btn.stbf-whatsapp:hover {
+    background: #25d366;
+    border-color: #25d366;
+    box-shadow: 0 0 25px rgba(37, 211, 102, 0.4);
+  }
+
+  .stbf-btn.stbf-facebook:hover {
+    background: #1877f2;
+    border-color: #1877f2;
+    box-shadow: 0 0 25px rgba(24, 119, 242, 0.4);
+  }
+
+  .stbf-btn.stbf-instagram:hover {
+    background: linear-gradient(135deg, #833ab4, #e1306c, #f77737);
+    border-color: #e1306c;
+    box-shadow: 0 0 25px rgba(225, 48, 108, 0.4);
+  }
+
+  /* ===== TOOLTIP ================================ */
+
+  .stbf-tooltip {
+    position: absolute;
+    right: 62px;
+    top: 50%;
+    transform: translateY(-50%) translateX(10px);
+    padding: 7px 12px;
+    background: #111;
+    border: 1px solid #292929;
+    color: #fff;
+    font-size: 11px;
+    font-weight: 600;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: 0.3s ease;
+  }
+
+  /* FLECHA TOOLTIP */
+
+  .stbf-tooltip::after {
+    content: "";
+    position: absolute;
+    right: -5px;
+    top: 50%;
+    width: 8px;
+    height: 8px;
+    transform: translateY(-50%) rotate(45deg);
+    background: #111;
+    border-top: 1px solid #292929;
+    border-right: 1px solid #292929;
+  }
+
+  /* MOSTRAR TOOLTIP */
+
+  .stbf-btn:hover .stbf-tooltip {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(-50%) translateX(0);
+  }
+
+  /* ======= ANIMACIÓN DE ENTRADA ========================= */
+
+  @keyframes stbfFloatIn {
+    from {
+      opacity: 0;
+      transform: translateX(40px) scale(0.7);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0) scale(1);
+    }
+  }
+
+  /* ============= RESPONSIVE =================== */
+
+  @media (max-width: 650px) {
+    .stbf-container {
+      right: 12px;
+      gap: 8px;
+    }
+
+    .stbf-btn {
+      width: 42px;
+      height: 42px;
+      font-size: 16px;
+    }
+
+    .stbf-tooltip {
+      display: none;
+    }
+  }
+</style>
+
+<div class="stbf-container">
+  <!-- TikTok -->
+  <a
+    href="https://www.tiktok.com/"
+    target="_blank"
+    rel="noopener noreferrer"
+    class="stbf-btn stbf-tiktok"
+    aria-label="TikTok"
+  >
+    <i class="fa-brands fa-tiktok"></i>
+    <span class="stbf-tooltip">TikTok</span>
+  </a>
+
+  <!-- WhatsApp -->
+  <a
+    href="https://wa.me/925631826"
+    target="_blank"
+    rel="noopener noreferrer"
+    class="stbf-btn stbf-whatsapp"
+    aria-label="WhatsApp"
+  >
+    <i class="fa-brands fa-whatsapp"></i>
+    <span class="stbf-tooltip">WhatsApp</span>
+  </a>
+
+  <!-- Facebook -->
+  <a
+    href="https://www.facebook.com/"
+    target="_blank"
+    rel="noopener noreferrer"
+    class="stbf-btn stbf-facebook"
+    aria-label="Facebook"
+  >
+    <i class="fa-brands fa-facebook-f"></i>
+    <span class="stbf-tooltip">Facebook</span>
+  </a>
+
+  <!-- Instagram -->
+  <a
+    href="https://www.instagram.com/"
+    target="_blank"
+    rel="noopener noreferrer"
+    class="stbf-btn stbf-instagram"
+    aria-label="Instagram"
+  >
+    <i class="fa-brands fa-instagram"></i>
+    <span class="stbf-tooltip">Instagram</span>
+  </a>
+</div>
