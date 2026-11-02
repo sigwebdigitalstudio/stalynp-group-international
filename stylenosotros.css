@@ -112,23 +112,139 @@
 
 .about-image-frame-light {
   position: relative;
+  width: 100%;
   border-radius: 20px;
   overflow: hidden;
   box-shadow: 0 20px 40px -15px rgba(15, 23, 42, 0.12);
   border: 4px solid #ffffff;
   background: #ffffff;
+  isolation: isolate;
 }
 
-.about-image-frame-light img {
-  width: 100%;
-  height: 480px;
-  object-fit: cover;
+.about-image-frame-light .about-carousel-image {
   display: block;
-  transition: transform 0.5s ease;
+  width: 100%;
+  height: clamp(280px, 40vw, 480px);
+  object-fit: cover;
+  object-position: center;
+  opacity: 1;
+  transition: opacity 0.45s ease;
 }
 
-.about-image-frame-light:hover img {
-  transform: scale(1.03);
+.about-image-frame-light .about-carousel-image.is-changing {
+  opacity: 0.25;
+}
+
+.about-carousel-control {
+  position: absolute;
+  top: 50%;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  padding: 0;
+  border: 1px solid rgba(255, 255, 255, 0.65);
+  border-radius: 50%;
+  color: #ffffff;
+  background: rgba(15, 23, 42, 0.55);
+  font-size: 25px;
+  line-height: 1;
+  cursor: pointer;
+  transform: translateY(-50%);
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
+}
+
+.about-carousel-control:hover {
+  background: rgba(15, 23, 42, 0.85);
+  transform: translateY(-50%) scale(1.06);
+}
+
+.about-carousel-control.prev {
+  left: 14px;
+}
+.about-carousel-control.next {
+  right: 14px;
+}
+
+.about-carousel-dots {
+  position: absolute;
+  z-index: 2;
+  right: 0;
+  bottom: 15px;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  padding: 0 12px;
+}
+
+.about-carousel-dot {
+  width: 9px;
+  height: 9px;
+  padding: 0;
+  border: 0;
+  border-radius: 50px;
+  background: rgba(255, 255, 255, 0.65);
+  cursor: pointer;
+  transition:
+    width 0.25s ease,
+    background 0.25s ease;
+}
+
+.about-carousel-dot.active {
+  width: 24px;
+  background: #ffffff;
+}
+
+@media (max-width: 576px) {
+  .about-image-frame-light {
+    border-width: 3px;
+    border-radius: 16px;
+  }
+
+  .about-image-frame-light .about-carousel-image {
+    height: clamp(230px, 68vw, 340px);
+    object-fit: cover;
+  }
+
+  .about-carousel-control {
+    width: 34px;
+    height: 34px;
+    font-size: 21px;
+  }
+
+  .about-carousel-control.prev {
+    left: 9px;
+  }
+  .about-carousel-control.next {
+    right: 9px;
+  }
+
+  .about-carousel-dots {
+    bottom: 10px;
+    gap: 6px;
+  }
+
+  .about-carousel-dot {
+    width: 7px;
+    height: 7px;
+  }
+
+  .about-carousel-dot.active {
+    width: 19px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .about-image-frame-light .about-carousel-image,
+  .about-carousel-control,
+  .about-carousel-dot {
+    transition: none;
+  }
 }
 
 .about-year-badge {

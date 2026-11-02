@@ -338,12 +338,78 @@
         <!-- Bloque Principal: Imagen y Descripción -->
         <div class="about-main-grid">
           <div class="about-image-wrapper-light reveal-about">
-            <div class="about-image-frame-light">
+            <div
+              class="about-image-frame-light"
+              aria-label="Galería de imágenes de STALYNP"
+            >
               <img
+                class="about-carousel-image"
+                id="aboutCarouselImage"
                 src="./assets/img/stalynp_group_proyectos- (5).webp"
                 alt="STALYNP Grupo Internacional"
-                loading="lazy"
+                loading="eager"
+                fetchpriority="high"
               />
+
+              <button
+                class="about-carousel-control prev"
+                id="aboutCarouselPrev"
+                type="button"
+                aria-label="Imagen anterior"
+              >
+                &#8249;
+              </button>
+              <button
+                class="about-carousel-control next"
+                id="aboutCarouselNext"
+                type="button"
+                aria-label="Imagen siguiente"
+              >
+                &#8250;
+              </button>
+
+              <div
+                class="about-carousel-dots"
+                id="aboutCarouselDots"
+                aria-label="Seleccionar imagen"
+              >
+                <button
+                  class="about-carousel-dot active"
+                  type="button"
+                  aria-label="Ver imagen 1"
+                  aria-current="true"
+                ></button>
+                <button
+                  class="about-carousel-dot"
+                  type="button"
+                  aria-label="Ver imagen 2"
+                ></button>
+                <button
+                  class="about-carousel-dot"
+                  type="button"
+                  aria-label="Ver imagen 3"
+                ></button>
+                <button
+                  class="about-carousel-dot"
+                  type="button"
+                  aria-label="Ver imagen 4"
+                ></button>
+                <button
+                  class="about-carousel-dot"
+                  type="button"
+                  aria-label="Ver imagen 5"
+                ></button>
+                <button
+                  class="about-carousel-dot"
+                  type="button"
+                  aria-label="Ver imagen 6"
+                ></button>
+                <button
+                  class="about-carousel-dot"
+                  type="button"
+                  aria-label="Ver imagen 7"
+                ></button>
+              </div>
             </div>
             <div class="about-year-badge">
               <strong>6+</strong>
@@ -480,13 +546,125 @@
             "Cada proyecto es una oportunidad para construir algo
             extraordinario."
           </p>
-          <span>STALYNP · GRUPO INTERNACIONAL</span>
+          <span>STALYNP · GRUP INTERNATIONAL</span>
         </div>
       </div>
     </section>
 
     <script>
       document.addEventListener("DOMContentLoaded", () => {
+        // -------------------------------------------------------------
+        // 0. CARRUSEL DE IMÁGENES PRINCIPAL (HASTA 7 IMÁGENES)
+        // -------------------------------------------------------------
+        const aboutImage = document.getElementById("aboutCarouselImage");
+        const aboutPrev = document.getElementById("aboutCarouselPrev");
+        const aboutNext = document.getElementById("aboutCarouselNext");
+        const aboutDotsContainer = document.getElementById("aboutCarouselDots");
+
+        if (aboutImage && aboutPrev && aboutNext && aboutDotsContainer) {
+          // La primera imagen conserva la ruta original.
+          // Coloca las otras seis imágenes en assets/img con estos nombres.
+          const aboutImages = [
+            "./assets/img/stalynp_group_proyectos- (5).webp",
+            "./assets/img/stalynp_group_proyectos- (8).webp",
+            "./assets/img/stalynp_group_proyectos-supervicion.webp",
+            "./assets/img/stalynp_img_new1.webp",
+            "./assets/img/stalynp_group_diseño (3).webp",
+            "./assets/img/stalynp_img_foto1.webp",
+            "./assets/img/stalynp_img_new4.webp",
+
+            "./assets/img/stalynp_img_new4.webp",
+
+            "./assets/img/stalynp_img_new5.webp",
+            "./assets/img/stalynp_img_new2.webp",
+            "./assets/img/stalynp_img_foto2.webp",
+          ];
+
+          const aboutDots = Array.from(
+            aboutDotsContainer.querySelectorAll(".about-carousel-dot"),
+          );
+          let aboutCurrentIndex = 0;
+          let aboutAutoplay = null;
+
+          // Precarga las imágenes siguientes para evitar pausas al cambiar.
+          aboutImages.slice(1).forEach((src) => {
+            const preloadImage = new Image();
+            preloadImage.src = src;
+          });
+
+          const showAboutImage = (index) => {
+            aboutCurrentIndex =
+              (index + aboutImages.length) % aboutImages.length;
+            aboutImage.classList.add("is-changing");
+
+            const nextImage = new Image();
+            nextImage.onload = () => {
+              aboutImage.src = aboutImages[aboutCurrentIndex];
+              aboutImage.alt = `STALYNP Grupo Internacional - imagen ${aboutCurrentIndex + 1}`;
+              aboutImage.classList.remove("is-changing");
+            };
+            nextImage.onerror = () => {
+              // Si una imagen aún no existe, conserva la imagen visible.
+              aboutImage.classList.remove("is-changing");
+              console.warn(
+                "No se pudo cargar la imagen:",
+                aboutImages[aboutCurrentIndex],
+              );
+            };
+            nextImage.src = aboutImages[aboutCurrentIndex];
+
+            aboutDots.forEach((dot, dotIndex) => {
+              const isActive = dotIndex === aboutCurrentIndex;
+              dot.classList.toggle("active", isActive);
+              if (isActive) {
+                dot.setAttribute("aria-current", "true");
+              } else {
+                dot.removeAttribute("aria-current");
+              }
+            });
+          };
+
+          const stopAboutAutoplay = () => {
+            if (aboutAutoplay) {
+              clearInterval(aboutAutoplay);
+              aboutAutoplay = null;
+            }
+          };
+
+          const startAboutAutoplay = () => {
+            stopAboutAutoplay();
+            aboutAutoplay = setInterval(() => {
+              showAboutImage(aboutCurrentIndex + 1);
+            }, 3000);
+          };
+
+          aboutPrev.addEventListener("click", () => {
+            showAboutImage(aboutCurrentIndex - 1);
+            startAboutAutoplay();
+          });
+
+          aboutNext.addEventListener("click", () => {
+            showAboutImage(aboutCurrentIndex + 1);
+            startAboutAutoplay();
+          });
+
+          aboutDots.forEach((dot, index) => {
+            dot.addEventListener("click", () => {
+              showAboutImage(index);
+              startAboutAutoplay();
+            });
+          });
+
+          const aboutFrame = aboutImage.closest(".about-image-frame-light");
+          aboutFrame.addEventListener("mouseenter", stopAboutAutoplay);
+          aboutFrame.addEventListener("mouseleave", startAboutAutoplay);
+          aboutFrame.addEventListener("focusin", stopAboutAutoplay);
+          aboutFrame.addEventListener("focusout", startAboutAutoplay);
+
+          // Inicia el cambio automático cada 3 segundos.
+          startAboutAutoplay();
+        }
+
         // -------------------------------------------------------------
         // 1. ANIMACIÓN DE CONTADORES NUMÉRICOS
         // -------------------------------------------------------------
